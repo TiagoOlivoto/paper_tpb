@@ -455,7 +455,6 @@ ggplot(df_11, aes(APSAssess, value)) +
   labs(x = "Actual severity (%)",
        y = "pliman severity (%)")
 ggsave("figs/fig3_estimates.png", width = 10, height = 6, dpi = 600)
-ggsave("figs/eps_fig3_estimates.eps", width = 10, height = 6)
 ```
 
 
@@ -486,7 +485,6 @@ ggpairs(df_ggpairs,
         strip.text = element_text(size = 13),
         legend.title = element_blank())
 ggsave("figs/fig4_softwares.jpg", dpi = 600)
-ggsave("figs/eps_fig4_softwares.eps")
 ```
 
 
@@ -598,7 +596,6 @@ p1 / (p3 + p2 + plot_layout(widths = c(1, 1.1))) +
   plot_layout(ncol = 1)
 
 ggsave("figs/fig5_resolution.jpg", dpi = 600)
-ggsave("figs/eps_fig5_resolution.eps")
 ```
 
 
@@ -633,10 +630,6 @@ ggsave("figs/fig6_runningtime.png",
        units = "cm",
        dpi = 600)
 
-ggsave("figs/eps_fig6_runningtime.eps",
-       width = 12,
-       height = 9,
-       units = "cm")
 ```
 
 
