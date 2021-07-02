@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Analysis</title>
+
+<script src="site_libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
+
+
+<link rel="stylesheet" href="my-style.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Supporting material for pliman's paper</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa fa fa-home"></span>
+     
+    About
+  </a>
+</li>
+<li>
+  <a href="code.html">
+    <span class="fa fa fa fa-file-code-o"></span>
+     
+    Analysis
+  </a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/TiagoOlivoto/paper_pliman">
+    <span class="fas fa-github-square"></span>
+     
+    Source
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Analysis</h1>
+
+</div>
+
+
+<div id="packages" class="section level1" number="1">
+<h1 number="1"><span class="header-section-number">1</span> Packages</h1>
+<pre class="r"><code>library(pliman)     # plant image analysis
+# |========================================================|
+# | Tools for Plant Image Analysis (pliman 0.3.0)          |
+# | Author: Tiago Olivoto                                  |
+# | Type &#39;vignette(&#39;pliman_start&#39;)&#39; for a short tutorial   |
+# | Visit &#39;https://bit.ly/3eL0dF3&#39; for a complete tutorial |
+# |========================================================|
+# 
+# Attaching package: &#39;pliman&#39;
+# The following object is masked _by_ &#39;.GlobalEnv&#39;:
+# 
+#     symptomatic_area
+library(tidyverse)  # data manipulation and plots
+# -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
+# v ggplot2 3.3.3     v purrr   0.3.4
+# v tibble  3.1.2     v dplyr   1.0.6
+# v tidyr   1.1.3     v stringr 1.4.0
+# v readr   1.4.0     v forcats 0.5.1
+# -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+# x dplyr::filter() masks stats::filter()
+# x dplyr::lag()    masks stats::lag()
+library(patchwork)  # plot arrangement
+library(DescTools)  # concordance correlation coefficient
+library(rio)        # import/export data
+library(ggthemes)   # Themes for ggplot2
+library(GGally)     # create pairwise ggplots
+# Registered S3 method overwritten by &#39;GGally&#39;:
+#   method from   
+#   +.gg   ggplot2
+library(ggrepel)    # repel text</code></pre>
+</div>
+<div id="installing-pliman" class="section level1" number="2">
+<h1 number="2"><span class="header-section-number">2</span> Installing pliman</h1>
+<p>To install the released version of <code>pliman</code> from CRAN type:</p>
+<pre class="r"><code>install.packages(&quot;pliman&quot;)</code></pre>
+<p>The latest development version of <code>pliman</code> can be installed from the GitHub repository. The installation process requires the <code>devtools</code> package, which needs to be installed first. If you are a Windows user, you should also first download and install the latest version of <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a>.</p>
+<pre class="r"><code>if(!require(devtools)) install.packages(&quot;devtools&quot;)
+</code></pre>
+<p>After <code>devtools</code> is properly installed, you can install <code>pliman</code> by running the following code. Please, note that the installation will also download the dependencies required to run the package.</p>
+<pre class="r"><code>devtools::install_github(&quot;TiagoOlivoto/pliman&quot;)</code></pre>
+<p>Them, load <code>pliman</code> by running</p>
+<pre class="r"><code>library(pliman)</code></pre>
+</div>
+<div id="helper-functions" class="section level1" number="3">
+<h1 number="3"><span class="header-section-number">3</span> Helper functions</h1>
+<pre class="r"><code># concordance correlation coefficient
+get_ccc &lt;- function(df, predicted, real){
+  if(is.grouped_df(df)){
+    df %&gt;% 
+      group_modify(~get_ccc(.x, {{predicted}}, {{real}})) %&gt;% 
+      ungroup()
+  } else{
+    predicted &lt;- pull(df, {{predicted}})
+    real &lt;- pull(df, {{real}})
+    cor &lt;- CCC(real, predicted, na.rm = TRUE)
+    data.frame(r = cor(real, predicted),
+               pc = cor$rho.c[[1]],
+               lwr_ci = cor$rho.c[[2]],
+               upr_ci = cor$rho.c[[3]],
+               bc = cor$C.b)
+  }
+}
+
+
+# heper function to plot the CCC in ggpairs()
+custom_ccc &lt;- function(data, mapping,...){
+  data2 &lt;- data
+  data2$x &lt;- as.numeric(data[,as_label(mapping$x)])
+  data2$y &lt;- as.numeric(data[,as_label(mapping$y)])
+  data2$group &lt;- data[,as_label(mapping$colour)]
+  correlation_df &lt;- data2 %&gt;% 
+    group_by(group) %&gt;%
+    summarize(estimate = round(as.numeric(DescTools::CCC(x, y)$rho.c[1]),2))
+  ggplot(data=correlation_df, aes(x=1,y=group, color = group))+
+    geom_text(aes(label = paste0(&quot;rho[c]: &quot;, estimate)),
+              data = correlation_df,
+              parse = TRUE,
+              size = 4)
+}
+custom_smoth &lt;- function(data, mapping, method=&quot;lm&quot;, ...){
+  p &lt;- ggplot(data = data, mapping = mapping) + 
+    geom_point(alpha = 0.7,
+               shape = 21,
+               size = 2.5,
+               stroke = 0.01,
+               color = &quot;black&quot;) + 
+    geom_abline(color = &quot;red&quot;,
+                intercept = 0,
+                size = 0.7,
+                slope = 1,
+                linetype = 2)
+  p
+}
+
+# set the ggplot2 theme
+theme_set(theme_bw())</code></pre>
+</div>
+<div id="rater-effect-on-palette-selection" class="section level1" number="4">
+<h1 number="4"><span class="header-section-number">4</span> Rater effect on palette selection</h1>
+<div id="disease" class="section level2" number="4.1">
+<h2 number="4.1"><span class="header-section-number">4.1</span> Disease</h2>
+<div id="bean-angular-spot" class="section level3" number="4.1.1">
+<h3 number="4.1.1"><span class="header-section-number">4.1.1</span> Bean angular spot</h3>
+<pre class="r"><code>sev_bean_1 &lt;- 
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h1&quot;,
+                   img_symptoms = &quot;s1&quot;,
+                   img_background = &quot;b1&quot;,
+                   dir_original = &quot;data/01-bean-angular-spot/originals&quot;,
+                   parallel = TRUE)
+sev_bean_2 &lt;- 
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h2&quot;,
+                   img_symptoms = &quot;s2&quot;,
+                   img_background = &quot;b2&quot;,
+                   dir_original = &quot;data/01-bean-angular-spot/originals&quot;,
+                   parallel = TRUE)
+sev_bean_3 &lt;- 
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h3&quot;,
+                   img_symptoms = &quot;s3&quot;,
+                   img_background = &quot;b3&quot;,
+                   dir_original = &quot;data/01-bean-angular-spot/originals&quot;,
+                   parallel = TRUE)
+sev_bean_4 &lt;- 
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h4&quot;,
+                   img_symptoms = &quot;s4&quot;,
+                   img_background = &quot;b4&quot;,
+                   dir_original = &quot;data/01-bean-angular-spot/originals&quot;,
+                   parallel = TRUE)
+
+bind_bean &lt;- 
+  bind_cols(sev_bean_1 %&gt;% select(1,3) %&gt;% rename(r1 = symptomatic),
+            sev_bean_2 %&gt;% select(3) %&gt;% rename(r2 = symptomatic),
+            sev_bean_3 %&gt;% select(3) %&gt;% rename(r3 = symptomatic),
+            sev_bean_4 %&gt;% select(3) %&gt;% rename(r4 = symptomatic)) %&gt;% 
+  mutate(disease = &quot;Bean angular spot&quot;, .before = 1)</code></pre>
+</div>
+<div id="rice-brown-spot" class="section level3" number="4.1.2">
+<h3 number="4.1.2"><span class="header-section-number">4.1.2</span> Rice brown spot</h3>
+<pre class="r"><code>sev_rice_1 &lt;-
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h1&quot;,
+                   img_symptoms = &quot;s1&quot;,
+                   img_background = &quot;b1&quot;,
+                   dir_original = &quot;data/02-rice-brownspot/originals&quot;,
+                   parallel = TRUE)
+sev_rice_2 &lt;-
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h2&quot;,
+                   img_symptoms = &quot;s2&quot;,
+                   img_background = &quot;b2&quot;,
+                   dir_original = &quot;data/02-rice-brownspot/originals&quot;,
+                   parallel = TRUE)
+sev_rice_3 &lt;-
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h3&quot;,
+                   img_symptoms = &quot;s3&quot;,
+                   img_background = &quot;b3&quot;,
+                   dir_original = &quot;data/02-rice-brownspot/originals&quot;,
+                   parallel = TRUE)
+
+sev_rice_4 &lt;-
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h4&quot;,
+                   img_symptoms = &quot;s4&quot;,
+                   img_background = &quot;b4&quot;,
+                   dir_original = &quot;data/02-rice-brownspot/originals&quot;,
+                   parallel = TRUE)
+
+bind_rice &lt;-
+  bind_cols(sev_rice_1 %&gt;% select(1,3) %&gt;% rename(r1 = symptomatic),
+            sev_rice_2 %&gt;% select(3) %&gt;% rename(r2 = symptomatic),
+            sev_rice_3 %&gt;% select(3) %&gt;% rename(r3 = symptomatic),
+            sev_rice_4 %&gt;% select(3) %&gt;% rename(r4 = symptomatic)) %&gt;% 
+  mutate(disease = &quot;Rice brown spot&quot;, .before = 1)
+</code></pre>
+</div>
+<div id="wheat-tan-spot" class="section level3" number="4.1.3">
+<h3 number="4.1.3"><span class="header-section-number">4.1.3</span> Wheat tan spot</h3>
+<pre class="r"><code>sev_wheat_1 &lt;- 
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h1&quot;,
+                   img_symptoms = &quot;s1&quot;,
+                   img_background = &quot;b1&quot;,
+                   dir_original = &quot;data/03-wheat-tanspot/originals&quot;,
+                   parallel = TRUE)
+sev_wheat_2 &lt;- 
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h2&quot;,
+                   img_symptoms = &quot;s2&quot;,
+                   img_background = &quot;b2&quot;,
+                   dir_original = &quot;data/03-wheat-tanspot/originals&quot;,
+                   parallel = TRUE)
+sev_wheat_3 &lt;- 
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h3&quot;,
+                   img_symptoms = &quot;s3&quot;,
+                   img_background = &quot;b3&quot;,
+                   dir_original = &quot;data/03-wheat-tanspot/originals&quot;,
+                   parallel = TRUE)
+
+sev_wheat_4 &lt;- 
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h4&quot;,
+                   img_symptoms = &quot;s4&quot;,
+                   img_background = &quot;b4&quot;,
+                   dir_original = &quot;data/03-wheat-tanspot/originals&quot;,
+                   parallel = TRUE)
+
+bind_wheat &lt;- 
+  bind_cols(sev_wheat_1 %&gt;% select(1,3) %&gt;% rename(r1 = symptomatic),
+            sev_wheat_2 %&gt;% select(3) %&gt;% rename(r2 = symptomatic),
+            sev_wheat_3 %&gt;% select(3) %&gt;% rename(r3 = symptomatic),
+            sev_wheat_4 %&gt;% select(3) %&gt;% rename(r4 = symptomatic)) %&gt;% 
+  mutate(disease = &quot;Wheat tan spot&quot;, .before = 1) 
+</code></pre>
+</div>
+<div id="tobacco-xylella" class="section level3" number="4.1.4">
+<h3 number="4.1.4"><span class="header-section-number">4.1.4</span> Tobacco xylella</h3>
+<pre class="r"><code>sev_tobacco_1 &lt;- 
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h1&quot;,
+                   img_symptoms = &quot;s1&quot;,
+                   img_background = &quot;b1&quot;,
+                   dir_original = &quot;data/04-tobacco-xylella/originals&quot;,
+                   parallel = TRUE)
+sev_tobacco_2 &lt;- 
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h2&quot;,
+                   img_symptoms = &quot;s2&quot;,
+                   img_background = &quot;b2&quot;,
+                   dir_original = &quot;data/04-tobacco-xylella/originals&quot;,
+                   parallel = TRUE)
+sev_tobacco_3 &lt;- 
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h3&quot;,
+                   img_symptoms = &quot;s3&quot;,
+                   img_background = &quot;b3&quot;,
+                   dir_original = &quot;data/04-tobacco-xylella/originals&quot;,
+                   parallel = TRUE)
+
+sev_tobacco_4 &lt;- 
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h4&quot;,
+                   img_symptoms = &quot;s4&quot;,
+                   img_background = &quot;b4&quot;,
+                   dir_original = &quot;data/04-tobacco-xylella/originals&quot;,
+                   parallel = TRUE)
+
+bind_tobacco &lt;- 
+  bind_cols(sev_tobacco_1 %&gt;% select(1,3) %&gt;% rename(r1 = symptomatic),
+            sev_tobacco_2 %&gt;% select(3) %&gt;% rename(r2 = symptomatic),
+            sev_tobacco_3 %&gt;% select(3) %&gt;% rename(r3 = symptomatic),
+            sev_tobacco_4 %&gt;% select(3) %&gt;% rename(r = symptomatic)) %&gt;% 
+  mutate(disease = &quot;Tobacco xylella&quot;, .before = 1) 
+</code></pre>
+</div>
+<div id="olive-peacock-eye" class="section level3" number="4.1.5">
+<h3 number="4.1.5"><span class="header-section-number">4.1.5</span> Olive peacock eye</h3>
+<pre class="r"><code>sev_olive_1 &lt;- 
+  symptomatic_area(img_pattern = &quot;F216&quot;,
+                   img_healthy = &quot;h1&quot;,
+                   img_symptoms = &quot;s1&quot;,
+                   img_background = &quot;b1&quot;,
+                   dir_original = &quot;data/05-olive-peacock-eye/originals&quot;,
+                   parallel = TRUE)
+sev_olive_2 &lt;- 
+  symptomatic_area(img_pattern = &quot;F216&quot;,
+                   img_healthy = &quot;h2&quot;,
+                   img_symptoms = &quot;s2&quot;,
+                   img_background = &quot;b2&quot;,
+                   dir_original = &quot;data/05-olive-peacock-eye/originals&quot;,
+                   parallel = TRUE)
+sev_olive_3 &lt;- 
+  symptomatic_area(img_pattern = &quot;F216&quot;,
+                   img_healthy = &quot;h3&quot;,
+                   img_symptoms = &quot;s3&quot;,
+                   img_background = &quot;b3&quot;,
+                   dir_original = &quot;data/05-olive-peacock-eye/originals&quot;,
+                   parallel = TRUE)
+
+sev_olive_4 &lt;- 
+  symptomatic_area(img_pattern = &quot;F216&quot;,
+                   img_healthy = &quot;h4&quot;,
+                   img_symptoms = &quot;s4&quot;,
+                   img_background = &quot;b4&quot;,
+                   dir_original = &quot;data/05-olive-peacock-eye/originals&quot;,
+                   parallel = TRUE)
+
+bind_olive &lt;- 
+  bind_cols(sev_olive_1 %&gt;% select(1,3) %&gt;% rename(r1 = symptomatic),
+            sev_olive_2 %&gt;% select(3) %&gt;% rename(r2 = symptomatic),
+            sev_olive_3 %&gt;% select(3) %&gt;% rename(r3 = symptomatic),
+            sev_olive_4 %&gt;% select(3) %&gt;% rename(r4 = symptomatic)) %&gt;% 
+  mutate(disease = &quot;Olive peacock eye&quot;, .before = 1) 
+</code></pre>
+</div>
+<div id="soybean-rust" class="section level3" number="4.1.6">
+<h3 number="4.1.6"><span class="header-section-number">4.1.6</span> Soybean rust</h3>
+<pre class="r"><code>sev_soybean_1 &lt;- 
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h1&quot;,
+                   img_symptoms = &quot;s1&quot;,
+                   img_background = &quot;b1&quot;,
+                   dir_original = &quot;data/06-soybean_rust/originals&quot;,
+                   parallel = TRUE)
+sev_soybean_2 &lt;- 
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h2&quot;,
+                   img_symptoms = &quot;s2&quot;,
+                   img_background = &quot;b2&quot;,
+                   dir_original = &quot;data/06-soybean_rust/originals&quot;,
+                   parallel = TRUE)
+sev_soybean_3 &lt;- 
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h3&quot;,
+                   img_symptoms = &quot;s3&quot;,
+                   img_background = &quot;b3&quot;,
+                   dir_original = &quot;data/06-soybean_rust/originals&quot;,
+                   parallel = TRUE)
+
+sev_soybean_4 &lt;- 
+  symptomatic_area(img_pattern = &quot;F&quot;,
+                   img_healthy = &quot;h4&quot;,
+                   img_symptoms = &quot;s4&quot;,
+                   img_background = &quot;b4&quot;,
+                   dir_original = &quot;data/06-soybean_rust/originals&quot;,
+                   parallel = TRUE)
+
+bind_soybean &lt;- 
+  bind_cols(sev_soybean_1 %&gt;% select(1,3) %&gt;% rename(r1 = symptomatic),
+            sev_soybean_2 %&gt;% select(3) %&gt;% rename(r2 = symptomatic),
+            sev_soybean_3 %&gt;% select(3) %&gt;% rename(r3 = symptomatic),
+            sev_soybean_4 %&gt;% select(3) %&gt;% rename(r4 = symptomatic)) %&gt;% 
+  mutate(disease = &quot;Soybean rust&quot;, .before = 1) 
+</code></pre>
+</div>
+</div>
+<div id="bind-data" class="section level2" number="4.2">
+<h2 number="4.2"><span class="header-section-number">4.2</span> Bind data</h2>
+</div>
+</div>
+<div id="concordance-correlation-coefficient" class="section level1" number="5">
+<h1 number="5"><span class="header-section-number">5</span> Concordance correlation coefficient</h1>
+<div id="validation-of-the-pliman-for-severity-prediction" class="section level2" number="5.1">
+<h2 number="5.1"><span class="header-section-number">5.1</span> Validation of the pliman for severity prediction</h2>
+<pre class="r"><code>df_ccc &lt;- import(&quot;data/bind_severity.xlsx&quot;)
+df_long &lt;- 
+  df_ccc %&gt;% 
+  pivot_longer(`Rater 1`:`Joint`, 
+               names_to = &quot;Rater&quot;,
+               values_to = &quot;pliman&quot;)
+
+# Concordance correlation coefficient
+ccc &lt;- 
+df_long %&gt;% 
+  group_by(disease, Rater) %&gt;% 
+  get_ccc(pliman, APSAssess) %&gt;% 
+    mutate(rho = paste0(&quot;rho[c]:~&quot;, round(pc, 2),
+                      &quot;[(&quot;,round(lwr_ci,2), &quot;-&quot;,
+                      round(upr_ci,2), &quot;)]&quot; ),
+         bc = paste0(&quot;C[b]:~&quot;, round(bc, 2)),
+         r = paste0(&quot;r:~~~&quot;, round(r, 2))) %&gt;% 
+  rename(name = Rater)
+
+export(ccc, &quot;data/ccc.xlsx&quot;)
+</code></pre>
+<pre class="r"><code>
+df_11 &lt;- 
+  df_ccc %&gt;% 
+  select(disease, APSAssess:Joint) %&gt;% 
+  pivot_longer(`Rater 1`:Joint)
+
+ggplot(df_11, aes(APSAssess, value)) + 
+  geom_point(alpha = 0.7,
+             aes(fill = name),
+             color = &quot;black&quot;,
+             shape = 21,
+             size = 2.5,
+             stroke = 0.02) + 
+  geom_abline(intercept = 0,
+              slope = 1,
+              linetype = 2,
+              color = &quot;blue&quot;) + 
+  facet_grid(name~disease) + 
+  geom_text(aes(label=rho), 
+            x = 2,
+            y = 93,
+            hjust = 0,
+            size = 3,
+            data = ccc,
+            parse = TRUE) + 
+  geom_text(aes(label=bc), 
+            x = 2,
+            y = 80,
+            size = 3,
+            hjust = 0,
+            data = ccc,
+            parse = TRUE) + 
+  geom_text(aes(label=r), 
+            x = 2,
+            y = 70,
+            size = 3,
+            hjust = 0,
+            data = ccc,
+            parse = TRUE) + 
+  theme_bw() +
+  scale_x_continuous(limits = c(0, 100)) + 
+  scale_y_continuous(limits = c(0, 100)) + 
+  scale_color_colorblind() + 
+  theme(axis.title = element_text(color = &quot;black&quot;),
+        axis.text = element_text(color = &quot;black&quot;),
+        axis.ticks.length = unit(0.2, &quot;cm&quot;),
+        panel.grid = element_blank(),
+        legend.position = &quot;bottom&quot;,
+        strip.background = element_rect(fill = NA),
+        panel.spacing = unit(0, &quot;cm&quot;),
+        legend.title = element_blank()) + 
+  labs(x = &quot;Actual severity (%)&quot;,
+       y = &quot;pliman severity (%)&quot;)</code></pre>
+<p><img src="code_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code>ggsave(&quot;figs/fig3_estimates.png&quot;, width = 10, height = 6, dpi = 600)
+ggsave(&quot;figs/eps_fig3_estimates.eps&quot;, width = 10, height = 6)
+# Warning in grid.Call.graphics(C_points, x$x, x$y, x$pch, x$size): semi-
+# transparency is not supported on this device: reported only once per page</code></pre>
+</div>
+<div id="matrix-of-concordance-correlation-coefficients" class="section level2" number="5.2">
+<h2 number="5.2"><span class="header-section-number">5.2</span> Matrix of concordance correlation coefficients</h2>
+<pre class="r"><code>df_ggpairs &lt;-
+  df_ccc %&gt;% 
+  select(disease, ImageJ:APSAssess, Joint) %&gt;% 
+  rename(pliman = Joint)
+ggpairs(df_ggpairs,
+        legend = 1,
+        aes(color = disease, fill = disease),
+        axisLabels = &quot;none&quot;,
+        columns = c(&quot;ImageJ&quot;, &quot;LeafDoctor&quot;, &quot;APSAssess&quot;, &quot;pliman&quot;),
+        lower = list(continuous = custom_smoth),
+        upper = list(continuous = custom_ccc),
+        diag = list(continuous = wrap(&quot;densityDiag&quot;,
+                                      alpha =  0.7,
+                                      size = 0.2,
+                                      color = &quot;black&quot;))) +
+  scale_color_colorblind() + 
+  scale_fill_colorblind() + 
+  theme(panel.spacing = unit(0, &quot;cm&quot;), 
+        panel.grid = element_blank(),
+        legend.position = &quot;bottom&quot;,
+        strip.background = element_rect(fill = NA),
+        strip.text = element_text(size = 13),
+        legend.title = element_blank())</code></pre>
+<p><img src="code_files/figure-html/unnamed-chunk-2-1.png" width="576" /></p>
+<pre class="r"><code>ggsave(&quot;figs/fig4_softwares.jpg&quot;, dpi = 600)
+# Saving 6 x 6 in image
+ggsave(&quot;figs/eps_fig4_softwares.eps&quot;)
+# Saving 6 x 6 in image
+# Warning in grid.Call.graphics(C_polygon, x$x, x$y, index): semi-transparency is
+# not supported on this device: reported only once per page</code></pre>
+</div>
+</div>
+<div id="impact-of-image-resolution-on-predicted-severity" class="section level1" number="6">
+<h1 number="6"><span class="header-section-number">6</span> Impact of image resolution on predicted severity</h1>
+<pre class="r"><code>severity &lt;- import(&quot;data/severity_scenario.xlsx&quot;)
+severity &lt;- mutate(severity,
+                   resolution = fct_relevel(resolution, &quot;1367x2160&quot;, &quot;1020x1620&quot;, &quot;680x1078&quot;, &quot;510x808&quot;, &quot;170x270&quot;))
+
+# Concordance correlation coefficient by resolution
+df_ccc_resolution &lt;- 
+severity %&gt;% 
+  group_by(mp) %&gt;% 
+  get_ccc(APSAssess, pliman) %&gt;% 
+    mutate(rho = paste0(&quot;rho[c]:~&quot;, round(pc, 3),
+                      &quot;[(&quot;,round(lwr_ci,3), &quot;-&quot;,
+                      round(upr_ci,3), &quot;)]&quot; ),
+         bco = paste0(&quot;C[b]:~&quot;, round(bc, 3)),
+         rper = paste0(&quot;r:~~~&quot;, round(r, 3)))
+
+p1 &lt;- 
+  ggplot(severity, aes(APSAssess, pliman)) + 
+  geom_point(color = &quot;black&quot;,
+             size = 2,
+             alpha = 0.25) +
+  geom_abline(intercept = 0, slope = 1, linetype = 2, color = &quot;red&quot;) + 
+  facet_wrap(~mp, ncol = 5) + 
+   geom_text(aes(label=rho), 
+            x = 2,
+            y = 93,
+            hjust = 0,
+            size = 3,
+            data = df_ccc_resolution,
+            parse = TRUE) + 
+  geom_text(aes(label=bco), 
+            x = 2,
+            y = 80,
+            size = 3,
+            hjust = 0,
+            data = df_ccc_resolution,
+            parse = TRUE) + 
+  geom_text(aes(label=rper), 
+            x = 2,
+            y = 70,
+            size = 3,
+            hjust = 0,
+            data = df_ccc_resolution,
+            parse = TRUE) + 
+  scale_y_continuous(breaks = seq(0, 100, by = 25),
+                     limits = c(0, 100)) +
+  scale_x_continuous(breaks = seq(0, 100, by = 25),
+                     limits = c(0, 100)) +
+  coord_fixed() + 
+  theme(legend.background = element_blank(),
+        panel.grid = element_blank(),
+        panel.spacing = unit(0, &quot;cm&quot;),
+        axis.title = element_text(color = &quot;black&quot;),
+        axis.text = element_text(color = &quot;black&quot;),
+        strip.background = element_rect(fill = NA),
+        axis.ticks.length = unit(0.2, &quot;cm&quot;)) + 
+  labs(x = &quot;Actual severity (%)&quot;,
+       y = &quot;Predicted severity (%)&quot;)
+
+
+p2 &lt;-
+  ggplot(severity, aes(residual)) + 
+  geom_density(aes(fill = factor(mp)), alpha = 0.3, size = 0.1) +
+  geom_vline(xintercept = 0, linetype = 2) +
+  geom_rug(length = unit(0.02, &quot;npc&quot;),
+           size = 0.05,
+           color = &quot;gray&quot;) +
+  theme(legend.position = &quot;bottom&quot;,
+        legend.title = element_blank(),
+        panel.grid = element_blank(),
+        panel.spacing = unit(0, &quot;cm&quot;),
+        strip.background = element_rect(fill = NA),
+        axis.title = element_text(color = &quot;black&quot;),
+        axis.text = element_text(color = &quot;black&quot;),
+        axis.ticks.length = unit(0.2, &quot;cm&quot;)) + 
+  labs(x = &quot;Prediction residual (%)&quot;) +
+  scale_fill_colorblind()
+
+
+df_ccc_resolution2 &lt;- 
+  df_ccc_resolution %&gt;% 
+  select(mp, r, pc, bc) %&gt;% 
+  pivot_longer(-mp)
+
+p3 &lt;- 
+ggplot(df_ccc_resolution2, aes(mp, value, fill = name, group = name)) + 
+  geom_line(aes(color = name)) +
+  geom_point(shape = 21, size = 2) +
+  theme(legend.position = &quot;bottom&quot;,
+        legend.title = element_blank(),
+        panel.spacing = unit(0, &quot;cm&quot;),
+        panel.grid = element_blank(),
+        axis.title = element_text(color = &quot;black&quot;),
+        axis.text = element_text(color = &quot;black&quot;),
+        axis.ticks.length = unit(0.2, &quot;cm&quot;)) + 
+  labs(x = &quot;Image resolution (megapixel)&quot;,
+       y = &quot;Observed value&quot;) +
+  scale_y_continuous(breaks = seq(0.9, 1, by = 0.002)) + 
+  scale_x_continuous(breaks = c(0.05, 0.4, 0.7, 1.7, 3)) +
+  scale_fill_colorblind(labels = c(~C[b],~rho[c], ~r)) +
+  scale_color_colorblind(labels = c(~C[b],~rho[c], ~r))
+
+p1 / (p3 + p2 + plot_layout(widths = c(1, 1.1))) +
+  plot_annotation(tag_levels = &quot;a&quot;) + 
+  plot_layout(ncol = 1)</code></pre>
+<p><img src="code_files/figure-html/resolution-1.png" width="768" /></p>
+<pre class="r"><code>
+ggsave(&quot;figs/fig5_resolution.jpg&quot;, dpi = 600)
+# Saving 8 x 6 in image
+ggsave(&quot;figs/eps_fig5_resolution.eps&quot;)
+# Saving 8 x 6 in image
+# Warning in grid.Call.graphics(C_points, x$x, x$y, x$pch, x$size): semi-
+# transparency is not supported on this device: reported only once per page</code></pre>
+</div>
+<div id="computation-time" class="section level1" number="7">
+<h1 number="7"><span class="header-section-number">7</span> Computation time</h1>
+<pre class="r"><code>scenario &lt;- import(&quot;data/runtime_scenario.xlsx&quot;)
+scenario &lt;- mutate(scenario,
+                   resolution = fct_relevel(resolution, &quot;1367x2160&quot;, &quot;1020x1620&quot;, &quot;680x1078&quot;, &quot;510x808&quot;, &quot;170x270&quot;))
+
+ggplot(scenario, aes(mp, elapsed_img, fill = strategy, group = strategy)) + 
+  geom_line(aes(color = strategy)) +
+  geom_point(shape = 21, size = 2) +
+  scale_y_continuous(breaks = seq(0, 3.5, by = 0.5),
+                     limits = c(0, 3.5)) +
+  scale_x_reverse(breaks = seq(0, 3, by = 0.5)) + 
+  theme(legend.position = c(0.8, 0.8),
+        legend.key=element_blank(),
+        legend.box.background = element_blank(),
+        legend.background = element_blank(),
+        panel.grid = element_blank(),
+        axis.title = element_text(color = &quot;black&quot;),
+        axis.text = element_text(color = &quot;black&quot;),
+        axis.ticks.length = unit(0.2, &quot;cm&quot;)) + 
+  labs(x = &quot;Image resolution&quot;,
+       y = &quot;Elapsed time (s)&quot;) +
+    scale_fill_colorblind() +
+  scale_color_colorblind()</code></pre>
+<p><img src="code_files/figure-html/runningtime-1.png" width="336" /></p>
+<pre class="r"><code>
+ggsave(&quot;figs/fig6_runningtime.png&quot;,
+       width = 12,
+       height = 9,
+       units = &quot;cm&quot;,
+       dpi = 600)
+
+ggsave(&quot;figs/eps_fig6_runningtime.eps&quot;,
+       width = 12,
+       height = 9,
+       units = &quot;cm&quot;)</code></pre>
+</div>
+
+<div id="rmd-source-code">JSBBbmFseXNpcyANCg0KYGBge3IgZ2xvYmFsX29wdGlvbnMsIGluY2x1ZGUgPSBGQUxTRX0NCmtuaXRyOjpvcHRzX2NodW5rJHNldChjYWNoZSA9IEZBTFNFLCBjb21tZW50ID0gIiMiLCBjb2xsYXBzZSA9IFRSVUUpDQoNCmBgYA0KDQojIFBhY2thZ2VzDQpgYGB7ciBwYWNrYWdlcywgd2FybmluZz1GQUxTRX0NCmxpYnJhcnkocGxpbWFuKSAgICAgIyBwbGFudCBpbWFnZSBhbmFseXNpcw0KbGlicmFyeSh0aWR5dmVyc2UpICAjIGRhdGEgbWFuaXB1bGF0aW9uIGFuZCBwbG90cw0KbGlicmFyeShwYXRjaHdvcmspICAjIHBsb3QgYXJyYW5nZW1lbnQNCmxpYnJhcnkoRGVzY1Rvb2xzKSAgIyBjb25jb3JkYW5jZSBjb3JyZWxhdGlvbiBjb2VmZmljaWVudA0KbGlicmFyeShyaW8pICAgICAgICAjIGltcG9ydC9leHBvcnQgZGF0YQ0KbGlicmFyeShnZ3RoZW1lcykgICAjIFRoZW1lcyBmb3IgZ2dwbG90Mg0KbGlicmFyeShHR2FsbHkpICAgICAjIGNyZWF0ZSBwYWlyd2lzZSBnZ3Bsb3RzDQpsaWJyYXJ5KGdncmVwZWwpICAgICMgcmVwZWwgdGV4dA0KYGBgDQoNCg0KIyBJbnN0YWxsaW5nIHBsaW1hbg0KDQpUbyBpbnN0YWxsIHRoZSByZWxlYXNlZCB2ZXJzaW9uIG9mIGBwbGltYW5gIGZyb20gQ1JBTiB0eXBlOg0KICBgYGB7ciBpbnN0YWxsLCBldmFsID0gRkFMU0V9DQppbnN0YWxsLnBhY2thZ2VzKCJwbGltYW4iKQ0KYGBgDQoNCg0KVGhlIGxhdGVzdCBkZXZlbG9wbWVudCB2ZXJzaW9uIG9mIGBwbGltYW5gIGNhbiBiZSBpbnN0YWxsZWQgZnJvbSB0aGUgR2l0SHViIHJlcG9zaXRvcnkuIFRoZSBpbnN0YWxsYXRpb24gcHJvY2VzcyByZXF1aXJlcyB0aGUgYGRldnRvb2xzYCBwYWNrYWdlLCB3aGljaCBuZWVkcyB0byBiZSBpbnN0YWxsZWQgZmlyc3QuIElmIHlvdSBhcmUgYSBXaW5kb3dzIHVzZXIsIHlvdSBzaG91bGQgYWxzbyBmaXJzdCBkb3dubG9hZCBhbmQgaW5zdGFsbCB0aGUgbGF0ZXN0IHZlcnNpb24gb2YgW1J0b29sc10oaHR0cHM6Ly9jcmFuLnItcHJvamVjdC5vcmcvYmluL3dpbmRvd3MvUnRvb2xzLykuDQoNCmBgYHtyIGRldnRvb2xzLCBldmFsPUZBTFNFfQ0KaWYoIXJlcXVpcmUoZGV2dG9vbHMpKSBpbnN0YWxsLnBhY2thZ2VzKCJkZXZ0b29scyIpDQoNCmBgYA0KDQpBZnRlciBgZGV2dG9vbHNgIGlzIHByb3Blcmx5IGluc3RhbGxlZCwgeW91IGNhbiBpbnN0YWxsIGBwbGltYW5gIGJ5IHJ1bm5pbmcgdGhlIGZvbGxvd2luZyBjb2RlLiBQbGVhc2UsIG5vdGUgdGhhdCB0aGUgaW5zdGFsbGF0aW9uIHdpbGwgYWxzbyBkb3dubG9hZCB0aGUgZGVwZW5kZW5jaWVzIHJlcXVpcmVkIHRvIHJ1biB0aGUgcGFja2FnZS4NCg0KYGBge3IgZGV2dG9vbHMyLCBldmFsPUZBTFNFfQ0KZGV2dG9vbHM6Omluc3RhbGxfZ2l0aHViKCJUaWFnb09saXZvdG8vcGxpbWFuIikNCmBgYA0KDQoNClRoZW0sIGxvYWQgYHBsaW1hbmAgYnkgcnVubmluZyANCmBgYHtyIGxvYWQsIG1lc3NhZ2U9RkFMU0UsIHdhcm5pbmc9RkFMU0V9DQpsaWJyYXJ5KHBsaW1hbikNCg0KYGBgDQoNCg0KIyBIZWxwZXIgZnVuY3Rpb25zDQpgYGB7ciBoZWxwZXJ9DQojIGNvbmNvcmRhbmNlIGNvcnJlbGF0aW9uIGNvZWZmaWNpZW50DQpnZXRfY2NjIDwtIGZ1bmN0aW9uKGRmLCBwcmVkaWN0ZWQsIHJlYWwpew0KICBpZihpcy5ncm91cGVkX2RmKGRmKSl7DQogICAgZGYgJT4lIA0KICAgICAgZ3JvdXBfbW9kaWZ5KH5nZXRfY2NjKC54LCB7e3ByZWRpY3RlZH19LCB7e3JlYWx9fSkpICU+JSANCiAgICAgIHVuZ3JvdXAoKQ0KICB9IGVsc2V7DQogICAgcHJlZGljdGVkIDwtIHB1bGwoZGYsIHt7cHJlZGljdGVkfX0pDQogICAgcmVhbCA8LSBwdWxsKGRmLCB7e3JlYWx9fSkNCiAgICBjb3IgPC0gQ0NDKHJlYWwsIHByZWRpY3RlZCwgbmEucm0gPSBUUlVFKQ0KICAgIGRhdGEuZnJhbWUociA9IGNvcihyZWFsLCBwcmVkaWN0ZWQpLA0KICAgICAgICAgICAgICAgcGMgPSBjb3IkcmhvLmNbWzFdXSwNCiAgICAgICAgICAgICAgIGx3cl9jaSA9IGNvciRyaG8uY1tbMl1dLA0KICAgICAgICAgICAgICAgdXByX2NpID0gY29yJHJoby5jW1szXV0sDQogICAgICAgICAgICAgICBiYyA9IGNvciRDLmIpDQogIH0NCn0NCg0KDQojIGhlcGVyIGZ1bmN0aW9uIHRvIHBsb3QgdGhlIENDQyBpbiBnZ3BhaXJzKCkNCmN1c3RvbV9jY2MgPC0gZnVuY3Rpb24oZGF0YSwgbWFwcGluZywuLi4pew0KICBkYXRhMiA8LSBkYXRhDQogIGRhdGEyJHggPC0gYXMubnVtZXJpYyhkYXRhWyxhc19sYWJlbChtYXBwaW5nJHgpXSkNCiAgZGF0YTIkeSA8LSBhcy5udW1lcmljKGRhdGFbLGFzX2xhYmVsKG1hcHBpbmckeSldKQ0KICBkYXRhMiRncm91cCA8LSBkYXRhWyxhc19sYWJlbChtYXBwaW5nJGNvbG91cildDQogIGNvcnJlbGF0aW9uX2RmIDwtIGRhdGEyICU+JSANCiAgICBncm91cF9ieShncm91cCkgJT4lDQogICAgc3VtbWFyaXplKGVzdGltYXRlID0gcm91bmQoYXMubnVtZXJpYyhEZXNjVG9vbHM6OkNDQyh4LCB5KSRyaG8uY1sxXSksMikpDQogIGdncGxvdChkYXRhPWNvcnJlbGF0aW9uX2RmLCBhZXMoeD0xLHk9Z3JvdXAsIGNvbG9yID0gZ3JvdXApKSsNCiAgICBnZW9tX3RleHQoYWVzKGxhYmVsID0gcGFzdGUwKCJyaG9bY106ICIsIGVzdGltYXRlKSksDQogICAgICAgICAgICAgIGRhdGEgPSBjb3JyZWxhdGlvbl9kZiwNCiAgICAgICAgICAgICAgcGFyc2UgPSBUUlVFLA0KICAgICAgICAgICAgICBzaXplID0gNCkNCn0NCmN1c3RvbV9zbW90aCA8LSBmdW5jdGlvbihkYXRhLCBtYXBwaW5nLCBtZXRob2Q9ImxtIiwgLi4uKXsNCiAgcCA8LSBnZ3Bsb3QoZGF0YSA9IGRhdGEsIG1hcHBpbmcgPSBtYXBwaW5nKSArIA0KICAgIGdlb21fcG9pbnQoYWxwaGEgPSAwLjcsDQogICAgICAgICAgICAgICBzaGFwZSA9IDIxLA0KICAgICAgICAgICAgICAgc2l6ZSA9IDIuNSwNCiAgICAgICAgICAgICAgIHN0cm9rZSA9IDAuMDEsDQogICAgICAgICAgICAgICBjb2xvciA9ICJibGFjayIpICsgDQogICAgZ2VvbV9hYmxpbmUoY29sb3IgPSAicmVkIiwNCiAgICAgICAgICAgICAgICBpbnRlcmNlcHQgPSAwLA0KICAgICAgICAgICAgICAgIHNpemUgPSAwLjcsDQogICAgICAgICAgICAgICAgc2xvcGUgPSAxLA0KICAgICAgICAgICAgICAgIGxpbmV0eXBlID0gMikNCiAgcA0KfQ0KDQojIHNldCB0aGUgZ2dwbG90MiB0aGVtZQ0KdGhlbWVfc2V0KHRoZW1lX2J3KCkpDQpgYGANCg0KDQoNCg0KDQojIFJhdGVyIGVmZmVjdCBvbiBwYWxldHRlIHNlbGVjdGlvbg0KDQojIyBEaXNlYXNlDQojIyMgQmVhbiBhbmd1bGFyIHNwb3QNCmBgYHtyIFJhdGVyMSwgZXZhbCA9IEZBTFNFfQ0Kc2V2X2JlYW5fMSA8LSANCiAgc3ltcHRvbWF0aWNfYXJlYShpbWdfcGF0dGVybiA9ICJGIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfaGVhbHRoeSA9ICJoMSIsDQogICAgICAgICAgICAgICAgICAgaW1nX3N5bXB0b21zID0gInMxIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiMSIsDQogICAgICAgICAgICAgICAgICAgZGlyX29yaWdpbmFsID0gImRhdGEvMDEtYmVhbi1hbmd1bGFyLXNwb3Qvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQpzZXZfYmVhbl8yIDwtIA0KICBzeW1wdG9tYXRpY19hcmVhKGltZ19wYXR0ZXJuID0gIkYiLA0KICAgICAgICAgICAgICAgICAgIGltZ19oZWFsdGh5ID0gImgyIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfc3ltcHRvbXMgPSAiczIiLA0KICAgICAgICAgICAgICAgICAgIGltZ19iYWNrZ3JvdW5kID0gImIyIiwNCiAgICAgICAgICAgICAgICAgICBkaXJfb3JpZ2luYWwgPSAiZGF0YS8wMS1iZWFuLWFuZ3VsYXItc3BvdC9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgIHBhcmFsbGVsID0gVFJVRSkNCnNldl9iZWFuXzMgPC0gDQogIHN5bXB0b21hdGljX2FyZWEoaW1nX3BhdHRlcm4gPSAiRiIsDQogICAgICAgICAgICAgICAgICAgaW1nX2hlYWx0aHkgPSAiaDMiLA0KICAgICAgICAgICAgICAgICAgIGltZ19zeW1wdG9tcyA9ICJzMyIsDQogICAgICAgICAgICAgICAgICAgaW1nX2JhY2tncm91bmQgPSAiYjMiLA0KICAgICAgICAgICAgICAgICAgIGRpcl9vcmlnaW5hbCA9ICJkYXRhLzAxLWJlYW4tYW5ndWxhci1zcG90L29yaWdpbmFscyIsDQogICAgICAgICAgICAgICAgICAgcGFyYWxsZWwgPSBUUlVFKQ0Kc2V2X2JlYW5fNCA8LSANCiAgc3ltcHRvbWF0aWNfYXJlYShpbWdfcGF0dGVybiA9ICJGIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfaGVhbHRoeSA9ICJoNCIsDQogICAgICAgICAgICAgICAgICAgaW1nX3N5bXB0b21zID0gInM0IiwNCiAgICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiNCIsDQogICAgICAgICAgICAgICAgICAgZGlyX29yaWdpbmFsID0gImRhdGEvMDEtYmVhbi1hbmd1bGFyLXNwb3Qvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQoNCmJpbmRfYmVhbiA8LSANCiAgYmluZF9jb2xzKHNldl9iZWFuXzEgJT4lIHNlbGVjdCgxLDMpICU+JSByZW5hbWUocjEgPSBzeW1wdG9tYXRpYyksDQogICAgICAgICAgICBzZXZfYmVhbl8yICU+JSBzZWxlY3QoMykgJT4lIHJlbmFtZShyMiA9IHN5bXB0b21hdGljKSwNCiAgICAgICAgICAgIHNldl9iZWFuXzMgJT4lIHNlbGVjdCgzKSAlPiUgcmVuYW1lKHIzID0gc3ltcHRvbWF0aWMpLA0KICAgICAgICAgICAgc2V2X2JlYW5fNCAlPiUgc2VsZWN0KDMpICU+JSByZW5hbWUocjQgPSBzeW1wdG9tYXRpYykpICU+JSANCiAgbXV0YXRlKGRpc2Vhc2UgPSAiQmVhbiBhbmd1bGFyIHNwb3QiLCAuYmVmb3JlID0gMSkNCmBgYA0KDQoNCg0KDQojIyMgUmljZSBicm93biBzcG90DQpgYGB7ciBSYXRlcjIsIGV2YWw9RkFMU0V9DQpzZXZfcmljZV8xIDwtDQogIHN5bXB0b21hdGljX2FyZWEoaW1nX3BhdHRlcm4gPSAiRiIsDQogICAgICAgICAgICAgICAgICAgaW1nX2hlYWx0aHkgPSAiaDEiLA0KICAgICAgICAgICAgICAgICAgIGltZ19zeW1wdG9tcyA9ICJzMSIsDQogICAgICAgICAgICAgICAgICAgaW1nX2JhY2tncm91bmQgPSAiYjEiLA0KICAgICAgICAgICAgICAgICAgIGRpcl9vcmlnaW5hbCA9ICJkYXRhLzAyLXJpY2UtYnJvd25zcG90L29yaWdpbmFscyIsDQogICAgICAgICAgICAgICAgICAgcGFyYWxsZWwgPSBUUlVFKQ0Kc2V2X3JpY2VfMiA8LQ0KICBzeW1wdG9tYXRpY19hcmVhKGltZ19wYXR0ZXJuID0gIkYiLA0KICAgICAgICAgICAgICAgICAgIGltZ19oZWFsdGh5ID0gImgyIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfc3ltcHRvbXMgPSAiczIiLA0KICAgICAgICAgICAgICAgICAgIGltZ19iYWNrZ3JvdW5kID0gImIyIiwNCiAgICAgICAgICAgICAgICAgICBkaXJfb3JpZ2luYWwgPSAiZGF0YS8wMi1yaWNlLWJyb3duc3BvdC9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgIHBhcmFsbGVsID0gVFJVRSkNCnNldl9yaWNlXzMgPC0NCiAgc3ltcHRvbWF0aWNfYXJlYShpbWdfcGF0dGVybiA9ICJGIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfaGVhbHRoeSA9ICJoMyIsDQogICAgICAgICAgICAgICAgICAgaW1nX3N5bXB0b21zID0gInMzIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiMyIsDQogICAgICAgICAgICAgICAgICAgZGlyX29yaWdpbmFsID0gImRhdGEvMDItcmljZS1icm93bnNwb3Qvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQoNCnNldl9yaWNlXzQgPC0NCiAgc3ltcHRvbWF0aWNfYXJlYShpbWdfcGF0dGVybiA9ICJGIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfaGVhbHRoeSA9ICJoNCIsDQogICAgICAgICAgICAgICAgICAgaW1nX3N5bXB0b21zID0gInM0IiwNCiAgICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiNCIsDQogICAgICAgICAgICAgICAgICAgZGlyX29yaWdpbmFsID0gImRhdGEvMDItcmljZS1icm93bnNwb3Qvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQoNCmJpbmRfcmljZSA8LQ0KICBiaW5kX2NvbHMoc2V2X3JpY2VfMSAlPiUgc2VsZWN0KDEsMykgJT4lIHJlbmFtZShyMSA9IHN5bXB0b21hdGljKSwNCiAgICAgICAgICAgIHNldl9yaWNlXzIgJT4lIHNlbGVjdCgzKSAlPiUgcmVuYW1lKHIyID0gc3ltcHRvbWF0aWMpLA0KICAgICAgICAgICAgc2V2X3JpY2VfMyAlPiUgc2VsZWN0KDMpICU+JSByZW5hbWUocjMgPSBzeW1wdG9tYXRpYyksDQogICAgICAgICAgICBzZXZfcmljZV80ICU+JSBzZWxlY3QoMykgJT4lIHJlbmFtZShyNCA9IHN5bXB0b21hdGljKSkgJT4lIA0KICBtdXRhdGUoZGlzZWFzZSA9ICJSaWNlIGJyb3duIHNwb3QiLCAuYmVmb3JlID0gMSkNCg0KYGBgDQoNCg0KIyMjIFdoZWF0IHRhbiBzcG90DQpgYGB7ciBSYXRlcjMsIGV2YWwgPSBGQUxTRX0NCnNldl93aGVhdF8xIDwtIA0KICBzeW1wdG9tYXRpY19hcmVhKGltZ19wYXR0ZXJuID0gIkYiLA0KICAgICAgICAgICAgICAgICAgIGltZ19oZWFsdGh5ID0gImgxIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfc3ltcHRvbXMgPSAiczEiLA0KICAgICAgICAgICAgICAgICAgIGltZ19iYWNrZ3JvdW5kID0gImIxIiwNCiAgICAgICAgICAgICAgICAgICBkaXJfb3JpZ2luYWwgPSAiZGF0YS8wMy13aGVhdC10YW5zcG90L29yaWdpbmFscyIsDQogICAgICAgICAgICAgICAgICAgcGFyYWxsZWwgPSBUUlVFKQ0Kc2V2X3doZWF0XzIgPC0gDQogIHN5bXB0b21hdGljX2FyZWEoaW1nX3BhdHRlcm4gPSAiRiIsDQogICAgICAgICAgICAgICAgICAgaW1nX2hlYWx0aHkgPSAiaDIiLA0KICAgICAgICAgICAgICAgICAgIGltZ19zeW1wdG9tcyA9ICJzMiIsDQogICAgICAgICAgICAgICAgICAgaW1nX2JhY2tncm91bmQgPSAiYjIiLA0KICAgICAgICAgICAgICAgICAgIGRpcl9vcmlnaW5hbCA9ICJkYXRhLzAzLXdoZWF0LXRhbnNwb3Qvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQpzZXZfd2hlYXRfMyA8LSANCiAgc3ltcHRvbWF0aWNfYXJlYShpbWdfcGF0dGVybiA9ICJGIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfaGVhbHRoeSA9ICJoMyIsDQogICAgICAgICAgICAgICAgICAgaW1nX3N5bXB0b21zID0gInMzIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiMyIsDQogICAgICAgICAgICAgICAgICAgZGlyX29yaWdpbmFsID0gImRhdGEvMDMtd2hlYXQtdGFuc3BvdC9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgIHBhcmFsbGVsID0gVFJVRSkNCg0Kc2V2X3doZWF0XzQgPC0gDQogIHN5bXB0b21hdGljX2FyZWEoaW1nX3BhdHRlcm4gPSAiRiIsDQogICAgICAgICAgICAgICAgICAgaW1nX2hlYWx0aHkgPSAiaDQiLA0KICAgICAgICAgICAgICAgICAgIGltZ19zeW1wdG9tcyA9ICJzNCIsDQogICAgICAgICAgICAgICAgICAgaW1nX2JhY2tncm91bmQgPSAiYjQiLA0KICAgICAgICAgICAgICAgICAgIGRpcl9vcmlnaW5hbCA9ICJkYXRhLzAzLXdoZWF0LXRhbnNwb3Qvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQoNCmJpbmRfd2hlYXQgPC0gDQogIGJpbmRfY29scyhzZXZfd2hlYXRfMSAlPiUgc2VsZWN0KDEsMykgJT4lIHJlbmFtZShyMSA9IHN5bXB0b21hdGljKSwNCiAgICAgICAgICAgIHNldl93aGVhdF8yICU+JSBzZWxlY3QoMykgJT4lIHJlbmFtZShyMiA9IHN5bXB0b21hdGljKSwNCiAgICAgICAgICAgIHNldl93aGVhdF8zICU+JSBzZWxlY3QoMykgJT4lIHJlbmFtZShyMyA9IHN5bXB0b21hdGljKSwNCiAgICAgICAgICAgIHNldl93aGVhdF80ICU+JSBzZWxlY3QoMykgJT4lIHJlbmFtZShyNCA9IHN5bXB0b21hdGljKSkgJT4lIA0KICBtdXRhdGUoZGlzZWFzZSA9ICJXaGVhdCB0YW4gc3BvdCIsIC5iZWZvcmUgPSAxKSANCg0KYGBgDQoNCg0KIyMjIFRvYmFjY28geHlsZWxsYQ0KYGBge3IgUmF0ZXI0LCBldmFsID0gRkFMU0V9DQpzZXZfdG9iYWNjb18xIDwtIA0KICBzeW1wdG9tYXRpY19hcmVhKGltZ19wYXR0ZXJuID0gIkYiLA0KICAgICAgICAgICAgICAgICAgIGltZ19oZWFsdGh5ID0gImgxIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfc3ltcHRvbXMgPSAiczEiLA0KICAgICAgICAgICAgICAgICAgIGltZ19iYWNrZ3JvdW5kID0gImIxIiwNCiAgICAgICAgICAgICAgICAgICBkaXJfb3JpZ2luYWwgPSAiZGF0YS8wNC10b2JhY2NvLXh5bGVsbGEvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQpzZXZfdG9iYWNjb18yIDwtIA0KICBzeW1wdG9tYXRpY19hcmVhKGltZ19wYXR0ZXJuID0gIkYiLA0KICAgICAgICAgICAgICAgICAgIGltZ19oZWFsdGh5ID0gImgyIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfc3ltcHRvbXMgPSAiczIiLA0KICAgICAgICAgICAgICAgICAgIGltZ19iYWNrZ3JvdW5kID0gImIyIiwNCiAgICAgICAgICAgICAgICAgICBkaXJfb3JpZ2luYWwgPSAiZGF0YS8wNC10b2JhY2NvLXh5bGVsbGEvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQpzZXZfdG9iYWNjb18zIDwtIA0KICBzeW1wdG9tYXRpY19hcmVhKGltZ19wYXR0ZXJuID0gIkYiLA0KICAgICAgICAgICAgICAgICAgIGltZ19oZWFsdGh5ID0gImgzIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfc3ltcHRvbXMgPSAiczMiLA0KICAgICAgICAgICAgICAgICAgIGltZ19iYWNrZ3JvdW5kID0gImIzIiwNCiAgICAgICAgICAgICAgICAgICBkaXJfb3JpZ2luYWwgPSAiZGF0YS8wNC10b2JhY2NvLXh5bGVsbGEvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQoNCnNldl90b2JhY2NvXzQgPC0gDQogIHN5bXB0b21hdGljX2FyZWEoaW1nX3BhdHRlcm4gPSAiRiIsDQogICAgICAgICAgICAgICAgICAgaW1nX2hlYWx0aHkgPSAiaDQiLA0KICAgICAgICAgICAgICAgICAgIGltZ19zeW1wdG9tcyA9ICJzNCIsDQogICAgICAgICAgICAgICAgICAgaW1nX2JhY2tncm91bmQgPSAiYjQiLA0KICAgICAgICAgICAgICAgICAgIGRpcl9vcmlnaW5hbCA9ICJkYXRhLzA0LXRvYmFjY28teHlsZWxsYS9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgIHBhcmFsbGVsID0gVFJVRSkNCg0KYmluZF90b2JhY2NvIDwtIA0KICBiaW5kX2NvbHMoc2V2X3RvYmFjY29fMSAlPiUgc2VsZWN0KDEsMykgJT4lIHJlbmFtZShyMSA9IHN5bXB0b21hdGljKSwNCiAgICAgICAgICAgIHNldl90b2JhY2NvXzIgJT4lIHNlbGVjdCgzKSAlPiUgcmVuYW1lKHIyID0gc3ltcHRvbWF0aWMpLA0KICAgICAgICAgICAgc2V2X3RvYmFjY29fMyAlPiUgc2VsZWN0KDMpICU+JSByZW5hbWUocjMgPSBzeW1wdG9tYXRpYyksDQogICAgICAgICAgICBzZXZfdG9iYWNjb180ICU+JSBzZWxlY3QoMykgJT4lIHJlbmFtZShyID0gc3ltcHRvbWF0aWMpKSAlPiUgDQogIG11dGF0ZShkaXNlYXNlID0gIlRvYmFjY28geHlsZWxsYSIsIC5iZWZvcmUgPSAxKSANCg0KYGBgDQoNCg0KDQoNCiMjIyBPbGl2ZSBwZWFjb2NrIGV5ZQ0KYGBge3IgUmF0ZXI1LCBldmFsID0gRkFMU0V9DQpzZXZfb2xpdmVfMSA8LSANCiAgc3ltcHRvbWF0aWNfYXJlYShpbWdfcGF0dGVybiA9ICJGMjE2IiwNCiAgICAgICAgICAgICAgICAgICBpbWdfaGVhbHRoeSA9ICJoMSIsDQogICAgICAgICAgICAgICAgICAgaW1nX3N5bXB0b21zID0gInMxIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiMSIsDQogICAgICAgICAgICAgICAgICAgZGlyX29yaWdpbmFsID0gImRhdGEvMDUtb2xpdmUtcGVhY29jay1leWUvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQpzZXZfb2xpdmVfMiA8LSANCiAgc3ltcHRvbWF0aWNfYXJlYShpbWdfcGF0dGVybiA9ICJGMjE2IiwNCiAgICAgICAgICAgICAgICAgICBpbWdfaGVhbHRoeSA9ICJoMiIsDQogICAgICAgICAgICAgICAgICAgaW1nX3N5bXB0b21zID0gInMyIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiMiIsDQogICAgICAgICAgICAgICAgICAgZGlyX29yaWdpbmFsID0gImRhdGEvMDUtb2xpdmUtcGVhY29jay1leWUvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQpzZXZfb2xpdmVfMyA8LSANCiAgc3ltcHRvbWF0aWNfYXJlYShpbWdfcGF0dGVybiA9ICJGMjE2IiwNCiAgICAgICAgICAgICAgICAgICBpbWdfaGVhbHRoeSA9ICJoMyIsDQogICAgICAgICAgICAgICAgICAgaW1nX3N5bXB0b21zID0gInMzIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiMyIsDQogICAgICAgICAgICAgICAgICAgZGlyX29yaWdpbmFsID0gImRhdGEvMDUtb2xpdmUtcGVhY29jay1leWUvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQoNCnNldl9vbGl2ZV80IDwtIA0KICBzeW1wdG9tYXRpY19hcmVhKGltZ19wYXR0ZXJuID0gIkYyMTYiLA0KICAgICAgICAgICAgICAgICAgIGltZ19oZWFsdGh5ID0gImg0IiwNCiAgICAgICAgICAgICAgICAgICBpbWdfc3ltcHRvbXMgPSAiczQiLA0KICAgICAgICAgICAgICAgICAgIGltZ19iYWNrZ3JvdW5kID0gImI0IiwNCiAgICAgICAgICAgICAgICAgICBkaXJfb3JpZ2luYWwgPSAiZGF0YS8wNS1vbGl2ZS1wZWFjb2NrLWV5ZS9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgIHBhcmFsbGVsID0gVFJVRSkNCg0KYmluZF9vbGl2ZSA8LSANCiAgYmluZF9jb2xzKHNldl9vbGl2ZV8xICU+JSBzZWxlY3QoMSwzKSAlPiUgcmVuYW1lKHIxID0gc3ltcHRvbWF0aWMpLA0KICAgICAgICAgICAgc2V2X29saXZlXzIgJT4lIHNlbGVjdCgzKSAlPiUgcmVuYW1lKHIyID0gc3ltcHRvbWF0aWMpLA0KICAgICAgICAgICAgc2V2X29saXZlXzMgJT4lIHNlbGVjdCgzKSAlPiUgcmVuYW1lKHIzID0gc3ltcHRvbWF0aWMpLA0KICAgICAgICAgICAgc2V2X29saXZlXzQgJT4lIHNlbGVjdCgzKSAlPiUgcmVuYW1lKHI0ID0gc3ltcHRvbWF0aWMpKSAlPiUgDQogIG11dGF0ZShkaXNlYXNlID0gIk9saXZlIHBlYWNvY2sgZXllIiwgLmJlZm9yZSA9IDEpIA0KDQpgYGANCg0KDQoNCg0KDQojIyMgU295YmVhbiBydXN0DQpgYGB7ciBSYXRlcjYsIGV2YWwgPSBGQUxTRX0NCnNldl9zb3liZWFuXzEgPC0gDQogIHN5bXB0b21hdGljX2FyZWEoaW1nX3BhdHRlcm4gPSAiRiIsDQogICAgICAgICAgICAgICAgICAgaW1nX2hlYWx0aHkgPSAiaDEiLA0KICAgICAgICAgICAgICAgICAgIGltZ19zeW1wdG9tcyA9ICJzMSIsDQogICAgICAgICAgICAgICAgICAgaW1nX2JhY2tncm91bmQgPSAiYjEiLA0KICAgICAgICAgICAgICAgICAgIGRpcl9vcmlnaW5hbCA9ICJkYXRhLzA2LXNveWJlYW5fcnVzdC9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgIHBhcmFsbGVsID0gVFJVRSkNCnNldl9zb3liZWFuXzIgPC0gDQogIHN5bXB0b21hdGljX2FyZWEoaW1nX3BhdHRlcm4gPSAiRiIsDQogICAgICAgICAgICAgICAgICAgaW1nX2hlYWx0aHkgPSAiaDIiLA0KICAgICAgICAgICAgICAgICAgIGltZ19zeW1wdG9tcyA9ICJzMiIsDQogICAgICAgICAgICAgICAgICAgaW1nX2JhY2tncm91bmQgPSAiYjIiLA0KICAgICAgICAgICAgICAgICAgIGRpcl9vcmlnaW5hbCA9ICJkYXRhLzA2LXNveWJlYW5fcnVzdC9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgIHBhcmFsbGVsID0gVFJVRSkNCnNldl9zb3liZWFuXzMgPC0gDQogIHN5bXB0b21hdGljX2FyZWEoaW1nX3BhdHRlcm4gPSAiRiIsDQogICAgICAgICAgICAgICAgICAgaW1nX2hlYWx0aHkgPSAiaDMiLA0KICAgICAgICAgICAgICAgICAgIGltZ19zeW1wdG9tcyA9ICJzMyIsDQogICAgICAgICAgICAgICAgICAgaW1nX2JhY2tncm91bmQgPSAiYjMiLA0KICAgICAgICAgICAgICAgICAgIGRpcl9vcmlnaW5hbCA9ICJkYXRhLzA2LXNveWJlYW5fcnVzdC9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgIHBhcmFsbGVsID0gVFJVRSkNCg0Kc2V2X3NveWJlYW5fNCA8LSANCiAgc3ltcHRvbWF0aWNfYXJlYShpbWdfcGF0dGVybiA9ICJGIiwNCiAgICAgICAgICAgICAgICAgICBpbWdfaGVhbHRoeSA9ICJoNCIsDQogICAgICAgICAgICAgICAgICAgaW1nX3N5bXB0b21zID0gInM0IiwNCiAgICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiNCIsDQogICAgICAgICAgICAgICAgICAgZGlyX29yaWdpbmFsID0gImRhdGEvMDYtc295YmVhbl9ydXN0L29yaWdpbmFscyIsDQogICAgICAgICAgICAgICAgICAgcGFyYWxsZWwgPSBUUlVFKQ0KDQpiaW5kX3NveWJlYW4gPC0gDQogIGJpbmRfY29scyhzZXZfc295YmVhbl8xICU+JSBzZWxlY3QoMSwzKSAlPiUgcmVuYW1lKHIxID0gc3ltcHRvbWF0aWMpLA0KICAgICAgICAgICAgc2V2X3NveWJlYW5fMiAlPiUgc2VsZWN0KDMpICU+JSByZW5hbWUocjIgPSBzeW1wdG9tYXRpYyksDQogICAgICAgICAgICBzZXZfc295YmVhbl8zICU+JSBzZWxlY3QoMykgJT4lIHJlbmFtZShyMyA9IHN5bXB0b21hdGljKSwNCiAgICAgICAgICAgIHNldl9zb3liZWFuXzQgJT4lIHNlbGVjdCgzKSAlPiUgcmVuYW1lKHI0ID0gc3ltcHRvbWF0aWMpKSAlPiUgDQogIG11dGF0ZShkaXNlYXNlID0gIlNveWJlYW4gcnVzdCIsIC5iZWZvcmUgPSAxKSANCg0KYGBgDQoNCg0KDQoNCg0KIyMgQmluZCBkYXRhDQoNCiMgQ29uY29yZGFuY2UgY29ycmVsYXRpb24gY29lZmZpY2llbnQNCiMjIFZhbGlkYXRpb24gb2YgdGhlIHBsaW1hbiBmb3Igc2V2ZXJpdHkgcHJlZGljdGlvbiANCmBgYHtyIGNvbmNvcmRhbmNlfQ0KZGZfY2NjIDwtIGltcG9ydCgiZGF0YS9iaW5kX3NldmVyaXR5Lnhsc3giKQ0KZGZfbG9uZyA8LSANCiAgZGZfY2NjICU+JSANCiAgcGl2b3RfbG9uZ2VyKGBSYXRlciAxYDpgSm9pbnRgLCANCiAgICAgICAgICAgICAgIG5hbWVzX3RvID0gIlJhdGVyIiwNCiAgICAgICAgICAgICAgIHZhbHVlc190byA9ICJwbGltYW4iKQ0KDQojIENvbmNvcmRhbmNlIGNvcnJlbGF0aW9uIGNvZWZmaWNpZW50DQpjY2MgPC0gDQpkZl9sb25nICU+JSANCiAgZ3JvdXBfYnkoZGlzZWFzZSwgUmF0ZXIpICU+JSANCiAgZ2V0X2NjYyhwbGltYW4sIEFQU0Fzc2VzcykgJT4lIA0KICAgIG11dGF0ZShyaG8gPSBwYXN0ZTAoInJob1tjXTp+Iiwgcm91bmQocGMsIDIpLA0KICAgICAgICAgICAgICAgICAgICAgICJbKCIscm91bmQobHdyX2NpLDIpLCAiLSIsDQogICAgICAgICAgICAgICAgICAgICAgcm91bmQodXByX2NpLDIpLCAiKV0iICksDQogICAgICAgICBiYyA9IHBhc3RlMCgiQ1tiXTp+Iiwgcm91bmQoYmMsIDIpKSwNCiAgICAgICAgIHIgPSBwYXN0ZTAoInI6fn5+Iiwgcm91bmQociwgMikpKSAlPiUgDQogIHJlbmFtZShuYW1lID0gUmF0ZXIpDQoNCmV4cG9ydChjY2MsICJkYXRhL2NjYy54bHN4IikNCg0KDQoNCmBgYA0KDQoNCmBgYHtyfQ0KDQpkZl8xMSA8LSANCiAgZGZfY2NjICU+JSANCiAgc2VsZWN0KGRpc2Vhc2UsIEFQU0Fzc2VzczpKb2ludCkgJT4lIA0KICBwaXZvdF9sb25nZXIoYFJhdGVyIDFgOkpvaW50KQ0KDQpnZ3Bsb3QoZGZfMTEsIGFlcyhBUFNBc3Nlc3MsIHZhbHVlKSkgKyANCiAgZ2VvbV9wb2ludChhbHBoYSA9IDAuNywNCiAgICAgICAgICAgICBhZXMoZmlsbCA9IG5hbWUpLA0KICAgICAgICAgICAgIGNvbG9yID0gImJsYWNrIiwNCiAgICAgICAgICAgICBzaGFwZSA9IDIxLA0KICAgICAgICAgICAgIHNpemUgPSAyLjUsDQogICAgICAgICAgICAgc3Ryb2tlID0gMC4wMikgKyANCiAgZ2VvbV9hYmxpbmUoaW50ZXJjZXB0ID0gMCwNCiAgICAgICAgICAgICAgc2xvcGUgPSAxLA0KICAgICAgICAgICAgICBsaW5ldHlwZSA9IDIsDQogICAgICAgICAgICAgIGNvbG9yID0gImJsdWUiKSArIA0KICBmYWNldF9ncmlkKG5hbWV+ZGlzZWFzZSkgKyANCiAgZ2VvbV90ZXh0KGFlcyhsYWJlbD1yaG8pLCANCiAgICAgICAgICAgIHggPSAyLA0KICAgICAgICAgICAgeSA9IDkzLA0KICAgICAgICAgICAgaGp1c3QgPSAwLA0KICAgICAgICAgICAgc2l6ZSA9IDMsDQogICAgICAgICAgICBkYXRhID0gY2NjLA0KICAgICAgICAgICAgcGFyc2UgPSBUUlVFKSArIA0KICBnZW9tX3RleHQoYWVzKGxhYmVsPWJjKSwgDQogICAgICAgICAgICB4ID0gMiwNCiAgICAgICAgICAgIHkgPSA4MCwNCiAgICAgICAgICAgIHNpemUgPSAzLA0KICAgICAgICAgICAgaGp1c3QgPSAwLA0KICAgICAgICAgICAgZGF0YSA9IGNjYywNCiAgICAgICAgICAgIHBhcnNlID0gVFJVRSkgKyANCiAgZ2VvbV90ZXh0KGFlcyhsYWJlbD1yKSwgDQogICAgICAgICAgICB4ID0gMiwNCiAgICAgICAgICAgIHkgPSA3MCwNCiAgICAgICAgICAgIHNpemUgPSAzLA0KICAgICAgICAgICAgaGp1c3QgPSAwLA0KICAgICAgICAgICAgZGF0YSA9IGNjYywNCiAgICAgICAgICAgIHBhcnNlID0gVFJVRSkgKyANCiAgdGhlbWVfYncoKSArDQogIHNjYWxlX3hfY29udGludW91cyhsaW1pdHMgPSBjKDAsIDEwMCkpICsgDQogIHNjYWxlX3lfY29udGludW91cyhsaW1pdHMgPSBjKDAsIDEwMCkpICsgDQogIHNjYWxlX2NvbG9yX2NvbG9yYmxpbmQoKSArIA0KICB0aGVtZShheGlzLnRpdGxlID0gZWxlbWVudF90ZXh0KGNvbG9yID0gImJsYWNrIiksDQogICAgICAgIGF4aXMudGV4dCA9IGVsZW1lbnRfdGV4dChjb2xvciA9ICJibGFjayIpLA0KICAgICAgICBheGlzLnRpY2tzLmxlbmd0aCA9IHVuaXQoMC4yLCAiY20iKSwNCiAgICAgICAgcGFuZWwuZ3JpZCA9IGVsZW1lbnRfYmxhbmsoKSwNCiAgICAgICAgbGVnZW5kLnBvc2l0aW9uID0gImJvdHRvbSIsDQogICAgICAgIHN0cmlwLmJhY2tncm91bmQgPSBlbGVtZW50X3JlY3QoZmlsbCA9IE5BKSwNCiAgICAgICAgcGFuZWwuc3BhY2luZyA9IHVuaXQoMCwgImNtIiksDQogICAgICAgIGxlZ2VuZC50aXRsZSA9IGVsZW1lbnRfYmxhbmsoKSkgKyANCiAgbGFicyh4ID0gIkFjdHVhbCBzZXZlcml0eSAoJSkiLA0KICAgICAgIHkgPSAicGxpbWFuIHNldmVyaXR5ICglKSIpDQpnZ3NhdmUoImZpZ3MvZmlnM19lc3RpbWF0ZXMucG5nIiwgd2lkdGggPSAxMCwgaGVpZ2h0ID0gNiwgZHBpID0gNjAwKQ0KZ2dzYXZlKCJmaWdzL2Vwc19maWczX2VzdGltYXRlcy5lcHMiLCB3aWR0aCA9IDEwLCBoZWlnaHQgPSA2KQ0KYGBgDQoNCg0KDQojIyBNYXRyaXggb2YgY29uY29yZGFuY2UgY29ycmVsYXRpb24gY29lZmZpY2llbnRzDQpgYGB7ciBmaWcud2lkdGg9NiwgZmlnLmhlaWdodD02fQ0KZGZfZ2dwYWlycyA8LQ0KICBkZl9jY2MgJT4lIA0KICBzZWxlY3QoZGlzZWFzZSwgSW1hZ2VKOkFQU0Fzc2VzcywgSm9pbnQpICU+JSANCiAgcmVuYW1lKHBsaW1hbiA9IEpvaW50KQ0KZ2dwYWlycyhkZl9nZ3BhaXJzLA0KICAgICAgICBsZWdlbmQgPSAxLA0KICAgICAgICBhZXMoY29sb3IgPSBkaXNlYXNlLCBmaWxsID0gZGlzZWFzZSksDQogICAgICAgIGF4aXNMYWJlbHMgPSAibm9uZSIsDQogICAgICAgIGNvbHVtbnMgPSBjKCJJbWFnZUoiLCAiTGVhZkRvY3RvciIsICJBUFNBc3Nlc3MiLCAicGxpbWFuIiksDQogICAgICAgIGxvd2VyID0gbGlzdChjb250aW51b3VzID0gY3VzdG9tX3Ntb3RoKSwNCiAgICAgICAgdXBwZXIgPSBsaXN0KGNvbnRpbnVvdXMgPSBjdXN0b21fY2NjKSwNCiAgICAgICAgZGlhZyA9IGxpc3QoY29udGludW91cyA9IHdyYXAoImRlbnNpdHlEaWFnIiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYWxwaGEgPSAgMC43LA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzaXplID0gMC4yLA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb2xvciA9ICJibGFjayIpKSkgKw0KICBzY2FsZV9jb2xvcl9jb2xvcmJsaW5kKCkgKyANCiAgc2NhbGVfZmlsbF9jb2xvcmJsaW5kKCkgKyANCiAgdGhlbWUocGFuZWwuc3BhY2luZyA9IHVuaXQoMCwgImNtIiksIA0KICAgICAgICBwYW5lbC5ncmlkID0gZWxlbWVudF9ibGFuaygpLA0KICAgICAgICBsZWdlbmQucG9zaXRpb24gPSAiYm90dG9tIiwNCiAgICAgICAgc3RyaXAuYmFja2dyb3VuZCA9IGVsZW1lbnRfcmVjdChmaWxsID0gTkEpLA0KICAgICAgICBzdHJpcC50ZXh0ID0gZWxlbWVudF90ZXh0KHNpemUgPSAxMyksDQogICAgICAgIGxlZ2VuZC50aXRsZSA9IGVsZW1lbnRfYmxhbmsoKSkNCmdnc2F2ZSgiZmlncy9maWc0X3NvZnR3YXJlcy5qcGciLCBkcGkgPSA2MDApDQpnZ3NhdmUoImZpZ3MvZXBzX2ZpZzRfc29mdHdhcmVzLmVwcyIpDQpgYGANCg0KDQojIEltcGFjdCBvZiBpbWFnZSByZXNvbHV0aW9uIG9uIHByZWRpY3RlZCBzZXZlcml0eQ0KYGBge3IgcmVzb2x1dGlvbiwgZmlnLndpZHRoPTgsIGZpZy5oZWlnaHQ9Nn0NCnNldmVyaXR5IDwtIGltcG9ydCgiZGF0YS9zZXZlcml0eV9zY2VuYXJpby54bHN4IikNCnNldmVyaXR5IDwtIG11dGF0ZShzZXZlcml0eSwNCiAgICAgICAgICAgICAgICAgICByZXNvbHV0aW9uID0gZmN0X3JlbGV2ZWwocmVzb2x1dGlvbiwgIjEzNjd4MjE2MCIsICIxMDIweDE2MjAiLCAiNjgweDEwNzgiLCAiNTEweDgwOCIsICIxNzB4MjcwIikpDQoNCiMgQ29uY29yZGFuY2UgY29ycmVsYXRpb24gY29lZmZpY2llbnQgYnkgcmVzb2x1dGlvbg0KZGZfY2NjX3Jlc29sdXRpb24gPC0gDQpzZXZlcml0eSAlPiUgDQogIGdyb3VwX2J5KG1wKSAlPiUgDQogIGdldF9jY2MoQVBTQXNzZXNzLCBwbGltYW4pICU+JSANCiAgICBtdXRhdGUocmhvID0gcGFzdGUwKCJyaG9bY106fiIsIHJvdW5kKHBjLCAzKSwNCiAgICAgICAgICAgICAgICAgICAgICAiWygiLHJvdW5kKGx3cl9jaSwzKSwgIi0iLA0KICAgICAgICAgICAgICAgICAgICAgIHJvdW5kKHVwcl9jaSwzKSwgIildIiApLA0KICAgICAgICAgYmNvID0gcGFzdGUwKCJDW2JdOn4iLCByb3VuZChiYywgMykpLA0KICAgICAgICAgcnBlciA9IHBhc3RlMCgicjp+fn4iLCByb3VuZChyLCAzKSkpDQoNCnAxIDwtIA0KICBnZ3Bsb3Qoc2V2ZXJpdHksIGFlcyhBUFNBc3Nlc3MsIHBsaW1hbikpICsgDQogIGdlb21fcG9pbnQoY29sb3IgPSAiYmxhY2siLA0KICAgICAgICAgICAgIHNpemUgPSAyLA0KICAgICAgICAgICAgIGFscGhhID0gMC4yNSkgKw0KICBnZW9tX2FibGluZShpbnRlcmNlcHQgPSAwLCBzbG9wZSA9IDEsIGxpbmV0eXBlID0gMiwgY29sb3IgPSAicmVkIikgKyANCiAgZmFjZXRfd3JhcCh+bXAsIG5jb2wgPSA1KSArIA0KICAgZ2VvbV90ZXh0KGFlcyhsYWJlbD1yaG8pLCANCiAgICAgICAgICAgIHggPSAyLA0KICAgICAgICAgICAgeSA9IDkzLA0KICAgICAgICAgICAgaGp1c3QgPSAwLA0KICAgICAgICAgICAgc2l6ZSA9IDMsDQogICAgICAgICAgICBkYXRhID0gZGZfY2NjX3Jlc29sdXRpb24sDQogICAgICAgICAgICBwYXJzZSA9IFRSVUUpICsgDQogIGdlb21fdGV4dChhZXMobGFiZWw9YmNvKSwgDQogICAgICAgICAgICB4ID0gMiwNCiAgICAgICAgICAgIHkgPSA4MCwNCiAgICAgICAgICAgIHNpemUgPSAzLA0KICAgICAgICAgICAgaGp1c3QgPSAwLA0KICAgICAgICAgICAgZGF0YSA9IGRmX2NjY19yZXNvbHV0aW9uLA0KICAgICAgICAgICAgcGFyc2UgPSBUUlVFKSArIA0KICBnZW9tX3RleHQoYWVzKGxhYmVsPXJwZXIpLCANCiAgICAgICAgICAgIHggPSAyLA0KICAgICAgICAgICAgeSA9IDcwLA0KICAgICAgICAgICAgc2l6ZSA9IDMsDQogICAgICAgICAgICBoanVzdCA9IDAsDQogICAgICAgICAgICBkYXRhID0gZGZfY2NjX3Jlc29sdXRpb24sDQogICAgICAgICAgICBwYXJzZSA9IFRSVUUpICsgDQogIHNjYWxlX3lfY29udGludW91cyhicmVha3MgPSBzZXEoMCwgMTAwLCBieSA9IDI1KSwNCiAgICAgICAgICAgICAgICAgICAgIGxpbWl0cyA9IGMoMCwgMTAwKSkgKw0KICBzY2FsZV94X2NvbnRpbnVvdXMoYnJlYWtzID0gc2VxKDAsIDEwMCwgYnkgPSAyNSksDQogICAgICAgICAgICAgICAgICAgICBsaW1pdHMgPSBjKDAsIDEwMCkpICsNCiAgY29vcmRfZml4ZWQoKSArIA0KICB0aGVtZShsZWdlbmQuYmFja2dyb3VuZCA9IGVsZW1lbnRfYmxhbmsoKSwNCiAgICAgICAgcGFuZWwuZ3JpZCA9IGVsZW1lbnRfYmxhbmsoKSwNCiAgICAgICAgcGFuZWwuc3BhY2luZyA9IHVuaXQoMCwgImNtIiksDQogICAgICAgIGF4aXMudGl0bGUgPSBlbGVtZW50X3RleHQoY29sb3IgPSAiYmxhY2siKSwNCiAgICAgICAgYXhpcy50ZXh0ID0gZWxlbWVudF90ZXh0KGNvbG9yID0gImJsYWNrIiksDQogICAgICAgIHN0cmlwLmJhY2tncm91bmQgPSBlbGVtZW50X3JlY3QoZmlsbCA9IE5BKSwNCiAgICAgICAgYXhpcy50aWNrcy5sZW5ndGggPSB1bml0KDAuMiwgImNtIikpICsgDQogIGxhYnMoeCA9ICJBY3R1YWwgc2V2ZXJpdHkgKCUpIiwNCiAgICAgICB5ID0gIlByZWRpY3RlZCBzZXZlcml0eSAoJSkiKQ0KDQoNCnAyIDwtDQogIGdncGxvdChzZXZlcml0eSwgYWVzKHJlc2lkdWFsKSkgKyANCiAgZ2VvbV9kZW5zaXR5KGFlcyhmaWxsID0gZmFjdG9yKG1wKSksIGFscGhhID0gMC4zLCBzaXplID0gMC4xKSArDQogIGdlb21fdmxpbmUoeGludGVyY2VwdCA9IDAsIGxpbmV0eXBlID0gMikgKw0KICBnZW9tX3J1ZyhsZW5ndGggPSB1bml0KDAuMDIsICJucGMiKSwNCiAgICAgICAgICAgc2l6ZSA9IDAuMDUsDQogICAgICAgICAgIGNvbG9yID0gImdyYXkiKSArDQogIHRoZW1lKGxlZ2VuZC5wb3NpdGlvbiA9ICJib3R0b20iLA0KICAgICAgICBsZWdlbmQudGl0bGUgPSBlbGVtZW50X2JsYW5rKCksDQogICAgICAgIHBhbmVsLmdyaWQgPSBlbGVtZW50X2JsYW5rKCksDQogICAgICAgIHBhbmVsLnNwYWNpbmcgPSB1bml0KDAsICJjbSIpLA0KICAgICAgICBzdHJpcC5iYWNrZ3JvdW5kID0gZWxlbWVudF9yZWN0KGZpbGwgPSBOQSksDQogICAgICAgIGF4aXMudGl0bGUgPSBlbGVtZW50X3RleHQoY29sb3IgPSAiYmxhY2siKSwNCiAgICAgICAgYXhpcy50ZXh0ID0gZWxlbWVudF90ZXh0KGNvbG9yID0gImJsYWNrIiksDQogICAgICAgIGF4aXMudGlja3MubGVuZ3RoID0gdW5pdCgwLjIsICJjbSIpKSArIA0KICBsYWJzKHggPSAiUHJlZGljdGlvbiByZXNpZHVhbCAoJSkiKSArDQogIHNjYWxlX2ZpbGxfY29sb3JibGluZCgpDQoNCg0KZGZfY2NjX3Jlc29sdXRpb24yIDwtIA0KICBkZl9jY2NfcmVzb2x1dGlvbiAlPiUgDQogIHNlbGVjdChtcCwgciwgcGMsIGJjKSAlPiUgDQogIHBpdm90X2xvbmdlcigtbXApDQoNCnAzIDwtIA0KZ2dwbG90KGRmX2NjY19yZXNvbHV0aW9uMiwgYWVzKG1wLCB2YWx1ZSwgZmlsbCA9IG5hbWUsIGdyb3VwID0gbmFtZSkpICsgDQogIGdlb21fbGluZShhZXMoY29sb3IgPSBuYW1lKSkgKw0KICBnZW9tX3BvaW50KHNoYXBlID0gMjEsIHNpemUgPSAyKSArDQogIHRoZW1lKGxlZ2VuZC5wb3NpdGlvbiA9ICJib3R0b20iLA0KICAgICAgICBsZWdlbmQudGl0bGUgPSBlbGVtZW50X2JsYW5rKCksDQogICAgICAgIHBhbmVsLnNwYWNpbmcgPSB1bml0KDAsICJjbSIpLA0KICAgICAgICBwYW5lbC5ncmlkID0gZWxlbWVudF9ibGFuaygpLA0KICAgICAgICBheGlzLnRpdGxlID0gZWxlbWVudF90ZXh0KGNvbG9yID0gImJsYWNrIiksDQogICAgICAgIGF4aXMudGV4dCA9IGVsZW1lbnRfdGV4dChjb2xvciA9ICJibGFjayIpLA0KICAgICAgICBheGlzLnRpY2tzLmxlbmd0aCA9IHVuaXQoMC4yLCAiY20iKSkgKyANCiAgbGFicyh4ID0gIkltYWdlIHJlc29sdXRpb24gKG1lZ2FwaXhlbCkiLA0KICAgICAgIHkgPSAiT2JzZXJ2ZWQgdmFsdWUiKSArDQogIHNjYWxlX3lfY29udGludW91cyhicmVha3MgPSBzZXEoMC45LCAxLCBieSA9IDAuMDAyKSkgKyANCiAgc2NhbGVfeF9jb250aW51b3VzKGJyZWFrcyA9IGMoMC4wNSwgMC40LCAwLjcsIDEuNywgMykpICsNCiAgc2NhbGVfZmlsbF9jb2xvcmJsaW5kKGxhYmVscyA9IGMofkNbYl0sfnJob1tjXSwgfnIpKSArDQogIHNjYWxlX2NvbG9yX2NvbG9yYmxpbmQobGFiZWxzID0gYyh+Q1tiXSx+cmhvW2NdLCB+cikpDQoNCnAxIC8gKHAzICsgcDIgKyBwbG90X2xheW91dCh3aWR0aHMgPSBjKDEsIDEuMSkpKSArDQogIHBsb3RfYW5ub3RhdGlvbih0YWdfbGV2ZWxzID0gImEiKSArIA0KICBwbG90X2xheW91dChuY29sID0gMSkNCg0KZ2dzYXZlKCJmaWdzL2ZpZzVfcmVzb2x1dGlvbi5qcGciLCBkcGkgPSA2MDApDQpnZ3NhdmUoImZpZ3MvZXBzX2ZpZzVfcmVzb2x1dGlvbi5lcHMiKQ0KYGBgDQoNCg0KIyBDb21wdXRhdGlvbiB0aW1lDQpgYGB7ciBydW5uaW5ndGltZSwgZmlnLndpZHRoPTMuNSwgZmlnLmhlaWdodD0yLjh9DQpzY2VuYXJpbyA8LSBpbXBvcnQoImRhdGEvcnVudGltZV9zY2VuYXJpby54bHN4IikNCnNjZW5hcmlvIDwtIG11dGF0ZShzY2VuYXJpbywNCiAgICAgICAgICAgICAgICAgICByZXNvbHV0aW9uID0gZmN0X3JlbGV2ZWwocmVzb2x1dGlvbiwgIjEzNjd4MjE2MCIsICIxMDIweDE2MjAiLCAiNjgweDEwNzgiLCAiNTEweDgwOCIsICIxNzB4MjcwIikpDQoNCmdncGxvdChzY2VuYXJpbywgYWVzKG1wLCBlbGFwc2VkX2ltZywgZmlsbCA9IHN0cmF0ZWd5LCBncm91cCA9IHN0cmF0ZWd5KSkgKyANCiAgZ2VvbV9saW5lKGFlcyhjb2xvciA9IHN0cmF0ZWd5KSkgKw0KICBnZW9tX3BvaW50KHNoYXBlID0gMjEsIHNpemUgPSAyKSArDQogIHNjYWxlX3lfY29udGludW91cyhicmVha3MgPSBzZXEoMCwgMy41LCBieSA9IDAuNSksDQogICAgICAgICAgICAgICAgICAgICBsaW1pdHMgPSBjKDAsIDMuNSkpICsNCiAgc2NhbGVfeF9yZXZlcnNlKGJyZWFrcyA9IHNlcSgwLCAzLCBieSA9IDAuNSkpICsgDQogIHRoZW1lKGxlZ2VuZC5wb3NpdGlvbiA9IGMoMC44LCAwLjgpLA0KICAgICAgICBsZWdlbmQua2V5PWVsZW1lbnRfYmxhbmsoKSwNCiAgICAgICAgbGVnZW5kLmJveC5iYWNrZ3JvdW5kID0gZWxlbWVudF9ibGFuaygpLA0KICAgICAgICBsZWdlbmQuYmFja2dyb3VuZCA9IGVsZW1lbnRfYmxhbmsoKSwNCiAgICAgICAgcGFuZWwuZ3JpZCA9IGVsZW1lbnRfYmxhbmsoKSwNCiAgICAgICAgYXhpcy50aXRsZSA9IGVsZW1lbnRfdGV4dChjb2xvciA9ICJibGFjayIpLA0KICAgICAgICBheGlzLnRleHQgPSBlbGVtZW50X3RleHQoY29sb3IgPSAiYmxhY2siKSwNCiAgICAgICAgYXhpcy50aWNrcy5sZW5ndGggPSB1bml0KDAuMiwgImNtIikpICsgDQogIGxhYnMoeCA9ICJJbWFnZSByZXNvbHV0aW9uIiwNCiAgICAgICB5ID0gIkVsYXBzZWQgdGltZSAocykiKSArDQogICAgc2NhbGVfZmlsbF9jb2xvcmJsaW5kKCkgKw0KICBzY2FsZV9jb2xvcl9jb2xvcmJsaW5kKCkNCg0KZ2dzYXZlKCJmaWdzL2ZpZzZfcnVubmluZ3RpbWUucG5nIiwNCiAgICAgICB3aWR0aCA9IDEyLA0KICAgICAgIGhlaWdodCA9IDksDQogICAgICAgdW5pdHMgPSAiY20iLA0KICAgICAgIGRwaSA9IDYwMCkNCg0KZ2dzYXZlKCJmaWdzL2Vwc19maWc2X3J1bm5pbmd0aW1lLmVwcyIsDQogICAgICAgd2lkdGggPSAxMiwNCiAgICAgICBoZWlnaHQgPSA5LA0KICAgICAgIHVuaXRzID0gImNtIikNCmBgYA0KDQoNCg0KDQoNCg0KDQoNCg==</div>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("code.Rmd");
+});
+</script>
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

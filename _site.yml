@@ -1,0 +1,27 @@
+name: pliman_paper
+output_dir: docs
+exclude: ["*.docx", "*.pptx", "*.pdf", "*.R"]
+output:
+  html_document:
+    code_download: true
+    theme: paper
+    css: my-style.css
+    df_print: paged
+    number_sections: true
+    toc: yes
+    toc_float:
+      toc_collapsed: true
+    lib_dir: site_libs
+navbar:
+  title: Supporting material for pliman's paper
+  left:
+  - text: About
+    icon: fa fa-home
+    href: index.html
+  - text: Analysis 
+    icon: fa fa-file-code-o
+    href: code.html
+  right:
+  - text: Source
+    icon: fa-github-square
+    href: https://github.com/TiagoOlivoto/paper_pliman
