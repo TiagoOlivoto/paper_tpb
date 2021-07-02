@@ -367,10 +367,6 @@ bind_soybean <-
 
 
 
-
-
-## Bind data
-
 # Concordance correlation coefficient
 ## Validation of the pliman for severity prediction 
 ```{r concordance}
@@ -491,8 +487,6 @@ ggsave("figs/fig4_softwares.jpg", dpi = 600)
 # Impact of image resolution on predicted severity
 ```{r resolution, fig.width=8, fig.height=6}
 severity <- import("data/severity_scenario.xlsx")
-severity <- mutate(severity,
-                   resolution = fct_relevel(resolution, "1367x2160", "1020x1620", "680x1078", "510x808", "170x270"))
 
 # Concordance correlation coefficient by resolution
 df_ccc_resolution <- 
@@ -602,9 +596,6 @@ ggsave("figs/fig5_resolution.jpg", dpi = 600)
 # Computation time
 ```{r runningtime, fig.width=3.5, fig.height=2.8}
 scenario <- import("data/runtime_scenario.xlsx")
-scenario <- mutate(scenario,
-                   resolution = fct_relevel(resolution, "1367x2160", "1020x1620", "680x1078", "510x808", "170x270"))
-
 ggplot(scenario, aes(mp, elapsed_img, fill = strategy, group = strategy)) + 
   geom_line(aes(color = strategy)) +
   geom_point(shape = 21, size = 2) +

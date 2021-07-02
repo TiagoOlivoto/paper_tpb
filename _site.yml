@@ -1,4 +1,4 @@
-name: pliman_paper
+name: paper_tpp
 output_dir: docs
 exclude: ["*.docx", "*.pptx", "*.pdf", "*.R"]
 output:
@@ -24,4 +24,4 @@ navbar:
   right:
   - text: Source
     icon: fa-github-square
-    href: https://github.com/TiagoOlivoto/paper_pliman
+    href: https://github.com/TiagoOlivoto/paper_tpp
