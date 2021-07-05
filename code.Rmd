@@ -5,19 +5,6 @@ knitr::opts_chunk$set(cache = FALSE, comment = "#", collapse = TRUE)
 
 ```
 
-# Packages
-```{r packages, warning=FALSE}
-library(pliman)     # plant image analysis
-library(tidyverse)  # data manipulation and plots
-library(patchwork)  # plot arrangement
-library(DescTools)  # concordance correlation coefficient
-library(rio)        # import/export data
-library(ggthemes)   # Themes for ggplot2
-library(GGally)     # create pairwise ggplots
-library(ggrepel)    # repel text
-```
-
-
 # Installing pliman
 
 To install the released version of `pliman` from CRAN type:
@@ -45,6 +32,19 @@ Them, load `pliman` by running
 library(pliman)
 
 ```
+
+
+# Packages
+```{r packages, warning=FALSE}
+library(pliman)     # plant image analysis
+library(tidyverse)  # data manipulation and plots
+library(patchwork)  # plot arrangement
+library(DescTools)  # concordance correlation coefficient
+library(rio)        # import/export data
+library(ggthemes)   # Themes for ggplot2
+library(GGally)     # create pairwise ggplots
+```
+
 
 
 # Helper functions
