@@ -1,4 +1,4 @@
-# About {-}
+% About
 In this website are available the data and codes used in the paper "Measuring plant disease severity using R: introducing and evaluating the pliman package"
 
 

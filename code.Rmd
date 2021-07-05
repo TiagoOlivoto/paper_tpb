@@ -68,7 +68,7 @@ get_ccc <- function(df, predicted, real){
 }
 
 
-# heper function to plot the CCC in ggpairs()
+# helper function to plot the CCC in ggpairs()
 custom_ccc <- function(data, mapping,...){
   data2 <- data
   data2$x <- as.numeric(data[,as_label(mapping$x)])
@@ -106,11 +106,11 @@ theme_set(theme_bw())
 
 
 
-# Rater effect on palette selection
+# User effect on palette selection
 
 ## Disease
 ### Bean angular spot
-```{r Rater1, eval = FALSE}
+```{r User1, eval = FALSE}
 sev_bean_1 <- 
   symptomatic_area(img_pattern = "F",
                    img_healthy = "h1",
@@ -152,7 +152,7 @@ bind_bean <-
 
 
 ### Rice brown spot
-```{r Rater2, eval=FALSE}
+```{r User2, eval=FALSE}
 sev_rice_1 <-
   symptomatic_area(img_pattern = "F",
                    img_healthy = "h1",
@@ -194,7 +194,7 @@ bind_rice <-
 
 
 ### Wheat tan spot
-```{r Rater3, eval = FALSE}
+```{r User3, eval = FALSE}
 sev_wheat_1 <- 
   symptomatic_area(img_pattern = "F",
                    img_healthy = "h1",
@@ -236,7 +236,7 @@ bind_wheat <-
 
 
 ### Tobacco xylella
-```{r Rater4, eval = FALSE}
+```{r User4, eval = FALSE}
 sev_tobacco_1 <- 
   symptomatic_area(img_pattern = "F",
                    img_healthy = "h1",
@@ -280,7 +280,7 @@ bind_tobacco <-
 
 
 ### Olive peacock eye
-```{r Rater5, eval = FALSE}
+```{r User5, eval = FALSE}
 sev_olive_1 <- 
   symptomatic_area(img_pattern = "F216",
                    img_healthy = "h1",
@@ -325,7 +325,7 @@ bind_olive <-
 
 
 ### Soybean rust
-```{r Rater6, eval = FALSE}
+```{r User6, eval = FALSE}
 sev_soybean_1 <- 
   symptomatic_area(img_pattern = "F",
                    img_healthy = "h1",
@@ -373,21 +373,21 @@ bind_soybean <-
 df_ccc <- import("data/bind_severity.xlsx")
 df_long <- 
   df_ccc %>% 
-  pivot_longer(`Rater 1`:`Joint`, 
-               names_to = "Rater",
+  pivot_longer(`User 1`:`Joint`, 
+               names_to = "User",
                values_to = "pliman")
 
 # Concordance correlation coefficient
 ccc <- 
 df_long %>% 
-  group_by(disease, Rater) %>% 
+  group_by(disease, User) %>% 
   get_ccc(pliman, APSAssess) %>% 
     mutate(rho = paste0("rho[c]:~", round(pc, 2),
                       "[(",round(lwr_ci,2), "-",
                       round(upr_ci,2), ")]" ),
          bc = paste0("C[b]:~", round(bc, 2)),
          r = paste0("r:~~~", round(r, 2))) %>% 
-  rename(name = Rater)
+  rename(name = User)
 
 export(ccc, "data/ccc.xlsx")
 
@@ -396,12 +396,12 @@ export(ccc, "data/ccc.xlsx")
 ```
 
 
-```{r}
+```{r, fig.width=10, fig.height=6}
 
 df_11 <- 
   df_ccc %>% 
   select(disease, APSAssess:Joint) %>% 
-  pivot_longer(`Rater 1`:Joint)
+  pivot_longer(`User 1`:Joint)
 
 ggplot(df_11, aes(APSAssess, value)) + 
   geom_point(alpha = 0.7,

@@ -1,5 +1,5 @@
 # About
-In this website are available the data and codes used in the paper "Measuring plant disease severity using R: introducing and evaluating the pliman package"
+In this website are available the data generated and/or analyzed as well as the codes used in the paper "Measuring plant disease severity using R: introducing and evaluating the pliman package". The page is available at https://tiagoolivoto.github.io/paper_tpp/
 
 
 # How to reproduce?
