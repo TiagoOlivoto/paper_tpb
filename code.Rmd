@@ -8,7 +8,8 @@ knitr::opts_chunk$set(cache = FALSE, comment = "#", collapse = TRUE)
 # Installing pliman
 
 To install the released version of `pliman` from CRAN type:
-  ```{r install, eval = FALSE}
+
+```{r install, eval = FALSE}
 install.packages("pliman")
 ```
 
@@ -107,38 +108,37 @@ theme_set(theme_bw())
 
 
 # User effect on palette selection
-
 ## Disease
 ### Bean angular spot
 ```{r User1, eval = FALSE}
 sev_bean_1 <- 
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h1",
-                   img_symptoms = "s1",
-                   img_background = "b1",
-                   dir_original = "data/01-bean-angular-spot/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h1",
+                  img_symptoms = "s1",
+                  img_background = "b1",
+                  dir_original = "data/01-bean-angular-spot/originals",
+                  parallel = TRUE)
 sev_bean_2 <- 
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h2",
-                   img_symptoms = "s2",
-                   img_background = "b2",
-                   dir_original = "data/01-bean-angular-spot/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h2",
+                  img_symptoms = "s2",
+                  img_background = "b2",
+                  dir_original = "data/01-bean-angular-spot/originals",
+                  parallel = TRUE)
 sev_bean_3 <- 
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h3",
-                   img_symptoms = "s3",
-                   img_background = "b3",
-                   dir_original = "data/01-bean-angular-spot/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h3",
+                  img_symptoms = "s3",
+                  img_background = "b3",
+                  dir_original = "data/01-bean-angular-spot/originals",
+                  parallel = TRUE)
 sev_bean_4 <- 
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h4",
-                   img_symptoms = "s4",
-                   img_background = "b4",
-                   dir_original = "data/01-bean-angular-spot/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h4",
+                  img_symptoms = "s4",
+                  img_background = "b4",
+                  dir_original = "data/01-bean-angular-spot/originals",
+                  parallel = TRUE)
 
 bind_bean <- 
   bind_cols(sev_bean_1 %>% select(1,3) %>% rename(r1 = symptomatic),
@@ -154,34 +154,34 @@ bind_bean <-
 ### Rice brown spot
 ```{r User2, eval=FALSE}
 sev_rice_1 <-
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h1",
-                   img_symptoms = "s1",
-                   img_background = "b1",
-                   dir_original = "data/02-rice-brownspot/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h1",
+                  img_symptoms = "s1",
+                  img_background = "b1",
+                  dir_original = "data/02-rice-brownspot/originals",
+                  parallel = TRUE)
 sev_rice_2 <-
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h2",
-                   img_symptoms = "s2",
-                   img_background = "b2",
-                   dir_original = "data/02-rice-brownspot/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h2",
+                  img_symptoms = "s2",
+                  img_background = "b2",
+                  dir_original = "data/02-rice-brownspot/originals",
+                  parallel = TRUE)
 sev_rice_3 <-
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h3",
-                   img_symptoms = "s3",
-                   img_background = "b3",
-                   dir_original = "data/02-rice-brownspot/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h3",
+                  img_symptoms = "s3",
+                  img_background = "b3",
+                  dir_original = "data/02-rice-brownspot/originals",
+                  parallel = TRUE)
 
 sev_rice_4 <-
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h4",
-                   img_symptoms = "s4",
-                   img_background = "b4",
-                   dir_original = "data/02-rice-brownspot/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h4",
+                  img_symptoms = "s4",
+                  img_background = "b4",
+                  dir_original = "data/02-rice-brownspot/originals",
+                  parallel = TRUE)
 
 bind_rice <-
   bind_cols(sev_rice_1 %>% select(1,3) %>% rename(r1 = symptomatic),
@@ -196,34 +196,34 @@ bind_rice <-
 ### Wheat tan spot
 ```{r User3, eval = FALSE}
 sev_wheat_1 <- 
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h1",
-                   img_symptoms = "s1",
-                   img_background = "b1",
-                   dir_original = "data/03-wheat-tanspot/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h1",
+                  img_symptoms = "s1",
+                  img_background = "b1",
+                  dir_original = "data/03-wheat-tanspot/originals",
+                  parallel = TRUE)
 sev_wheat_2 <- 
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h2",
-                   img_symptoms = "s2",
-                   img_background = "b2",
-                   dir_original = "data/03-wheat-tanspot/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h2",
+                  img_symptoms = "s2",
+                  img_background = "b2",
+                  dir_original = "data/03-wheat-tanspot/originals",
+                  parallel = TRUE)
 sev_wheat_3 <- 
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h3",
-                   img_symptoms = "s3",
-                   img_background = "b3",
-                   dir_original = "data/03-wheat-tanspot/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h3",
+                  img_symptoms = "s3",
+                  img_background = "b3",
+                  dir_original = "data/03-wheat-tanspot/originals",
+                  parallel = TRUE)
 
 sev_wheat_4 <- 
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h4",
-                   img_symptoms = "s4",
-                   img_background = "b4",
-                   dir_original = "data/03-wheat-tanspot/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h4",
+                  img_symptoms = "s4",
+                  img_background = "b4",
+                  dir_original = "data/03-wheat-tanspot/originals",
+                  parallel = TRUE)
 
 bind_wheat <- 
   bind_cols(sev_wheat_1 %>% select(1,3) %>% rename(r1 = symptomatic),
@@ -238,34 +238,34 @@ bind_wheat <-
 ### Tobacco xylella
 ```{r User4, eval = FALSE}
 sev_tobacco_1 <- 
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h1",
-                   img_symptoms = "s1",
-                   img_background = "b1",
-                   dir_original = "data/04-tobacco-xylella/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h1",
+                  img_symptoms = "s1",
+                  img_background = "b1",
+                  dir_original = "data/04-tobacco-xylella/originals",
+                  parallel = TRUE)
 sev_tobacco_2 <- 
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h2",
-                   img_symptoms = "s2",
-                   img_background = "b2",
-                   dir_original = "data/04-tobacco-xylella/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h2",
+                  img_symptoms = "s2",
+                  img_background = "b2",
+                  dir_original = "data/04-tobacco-xylella/originals",
+                  parallel = TRUE)
 sev_tobacco_3 <- 
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h3",
-                   img_symptoms = "s3",
-                   img_background = "b3",
-                   dir_original = "data/04-tobacco-xylella/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h3",
+                  img_symptoms = "s3",
+                  img_background = "b3",
+                  dir_original = "data/04-tobacco-xylella/originals",
+                  parallel = TRUE)
 
 sev_tobacco_4 <- 
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h4",
-                   img_symptoms = "s4",
-                   img_background = "b4",
-                   dir_original = "data/04-tobacco-xylella/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h4",
+                  img_symptoms = "s4",
+                  img_background = "b4",
+                  dir_original = "data/04-tobacco-xylella/originals",
+                  parallel = TRUE)
 
 bind_tobacco <- 
   bind_cols(sev_tobacco_1 %>% select(1,3) %>% rename(r1 = symptomatic),
@@ -282,34 +282,34 @@ bind_tobacco <-
 ### Olive peacock eye
 ```{r User5, eval = FALSE}
 sev_olive_1 <- 
-  symptomatic_area(img_pattern = "F216",
-                   img_healthy = "h1",
-                   img_symptoms = "s1",
-                   img_background = "b1",
-                   dir_original = "data/05-olive-peacock-eye/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F216",
+                  img_healthy = "h1",
+                  img_symptoms = "s1",
+                  img_background = "b1",
+                  dir_original = "data/05-olive-peacock-eye/originals",
+                  parallel = TRUE)
 sev_olive_2 <- 
-  symptomatic_area(img_pattern = "F216",
-                   img_healthy = "h2",
-                   img_symptoms = "s2",
-                   img_background = "b2",
-                   dir_original = "data/05-olive-peacock-eye/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F216",
+                  img_healthy = "h2",
+                  img_symptoms = "s2",
+                  img_background = "b2",
+                  dir_original = "data/05-olive-peacock-eye/originals",
+                  parallel = TRUE)
 sev_olive_3 <- 
-  symptomatic_area(img_pattern = "F216",
-                   img_healthy = "h3",
-                   img_symptoms = "s3",
-                   img_background = "b3",
-                   dir_original = "data/05-olive-peacock-eye/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F216",
+                  img_healthy = "h3",
+                  img_symptoms = "s3",
+                  img_background = "b3",
+                  dir_original = "data/05-olive-peacock-eye/originals",
+                  parallel = TRUE)
 
 sev_olive_4 <- 
-  symptomatic_area(img_pattern = "F216",
-                   img_healthy = "h4",
-                   img_symptoms = "s4",
-                   img_background = "b4",
-                   dir_original = "data/05-olive-peacock-eye/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F216",
+                  img_healthy = "h4",
+                  img_symptoms = "s4",
+                  img_background = "b4",
+                  dir_original = "data/05-olive-peacock-eye/originals",
+                  parallel = TRUE)
 
 bind_olive <- 
   bind_cols(sev_olive_1 %>% select(1,3) %>% rename(r1 = symptomatic),
@@ -327,34 +327,34 @@ bind_olive <-
 ### Soybean rust
 ```{r User6, eval = FALSE}
 sev_soybean_1 <- 
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h1",
-                   img_symptoms = "s1",
-                   img_background = "b1",
-                   dir_original = "data/06-soybean_rust/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h1",
+                  img_symptoms = "s1",
+                  img_background = "b1",
+                  dir_original = "data/06-soybean_rust/originals",
+                  parallel = TRUE)
 sev_soybean_2 <- 
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h2",
-                   img_symptoms = "s2",
-                   img_background = "b2",
-                   dir_original = "data/06-soybean_rust/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h2",
+                  img_symptoms = "s2",
+                  img_background = "b2",
+                  dir_original = "data/06-soybean_rust/originals",
+                  parallel = TRUE)
 sev_soybean_3 <- 
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h3",
-                   img_symptoms = "s3",
-                   img_background = "b3",
-                   dir_original = "data/06-soybean_rust/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h3",
+                  img_symptoms = "s3",
+                  img_background = "b3",
+                  dir_original = "data/06-soybean_rust/originals",
+                  parallel = TRUE)
 
 sev_soybean_4 <- 
-  symptomatic_area(img_pattern = "F",
-                   img_healthy = "h4",
-                   img_symptoms = "s4",
-                   img_background = "b4",
-                   dir_original = "data/06-soybean_rust/originals",
-                   parallel = TRUE)
+  measure_disease(pattern = "F",
+                  img_healthy = "h4",
+                  img_symptoms = "s4",
+                  img_background = "b4",
+                  dir_original = "data/06-soybean_rust/originals",
+                  parallel = TRUE)
 
 bind_soybean <- 
   bind_cols(sev_soybean_1 %>% select(1,3) %>% rename(r1 = symptomatic),
@@ -379,17 +379,17 @@ df_long <-
 
 # Concordance correlation coefficient
 ccc <- 
-df_long %>% 
+  df_long %>% 
   group_by(disease, User) %>% 
   get_ccc(pliman, APSAssess) %>% 
-    mutate(rho = paste0("rho[c]:~", round(pc, 2),
+  mutate(rho = paste0("rho[c]:~", round(pc, 2),
                       "[(",round(lwr_ci,2), "-",
                       round(upr_ci,2), ")]" ),
          bc = paste0("C[b]:~", round(bc, 2)),
          r = paste0("r:~~~", round(r, 2))) %>% 
   rename(name = User)
 
-export(ccc, "data/ccc.xlsx")
+#  export(ccc, "data/ccc.xlsx")
 
 
 
@@ -440,6 +440,7 @@ ggplot(df_11, aes(APSAssess, value)) +
   scale_x_continuous(limits = c(0, 100)) + 
   scale_y_continuous(limits = c(0, 100)) + 
   scale_color_colorblind() + 
+  theme_bw(base_size = 14) +
   theme(axis.title = element_text(color = "black"),
         axis.text = element_text(color = "black"),
         axis.ticks.length = unit(0.2, "cm"),
@@ -480,7 +481,7 @@ ggpairs(df_ggpairs,
         strip.background = element_rect(fill = NA),
         strip.text = element_text(size = 13),
         legend.title = element_blank())
-ggsave("figs/fig4_softwares.jpg", dpi = 600)
+ggsave("figs/fig4_softwares.jpg", width = 6, height = 6, dpi = 600)
 ```
 
 
@@ -490,10 +491,10 @@ severity <- import("data/severity_scenario.xlsx")
 
 # Concordance correlation coefficient by resolution
 df_ccc_resolution <- 
-severity %>% 
+  severity %>% 
   group_by(mp) %>% 
   get_ccc(APSAssess, pliman) %>% 
-    mutate(rho = paste0("rho[c]:~", round(pc, 3),
+  mutate(rho = paste0("rho[c]:~", round(pc, 3),
                       "[(",round(lwr_ci,3), "-",
                       round(upr_ci,3), ")]" ),
          bco = paste0("C[b]:~", round(bc, 3)),
@@ -506,7 +507,7 @@ p1 <-
              alpha = 0.25) +
   geom_abline(intercept = 0, slope = 1, linetype = 2, color = "red") + 
   facet_wrap(~mp, ncol = 5) + 
-   geom_text(aes(label=rho), 
+  geom_text(aes(label=rho), 
             x = 2,
             y = 93,
             hjust = 0,
@@ -568,7 +569,7 @@ df_ccc_resolution2 <-
   pivot_longer(-mp)
 
 p3 <- 
-ggplot(df_ccc_resolution2, aes(mp, value, fill = name, group = name)) + 
+  ggplot(df_ccc_resolution2, aes(mp, value, fill = name, group = name)) + 
   geom_line(aes(color = name)) +
   geom_point(shape = 21, size = 2) +
   theme(legend.position = "bottom",
@@ -593,15 +594,17 @@ ggsave("figs/fig5_resolution.jpg", dpi = 600)
 ```
 
 
+
 # Computation time
-```{r runningtime, fig.width=3.5, fig.height=2.8}
+```{r runningtime, fig.width=6, fig.height=4}
 scenario <- import("data/runtime_scenario.xlsx")
 ggplot(scenario, aes(mp, elapsed_img, fill = strategy, group = strategy)) + 
   geom_line(aes(color = strategy)) +
   geom_point(shape = 21, size = 2) +
   scale_y_continuous(breaks = seq(0, 3.5, by = 0.5),
                      limits = c(0, 3.5)) +
-  scale_x_reverse(breaks = seq(0, 3, by = 0.5)) + 
+  scale_x_reverse(breaks = c(0.05, 0.4, 0.7, 1.7, 3)) + 
+  theme_bw(base_size = 14) +
   theme(legend.position = c(0.8, 0.8),
         legend.key=element_blank(),
         legend.box.background = element_blank(),
@@ -612,7 +615,7 @@ ggplot(scenario, aes(mp, elapsed_img, fill = strategy, group = strategy)) +
         axis.ticks.length = unit(0.2, "cm")) + 
   labs(x = "Image resolution",
        y = "Elapsed time (s)") +
-    scale_fill_colorblind() +
+  scale_fill_colorblind() +
   scale_color_colorblind()
 
 ggsave("figs/fig6_runningtime.png",

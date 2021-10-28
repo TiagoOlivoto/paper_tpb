@@ -4,7 +4,7 @@ In this website are available the data generated and/or analyzed as well as the 
 
 # How to reproduce?
 
-* Download data
+## Download data
 
 To download the files and code needed for reproducing the results, first clone the project with
 
@@ -12,10 +12,9 @@ To download the files and code needed for reproducing the results, first clone t
 git clone https://github.com/TiagoOlivoto/paper_tpp.git
 ```
 
-
 An alternative way is by downloading the [Zip file](https://github.com/TiagoOlivoto/paper_tpp/archive/refs/heads/main.zip)
 
-* Reproducing
+## Folow the steps
    - Open the `code.Rmd` file in RStudio.
    - Optionally change functions and arguments.
    - Knit the document to see the results.

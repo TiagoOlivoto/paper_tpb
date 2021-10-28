@@ -1,10 +1,10 @@
 % About
-In this website are available the data and codes used in the paper "Measuring plant disease severity using R: introducing and evaluating the pliman package"
+In this website are available the data generated and/or analyzed as well as the codes used in the paper "Measuring plant disease severity using R: introducing and evaluating the pliman package". The page is available at https://tiagoolivoto.github.io/paper_tpp/
 
 
-# How to reproduce? {-}
+# How to reproduce?
 
-* Download data
+## Download data
 
 To download the files and code needed for reproducing the results, first clone the project with
 
@@ -12,10 +12,18 @@ To download the files and code needed for reproducing the results, first clone t
 git clone https://github.com/TiagoOlivoto/paper_tpp.git
 ```
 
-
 An alternative way is by downloading the [Zip file](https://github.com/TiagoOlivoto/paper_tpp/archive/refs/heads/main.zip)
 
-* Reproducing
+## Folow the steps
    - Open the `code.Rmd` file in RStudio.
    - Optionally change functions and arguments.
    - Knit the document to see the results.
+
+
+
+
+<!-- inicio academic icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<!-- final academic icons -->
+<!-- inicio font awesome -->
+<script src="https://kit.fontawesome.com/1f72d6921a.js" crossorigin="anonymous"></script>

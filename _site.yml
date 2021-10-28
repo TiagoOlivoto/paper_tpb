@@ -4,7 +4,8 @@ exclude: ["*.docx", "*.pptx", "*.pdf", "*.R"]
 output:
   html_document:
     code_download: true
-    theme: paper
+    theme: united
+    highlight: tango
     css: my-style.css
     df_print: paged
     number_sections: true
@@ -21,6 +22,9 @@ navbar:
   - text: Analysis 
     icon: fa fa-file-code-o
     href: code.html
+  - text: "Code and data"
+    icon: fa fa-download
+    href: https://github.com/TiagoOlivoto/paper_tpp/archive/refs/heads/main.zip
   right:
   - text: Source
     icon: fa-github-square
