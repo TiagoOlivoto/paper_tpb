@@ -12,7 +12,7 @@ To download the files and code needed for reproducing the results, first clone t
 git clone https://github.com/TiagoOlivoto/paper_tpp.git
 ```
 
-An alternative way is by downloading the [Zip file](https://github.com/TiagoOlivoto/paper_tpp/archive/refs/heads/main.zip)
+An alternative way is by downloading the [Zip file](https://github.com/TiagoOlivoto/paper_tpp/archive/refs/heads/main.zip) (~295 MB).
 
 ## Folow the steps
    - Open the `code.Rmd` file in RStudio.

@@ -154,11 +154,13 @@ bind_bean <-
 ### Rice brown spot
 ```{r User2, eval=FALSE}
 sev_rice_1 <-
-  measure_disease(pattern = "F",
+  measure_disease(pattern = "F24",
                   img_healthy = "h1",
                   img_symptoms = "s1",
                   img_background = "b1",
                   dir_original = "data/02-rice-brownspot/originals",
+                  dir_processed = "test",
+                  save_image = TRUE,
                   parallel = TRUE)
 sev_rice_2 <-
   measure_disease(pattern = "F",
