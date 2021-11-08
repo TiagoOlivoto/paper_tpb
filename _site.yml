@@ -1,18 +1,15 @@
 name: paper_tpp
 output_dir: docs
-exclude: ["*.docx", "*.pptx", "*.pdf", "*.R"]
+exclude: ["*.docx", "*.pptx", "*.pdf", "*.R", "*.tmp"]
 output:
-  html_document:
-    code_download: true
-    theme: united
-    highlight: tango
-    css: my-style.css
-    df_print: paged
+  rmdformats::readthedown:
+    toc_depth: 3
+    use_bookdown: true
     number_sections: true
-    toc: yes
-    toc_float:
-      toc_collapsed: true
-    lib_dir: site_libs
+    highlight: tango
+    df_print: paged
+    lightbox: true
+    gallery: true
 navbar:
   title: Supporting material for pliman's paper
   left:

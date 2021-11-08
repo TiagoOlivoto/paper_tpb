@@ -1,471 +1,279 @@
 <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="pandoc" />
 
-<html>
+    
+    
+    <title>Analysis</title>
 
-<head>
-
-<meta charset="utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
-
-
-
-
-<title>Analysis</title>
-
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<style>h1 {font-size: 34px;}
-       h1.title {font-size: 38px;}
-       h2 {font-size: 30px;}
-       h3 {font-size: 24px;}
-       h4 {font-size: 18px;}
-       h5 {font-size: 16px;}
-       h6 {font-size: 12px;}
-       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
-       pre:not([class]) { background-color: white }</style>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/navigation-1.1/codefolding.js"></script>
-<script src="site_libs/navigation-1.1/sourceembed.js"></script>
-<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
-
-<style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
+        <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+        <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="site_libs/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="site_libs/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+        <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+        <script src="site_libs/navigation-1.1/tabsets.js"></script>
+        <link href="site_libs/magnific-popup-1.1.0/magnific-popup.css" rel="stylesheet" />
+        <script src="site_libs/magnific-popup-1.1.0/jquery.magnific-popup.min.js"></script>
+        <link href="site_libs/readthedown-0.1/readthedown.css" rel="stylesheet" />
+        <link href="site_libs/readthedown-0.1/readthedown_fonts_embed.css" rel="stylesheet" />
+        <script src="site_libs/readthedown-0.1/readthedown.js"></script>
+        <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+        <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+        <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+        <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+    
+    
+        <style type="text/css">code{white-space: pre;}</style>
+    <style type="text/css">
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+          color: #aaaaaa;
+        }
+      pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+      div.sourceCode
+        {  background-color: #f8f8f8; }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+      code span.al { color: #ef2929; } /* Alert */
+      code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+      code span.at { color: #c4a000; } /* Attribute */
+      code span.bn { color: #0000cf; } /* BaseN */
+      code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+      code span.ch { color: #4e9a06; } /* Char */
+      code span.cn { color: #000000; } /* Constant */
+      code span.co { color: #8f5902; font-style: italic; } /* Comment */
+      code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+      code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+      code span.dt { color: #204a87; } /* DataType */
+      code span.dv { color: #0000cf; } /* DecVal */
+      code span.er { color: #a40000; font-weight: bold; } /* Error */
+      code span.ex { } /* Extension */
+      code span.fl { color: #0000cf; } /* Float */
+      code span.fu { color: #000000; } /* Function */
+      code span.im { } /* Import */
+      code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+      code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+      code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+      code span.ot { color: #8f5902; } /* Other */
+      code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+      code span.sc { color: #000000; } /* SpecialChar */
+      code span.ss { color: #4e9a06; } /* SpecialString */
+      code span.st { color: #4e9a06; } /* String */
+      code span.va { color: #000000; } /* Variable */
+      code span.vs { color: #4e9a06; } /* VerbatimString */
+      code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
     </style>
+    
+    
+    <!-- tabsets -->
+    <script>
+      $(document).ready(function () {
+	  window.buildTabsets("toc");
+      });
+      $(document).ready(function () {
+	  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+	      $(this).parent().toggleClass('nav-tabs-open')
+	  });
+      });
+    </script>
 
+    <!-- code folding -->
+    
+    <!-- code download -->
+    
+    <!-- tabsets dropdown -->
 
-<style type="text/css">
-  code {
-    white-space: pre;
-  }
-  .sourceCode {
-    overflow: visible;
-  }
-</style>
-<style type="text/css" data-origin="pandoc">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  background-color: #f8f8f8; }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ef2929; } /* Alert */
-code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
-code span.bn { color: #0000cf; } /* BaseN */
-code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
-code span.co { color: #8f5902; font-style: italic; } /* Comment */
-code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code span.dt { color: #204a87; } /* DataType */
-code span.dv { color: #0000cf; } /* DecVal */
-code span.er { color: #a40000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code span.ot { color: #8f5902; } /* Other */
-code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
-code span.ss { color: #4e9a06; } /* SpecialString */
-code span.st { color: #4e9a06; } /* String */
-code span.va { color: #000000; } /* Variable */
-code span.vs { color: #4e9a06; } /* VerbatimString */
-code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+    <style type="text/css">
+      .tabset-dropdown > .nav-tabs {
+	  display: inline-table;
+	  max-height: 500px;
+	  min-height: 44px;
+	  overflow-y: auto;
+	  background: white;
+	  border: 1px solid #ddd;
+	  border-radius: 4px;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li.active:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+	  content: "&#xe258;";
+	  border: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+	  content: "";
+	  font-family: 'Glyphicons Halflings';
+	  display: inline-block;
+	  padding: 10px;
+	  border-right: 1px solid #ddd;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li.active {
+	  display: block;
+      }
 
-</style>
-<script>
-// apply pandoc div.sourceCode style to pre.sourceCode instead
-(function() {
-  var sheets = document.styleSheets;
-  for (var i = 0; i < sheets.length; i++) {
-    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
-    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
-      var rule = rules[j];
-      // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
-      var style = rule.style.cssText;
-      // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
-      // replace div.sourceCode by a pre.sourceCode rule
-      sheets[i].deleteRule(j);
-      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
-    }
-  }
-})();
-</script>
+      .tabset-dropdown > .nav-tabs > li.active a {
+  	  padding: 0 15px !important;
+      }
 
-
-<style type="text/css">
-#rmd-source-code {
-  display: none;
-}
-</style>
-
-
-<link rel="stylesheet" href="my-style.css" type="text/css" />
-
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-img {
-  max-width:100%;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
-}
-pre code {
-  padding: 0;
-}
-</style>
-
-
-<style type="text/css">
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #adb5bd;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script type="text/javascript">
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
-
-  // Navbar adjustments
-  var navHeight = $(".navbar").first().height() + 15;
-  var style = document.createElement('style');
-  var pt = "padding-top: " + navHeight + "px; ";
-  var mt = "margin-top: -" + navHeight + "px; ";
-  var css = "";
-  // offset scroll position for anchor links (for fixed navbar)
-  for (var i = 1; i <= 6; i++) {
-    css += ".section h" + i + "{ " + pt + mt + "}\n";
-  }
-  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
-  document.head.appendChild(style);
-});
-</script>
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
-<style type="text/css">
-.code-folding-btn { margin-bottom: 4px; }
-</style>
-
-
-
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-@media print {
-.toc-content {
-  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
-  float: right;
-}
-}
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-
-
+      .tabset-dropdown > .nav-tabs > li > a,
+      .tabset-dropdown > .nav-tabs > li > a:focus,
+      .tabset-dropdown > .nav-tabs > li > a:hover {
+	  border: none;
+	  display: inline-block;
+	  border-radius: 4px;
+	  background-color: transparent;
+      }
+      
+      .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+	  display: block;
+	  float: none;
+      }
+      
+      .tabset-dropdown > .nav-tabs > li {
+	  display: none;
+	  margin-left: 0 !important;
+      }
+    </style>
+    
 </head>
 
-<body>
+<body class="preload">
 
-
-<div class="container-fluid main-container">
-
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
-
-
-
-
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html">Supporting material for pliman's paper</a>
+   	
+         <!-- readthedown start -->   
+   <div id="content" data-toggle="wy-nav-shift">
+     <nav id="nav-top" role="navigation" aria-label="top navigation">
+       <a role="button" href="#" data-toggle="wy-nav-top"><span class="glyphicon glyphicon-menu-hamburger"></span></a>
+     </nav>
+         
+   
+      
+      <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Supporting material for pliman's paper</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li>
+        <a href="index.html">
+          <span class="fa fa-home"></span>
+           
+          About
+        </a>
+      </li>
+      <li>
+        <a href="code.html">
+          <span class="fa fa-file-code-o"></span>
+           
+          Analysis
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/TiagoOlivoto/paper_tpp/archive/refs/heads/main.zip">
+          <span class="fa fa-download"></span>
+           
+          Code and data
+        </a>
+      </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+        <a href="https://github.com/TiagoOlivoto/paper_tpp">
+          <span class="fa fa-github-square"></span>
+           
+          Source
+        </a>
+      </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container -->
+      </div><!--/.navbar -->
+        
+      <h1 class="title">Analysis</h1>
+      
+         <!-- readthedown authors -->
+   <div id="sidebar">
+    <h2><a href="#content">Analysis</a></h2>
+    <div id="toc">
+      <ul>
+      <li><a href="#installing-pliman"><span class="toc-section-number">1</span> Installing pliman</a></li>
+      <li><a href="#packages"><span class="toc-section-number">2</span> Packages</a></li>
+      <li><a href="#helper-functions"><span class="toc-section-number">3</span> Helper functions</a></li>
+      <li><a href="#user-effect-on-palette-selection"><span class="toc-section-number">4</span> User effect on palette selection</a>
+      <ul>
+      <li><a href="#disease"><span class="toc-section-number">4.1</span> Disease</a>
+      <ul>
+      <li><a href="#bean-angular-spot"><span class="toc-section-number">4.1.1</span> Bean angular spot</a></li>
+      <li><a href="#rice-brown-spot"><span class="toc-section-number">4.1.2</span> Rice brown spot</a></li>
+      <li><a href="#wheat-tan-spot"><span class="toc-section-number">4.1.3</span> Wheat tan spot</a></li>
+      <li><a href="#tobacco-xylella"><span class="toc-section-number">4.1.4</span> Tobacco xylella</a></li>
+      <li><a href="#olive-peacock-eye"><span class="toc-section-number">4.1.5</span> Olive peacock eye</a></li>
+      <li><a href="#soybean-rust"><span class="toc-section-number">4.1.6</span> Soybean rust</a></li>
+      </ul></li>
+      </ul></li>
+      <li><a href="#concordance-correlation-coefficient"><span class="toc-section-number">5</span> Concordance correlation coefficient</a>
+      <ul>
+      <li><a href="#validation-of-the-pliman-for-severity-prediction"><span class="toc-section-number">5.1</span> Validation of the pliman for severity prediction</a></li>
+      <li><a href="#matrix-of-concordance-correlation-coefficients"><span class="toc-section-number">5.2</span> Matrix of concordance correlation coefficients</a></li>
+      </ul></li>
+      <li><a href="#impact-of-image-resolution-on-predicted-severity"><span class="toc-section-number">6</span> Impact of image resolution on predicted severity</a></li>
+      <li><a href="#computation-time"><span class="toc-section-number">7</span> Computation time</a></li>
+      </ul>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-  <a href="index.html">
-    <span class="fa fa-home"></span>
+    <div id="postamble" data-toggle="wy-nav-shift" class="status">
+                </div>
+   </div>
      
-    About
-  </a>
-</li>
-<li>
-  <a href="code.html">
-    <span class="fa fa-file-code-o"></span>
-     
-    Analysis
-  </a>
-</li>
-<li>
-  <a href="https://github.com/TiagoOlivoto/paper_tpp/archive/refs/heads/main.zip">
-    <span class="fa fa-download"></span>
-     
-    Code and data
-  </a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://github.com/TiagoOlivoto/paper_tpp">
-    <span class="fa fa-github-square"></span>
-     
-    Source
-  </a>
-</li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
 
-<div id="header">
-
-<div class="btn-group pull-right float-right">
-<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
-<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
-<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
-</ul>
-</div>
-
-
-
-<h1 class="title toc-ignore">Analysis</h1>
-
-</div>
-
-
+   
+      
+   
+<!-- Don't indent these lines or it will mess pre blocks indentation --> 
+<div id="main">
 <div id="installing-pliman" class="section level1" number="1">
-<h1 number="1"><span class="header-section-number">1</span> Installing pliman</h1>
+<h1><span class="header-section-number">1</span> Installing pliman</h1>
 <p>To install the released version of <code>pliman</code> from CRAN type:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pliman&quot;</span>)</span></code></pre></div>
 <p>The latest development version of <code>pliman</code> can be installed from the GitHub repository. The installation process requires the <code>devtools</code> package, which needs to be installed first. If you are a Windows user, you should also first download and install the latest version of <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a>.</p>
@@ -476,7 +284,7 @@ div.tocify {
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pliman)</span></code></pre></div>
 </div>
 <div id="packages" class="section level1" number="2">
-<h1 number="2"><span class="header-section-number">2</span> Packages</h1>
+<h1><span class="header-section-number">2</span> Packages</h1>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pliman)     <span class="co"># plant image analysis</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co"># data manipulation and plots</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># -- Attaching packages --------------------------------------- tidyverse 1.3.1 --</span></span>
@@ -497,7 +305,7 @@ div.tocify {
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#   +.gg   ggplot2</span></span></code></pre></div>
 </div>
 <div id="helper-functions" class="section level1" number="3">
-<h1 number="3"><span class="header-section-number">3</span> Helper functions</h1>
+<h1><span class="header-section-number">3</span> Helper functions</h1>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># concordance correlation coefficient</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>get_ccc <span class="ot">&lt;-</span> <span class="cf">function</span>(df, predicted, real){</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">is.grouped_df</span>(df)){</span>
@@ -551,11 +359,11 @@ div.tocify {
 <span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_bw</span>())</span></code></pre></div>
 </div>
 <div id="user-effect-on-palette-selection" class="section level1" number="4">
-<h1 number="4"><span class="header-section-number">4</span> User effect on palette selection</h1>
+<h1><span class="header-section-number">4</span> User effect on palette selection</h1>
 <div id="disease" class="section level2" number="4.1">
-<h2 number="4.1"><span class="header-section-number">4.1</span> Disease</h2>
+<h2><span class="header-section-number">4.1</span> Disease</h2>
 <div id="bean-angular-spot" class="section level3" number="4.1.1">
-<h3 number="4.1.1"><span class="header-section-number">4.1.1</span> Bean angular spot</h3>
+<h3><span class="header-section-number">4.1.1</span> Bean angular spot</h3>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sev_bean_1 <span class="ot">&lt;-</span> </span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">measure_disease</span>(<span class="at">pattern =</span> <span class="st">&quot;F&quot;</span>,</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">img_healthy =</span> <span class="st">&quot;h1&quot;</span>,</span>
@@ -593,7 +401,7 @@ div.tocify {
 <span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">disease =</span> <span class="st">&quot;Bean angular spot&quot;</span>, <span class="at">.before =</span> <span class="dv">1</span>)</span></code></pre></div>
 </div>
 <div id="rice-brown-spot" class="section level3" number="4.1.2">
-<h3 number="4.1.2"><span class="header-section-number">4.1.2</span> Rice brown spot</h3>
+<h3><span class="header-section-number">4.1.2</span> Rice brown spot</h3>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sev_rice_1 <span class="ot">&lt;-</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">measure_disease</span>(<span class="at">pattern =</span> <span class="st">&quot;F24&quot;</span>,</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">img_healthy =</span> <span class="st">&quot;h1&quot;</span>,</span>
@@ -634,7 +442,7 @@ div.tocify {
 <span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">disease =</span> <span class="st">&quot;Rice brown spot&quot;</span>, <span class="at">.before =</span> <span class="dv">1</span>)</span></code></pre></div>
 </div>
 <div id="wheat-tan-spot" class="section level3" number="4.1.3">
-<h3 number="4.1.3"><span class="header-section-number">4.1.3</span> Wheat tan spot</h3>
+<h3><span class="header-section-number">4.1.3</span> Wheat tan spot</h3>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sev_wheat_1 <span class="ot">&lt;-</span> </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">measure_disease</span>(<span class="at">pattern =</span> <span class="st">&quot;F&quot;</span>,</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">img_healthy =</span> <span class="st">&quot;h1&quot;</span>,</span>
@@ -673,7 +481,7 @@ div.tocify {
 <span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">disease =</span> <span class="st">&quot;Wheat tan spot&quot;</span>, <span class="at">.before =</span> <span class="dv">1</span>) </span></code></pre></div>
 </div>
 <div id="tobacco-xylella" class="section level3" number="4.1.4">
-<h3 number="4.1.4"><span class="header-section-number">4.1.4</span> Tobacco xylella</h3>
+<h3><span class="header-section-number">4.1.4</span> Tobacco xylella</h3>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sev_tobacco_1 <span class="ot">&lt;-</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">measure_disease</span>(<span class="at">pattern =</span> <span class="st">&quot;F&quot;</span>,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">img_healthy =</span> <span class="st">&quot;h1&quot;</span>,</span>
@@ -712,7 +520,7 @@ div.tocify {
 <span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">disease =</span> <span class="st">&quot;Tobacco xylella&quot;</span>, <span class="at">.before =</span> <span class="dv">1</span>) </span></code></pre></div>
 </div>
 <div id="olive-peacock-eye" class="section level3" number="4.1.5">
-<h3 number="4.1.5"><span class="header-section-number">4.1.5</span> Olive peacock eye</h3>
+<h3><span class="header-section-number">4.1.5</span> Olive peacock eye</h3>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sev_olive_1 <span class="ot">&lt;-</span> </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">measure_disease</span>(<span class="at">pattern =</span> <span class="st">&quot;F216&quot;</span>,</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">img_healthy =</span> <span class="st">&quot;h1&quot;</span>,</span>
@@ -751,7 +559,7 @@ div.tocify {
 <span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">disease =</span> <span class="st">&quot;Olive peacock eye&quot;</span>, <span class="at">.before =</span> <span class="dv">1</span>) </span></code></pre></div>
 </div>
 <div id="soybean-rust" class="section level3" number="4.1.6">
-<h3 number="4.1.6"><span class="header-section-number">4.1.6</span> Soybean rust</h3>
+<h3><span class="header-section-number">4.1.6</span> Soybean rust</h3>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sev_soybean_1 <span class="ot">&lt;-</span> </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">measure_disease</span>(<span class="at">pattern =</span> <span class="st">&quot;F&quot;</span>,</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">img_healthy =</span> <span class="st">&quot;h1&quot;</span>,</span>
@@ -792,9 +600,9 @@ div.tocify {
 </div>
 </div>
 <div id="concordance-correlation-coefficient" class="section level1" number="5">
-<h1 number="5"><span class="header-section-number">5</span> Concordance correlation coefficient</h1>
+<h1><span class="header-section-number">5</span> Concordance correlation coefficient</h1>
 <div id="validation-of-the-pliman-for-severity-prediction" class="section level2" number="5.1">
-<h2 number="5.1"><span class="header-section-number">5.1</span> Validation of the pliman for severity prediction</h2>
+<h2><span class="header-section-number">5.1</span> Validation of the pliman for severity prediction</h2>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df_ccc <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&quot;data/bind_severity.xlsx&quot;</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">&lt;-</span> </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  df_ccc <span class="sc">%&gt;%</span> </span>
@@ -815,64 +623,65 @@ div.tocify {
 <span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">name =</span> User)</span>
 <span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co">#  export(ccc, &quot;data/ccc.xlsx&quot;)</span></span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_11 <span class="ot">&lt;-</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  df_ccc <span class="sc">%&gt;%</span> </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(disease, APSAssess<span class="sc">:</span>Joint) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="st">`</span><span class="at">User 1</span><span class="st">`</span><span class="sc">:</span>Joint)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_11, <span class="fu">aes</span>(APSAssess, value)) <span class="sc">+</span> </span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>,</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">fill =</span> name),</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">&quot;black&quot;</span>,</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape =</span> <span class="dv">21</span>,</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="fl">2.5</span>,</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">stroke =</span> <span class="fl">0.02</span>) <span class="sc">+</span> </span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>,</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>              <span class="at">slope =</span> <span class="dv">1</span>,</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>              <span class="at">linetype =</span> <span class="dv">2</span>,</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(name<span class="sc">~</span>disease) <span class="sc">+</span> </span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>rho), </span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> <span class="dv">2</span>,</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> <span class="dv">93</span>,</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>            <span class="at">hjust =</span> <span class="dv">0</span>,</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> ccc,</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">parse =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>bc), </span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> <span class="dv">2</span>,</span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> <span class="dv">80</span>,</span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>            <span class="at">hjust =</span> <span class="dv">0</span>,</span>
-<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> ccc,</span>
-<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>            <span class="at">parse =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
-<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>r), </span>
-<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> <span class="dv">2</span>,</span>
-<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> <span class="dv">70</span>,</span>
-<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>            <span class="at">hjust =</span> <span class="dv">0</span>,</span>
-<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> ccc,</span>
-<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>            <span class="at">parse =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
-<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>)) <span class="sc">+</span> </span>
-<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>)) <span class="sc">+</span> </span>
-<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>() <span class="sc">+</span> </span>
-<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
-<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>),</span>
-<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>),</span>
-<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">&quot;cm&quot;</span>),</span>
-<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>,</span>
-<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>        <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="cn">NA</span>),</span>
-<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.spacing =</span> <span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">&quot;cm&quot;</span>),</span>
-<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.title =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
-<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Actual severity (%)&quot;</span>,</span>
-<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;pliman severity (%)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>df_11 <span class="ot">&lt;-</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  df_ccc <span class="sc">%&gt;%</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(disease, APSAssess<span class="sc">:</span>Joint) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="st">`</span><span class="at">User 1</span><span class="st">`</span><span class="sc">:</span>Joint)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_11, <span class="fu">aes</span>(APSAssess, value)) <span class="sc">+</span> </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">fill =</span> name),</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">&quot;black&quot;</span>,</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape =</span> <span class="dv">21</span>,</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="fl">2.5</span>,</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>             <span class="at">stroke =</span> <span class="fl">0.02</span>) <span class="sc">+</span> </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span>,</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>              <span class="at">slope =</span> <span class="dv">1</span>,</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>              <span class="at">linetype =</span> <span class="dv">2</span>,</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>              <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(name<span class="sc">~</span>disease) <span class="sc">+</span> </span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>rho), </span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> <span class="dv">2</span>,</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> <span class="dv">93</span>,</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>            <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> ccc,</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">parse =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>bc), </span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> <span class="dv">2</span>,</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> <span class="dv">80</span>,</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>            <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> ccc,</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>            <span class="at">parse =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label=</span>r), </span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>            <span class="at">x =</span> <span class="dv">2</span>,</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>            <span class="at">y =</span> <span class="dv">70</span>,</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>            <span class="at">hjust =</span> <span class="dv">0</span>,</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> ccc,</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>            <span class="at">parse =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>)) <span class="sc">+</span> </span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>)) <span class="sc">+</span> </span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>() <span class="sc">+</span> </span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>(<span class="at">base_size =</span> <span class="dv">14</span>) <span class="sc">+</span></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>),</span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">&quot;cm&quot;</span>),</span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>,</span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>        <span class="at">strip.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="cn">NA</span>),</span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.spacing =</span> <span class="fu">unit</span>(<span class="dv">0</span>, <span class="st">&quot;cm&quot;</span>),</span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.title =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> </span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Actual severity (%)&quot;</span>,</span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;pliman severity (%)&quot;</span>)</span></code></pre></div>
 <p><img src="code_files/figure-html/unnamed-chunk-1-1.png" width="960" /></p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;figs/fig3_estimates.png&quot;</span>, <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">6</span>, <span class="at">dpi =</span> <span class="dv">600</span>)</span></code></pre></div>
 </div>
 <div id="matrix-of-concordance-correlation-coefficients" class="section level2" number="5.2">
-<h2 number="5.2"><span class="header-section-number">5.2</span> Matrix of concordance correlation coefficients</h2>
+<h2><span class="header-section-number">5.2</span> Matrix of concordance correlation coefficients</h2>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df_ggpairs <span class="ot">&lt;-</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  df_ccc <span class="sc">%&gt;%</span> </span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(disease, ImageJ<span class="sc">:</span>APSAssess, Joint) <span class="sc">%&gt;%</span> </span>
@@ -901,7 +710,7 @@ div.tocify {
 </div>
 </div>
 <div id="impact-of-image-resolution-on-predicted-severity" class="section level1" number="6">
-<h1 number="6"><span class="header-section-number">6</span> Impact of image resolution on predicted severity</h1>
+<h1><span class="header-section-number">6</span> Impact of image resolution on predicted severity</h1>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>severity <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&quot;data/severity_scenario.xlsx&quot;</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Concordance correlation coefficient by resolution</span></span>
@@ -1005,11 +814,12 @@ div.tocify {
 <span id="cb18-101"><a href="#cb18-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_annotation</span>(<span class="at">tag_levels =</span> <span class="st">&quot;a&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb18-102"><a href="#cb18-102" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="code_files/figure-html/resolution-1.png" width="768" /></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;figs/fig5_resolution.jpg&quot;</span>, <span class="at">dpi =</span> <span class="dv">600</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Saving 8 x 6 in image</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;figs/fig5_resolution.jpg&quot;</span>, <span class="at">dpi =</span> <span class="dv">600</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Saving 8 x 6 in image</span></span></code></pre></div>
 </div>
 <div id="computation-time" class="section level1" number="7">
-<h1 number="7"><span class="header-section-number">7</span> Computation time</h1>
+<h1><span class="header-section-number">7</span> Computation time</h1>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>scenario <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&quot;data/runtime_scenario.xlsx&quot;</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(scenario, <span class="fu">aes</span>(mp, elapsed_img, <span class="at">fill =</span> strategy, <span class="at">group =</span> strategy)) <span class="sc">+</span> </span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> strategy)) <span class="sc">+</span></span>
@@ -1031,94 +841,51 @@ div.tocify {
 <span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_colorblind</span>() <span class="sc">+</span></span>
 <span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_colorblind</span>()</span></code></pre></div>
 <p><img src="code_files/figure-html/runningtime-1.png" width="576" /></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;figs/fig6_runningtime.png&quot;</span>,</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">12</span>,</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">9</span>,</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">units =</span> <span class="st">&quot;cm&quot;</span>,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">dpi =</span> <span class="dv">600</span>)</span></code></pre></div>
-</div>
-
-<div id="rmd-source-code">JSBBbmFseXNpcyANCg0KYGBge3IgZ2xvYmFsX29wdGlvbnMsIGluY2x1ZGUgPSBGQUxTRX0NCmtuaXRyOjpvcHRzX2NodW5rJHNldChjYWNoZSA9IEZBTFNFLCBjb21tZW50ID0gIiMiLCBjb2xsYXBzZSA9IFRSVUUpDQoNCmBgYA0KDQojIEluc3RhbGxpbmcgcGxpbWFuDQoNClRvIGluc3RhbGwgdGhlIHJlbGVhc2VkIHZlcnNpb24gb2YgYHBsaW1hbmAgZnJvbSBDUkFOIHR5cGU6DQoNCmBgYHtyIGluc3RhbGwsIGV2YWwgPSBGQUxTRX0NCmluc3RhbGwucGFja2FnZXMoInBsaW1hbiIpDQpgYGANCg0KDQpUaGUgbGF0ZXN0IGRldmVsb3BtZW50IHZlcnNpb24gb2YgYHBsaW1hbmAgY2FuIGJlIGluc3RhbGxlZCBmcm9tIHRoZSBHaXRIdWIgcmVwb3NpdG9yeS4gVGhlIGluc3RhbGxhdGlvbiBwcm9jZXNzIHJlcXVpcmVzIHRoZSBgZGV2dG9vbHNgIHBhY2thZ2UsIHdoaWNoIG5lZWRzIHRvIGJlIGluc3RhbGxlZCBmaXJzdC4gSWYgeW91IGFyZSBhIFdpbmRvd3MgdXNlciwgeW91IHNob3VsZCBhbHNvIGZpcnN0IGRvd25sb2FkIGFuZCBpbnN0YWxsIHRoZSBsYXRlc3QgdmVyc2lvbiBvZiBbUnRvb2xzXShodHRwczovL2NyYW4uci1wcm9qZWN0Lm9yZy9iaW4vd2luZG93cy9SdG9vbHMvKS4NCg0KYGBge3IgZGV2dG9vbHMsIGV2YWw9RkFMU0V9DQppZighcmVxdWlyZShkZXZ0b29scykpIGluc3RhbGwucGFja2FnZXMoImRldnRvb2xzIikNCg0KYGBgDQoNCkFmdGVyIGBkZXZ0b29sc2AgaXMgcHJvcGVybHkgaW5zdGFsbGVkLCB5b3UgY2FuIGluc3RhbGwgYHBsaW1hbmAgYnkgcnVubmluZyB0aGUgZm9sbG93aW5nIGNvZGUuIFBsZWFzZSwgbm90ZSB0aGF0IHRoZSBpbnN0YWxsYXRpb24gd2lsbCBhbHNvIGRvd25sb2FkIHRoZSBkZXBlbmRlbmNpZXMgcmVxdWlyZWQgdG8gcnVuIHRoZSBwYWNrYWdlLg0KDQpgYGB7ciBkZXZ0b29sczIsIGV2YWw9RkFMU0V9DQpkZXZ0b29sczo6aW5zdGFsbF9naXRodWIoIlRpYWdvT2xpdm90by9wbGltYW4iKQ0KYGBgDQoNCg0KVGhlbSwgbG9hZCBgcGxpbWFuYCBieSBydW5uaW5nIA0KYGBge3IgbG9hZCwgbWVzc2FnZT1GQUxTRSwgd2FybmluZz1GQUxTRX0NCmxpYnJhcnkocGxpbWFuKQ0KDQpgYGANCg0KDQojIFBhY2thZ2VzDQpgYGB7ciBwYWNrYWdlcywgd2FybmluZz1GQUxTRX0NCmxpYnJhcnkocGxpbWFuKSAgICAgIyBwbGFudCBpbWFnZSBhbmFseXNpcw0KbGlicmFyeSh0aWR5dmVyc2UpICAjIGRhdGEgbWFuaXB1bGF0aW9uIGFuZCBwbG90cw0KbGlicmFyeShwYXRjaHdvcmspICAjIHBsb3QgYXJyYW5nZW1lbnQNCmxpYnJhcnkoRGVzY1Rvb2xzKSAgIyBjb25jb3JkYW5jZSBjb3JyZWxhdGlvbiBjb2VmZmljaWVudA0KbGlicmFyeShyaW8pICAgICAgICAjIGltcG9ydC9leHBvcnQgZGF0YQ0KbGlicmFyeShnZ3RoZW1lcykgICAjIFRoZW1lcyBmb3IgZ2dwbG90Mg0KbGlicmFyeShHR2FsbHkpICAgICAjIGNyZWF0ZSBwYWlyd2lzZSBnZ3Bsb3RzDQpgYGANCg0KDQoNCiMgSGVscGVyIGZ1bmN0aW9ucw0KYGBge3IgaGVscGVyfQ0KIyBjb25jb3JkYW5jZSBjb3JyZWxhdGlvbiBjb2VmZmljaWVudA0KZ2V0X2NjYyA8LSBmdW5jdGlvbihkZiwgcHJlZGljdGVkLCByZWFsKXsNCiAgaWYoaXMuZ3JvdXBlZF9kZihkZikpew0KICAgIGRmICU+JSANCiAgICAgIGdyb3VwX21vZGlmeSh+Z2V0X2NjYygueCwge3twcmVkaWN0ZWR9fSwge3tyZWFsfX0pKSAlPiUgDQogICAgICB1bmdyb3VwKCkNCiAgfSBlbHNlew0KICAgIHByZWRpY3RlZCA8LSBwdWxsKGRmLCB7e3ByZWRpY3RlZH19KQ0KICAgIHJlYWwgPC0gcHVsbChkZiwge3tyZWFsfX0pDQogICAgY29yIDwtIENDQyhyZWFsLCBwcmVkaWN0ZWQsIG5hLnJtID0gVFJVRSkNCiAgICBkYXRhLmZyYW1lKHIgPSBjb3IocmVhbCwgcHJlZGljdGVkKSwNCiAgICAgICAgICAgICAgIHBjID0gY29yJHJoby5jW1sxXV0sDQogICAgICAgICAgICAgICBsd3JfY2kgPSBjb3IkcmhvLmNbWzJdXSwNCiAgICAgICAgICAgICAgIHVwcl9jaSA9IGNvciRyaG8uY1tbM11dLA0KICAgICAgICAgICAgICAgYmMgPSBjb3IkQy5iKQ0KICB9DQp9DQoNCg0KIyBoZWxwZXIgZnVuY3Rpb24gdG8gcGxvdCB0aGUgQ0NDIGluIGdncGFpcnMoKQ0KY3VzdG9tX2NjYyA8LSBmdW5jdGlvbihkYXRhLCBtYXBwaW5nLC4uLil7DQogIGRhdGEyIDwtIGRhdGENCiAgZGF0YTIkeCA8LSBhcy5udW1lcmljKGRhdGFbLGFzX2xhYmVsKG1hcHBpbmckeCldKQ0KICBkYXRhMiR5IDwtIGFzLm51bWVyaWMoZGF0YVssYXNfbGFiZWwobWFwcGluZyR5KV0pDQogIGRhdGEyJGdyb3VwIDwtIGRhdGFbLGFzX2xhYmVsKG1hcHBpbmckY29sb3VyKV0NCiAgY29ycmVsYXRpb25fZGYgPC0gZGF0YTIgJT4lIA0KICAgIGdyb3VwX2J5KGdyb3VwKSAlPiUNCiAgICBzdW1tYXJpemUoZXN0aW1hdGUgPSByb3VuZChhcy5udW1lcmljKERlc2NUb29sczo6Q0NDKHgsIHkpJHJoby5jWzFdKSwyKSkNCiAgZ2dwbG90KGRhdGE9Y29ycmVsYXRpb25fZGYsIGFlcyh4PTEseT1ncm91cCwgY29sb3IgPSBncm91cCkpKw0KICAgIGdlb21fdGV4dChhZXMobGFiZWwgPSBwYXN0ZTAoInJob1tjXTogIiwgZXN0aW1hdGUpKSwNCiAgICAgICAgICAgICAgZGF0YSA9IGNvcnJlbGF0aW9uX2RmLA0KICAgICAgICAgICAgICBwYXJzZSA9IFRSVUUsDQogICAgICAgICAgICAgIHNpemUgPSA0KQ0KfQ0KY3VzdG9tX3Ntb3RoIDwtIGZ1bmN0aW9uKGRhdGEsIG1hcHBpbmcsIG1ldGhvZD0ibG0iLCAuLi4pew0KICBwIDwtIGdncGxvdChkYXRhID0gZGF0YSwgbWFwcGluZyA9IG1hcHBpbmcpICsgDQogICAgZ2VvbV9wb2ludChhbHBoYSA9IDAuNywNCiAgICAgICAgICAgICAgIHNoYXBlID0gMjEsDQogICAgICAgICAgICAgICBzaXplID0gMi41LA0KICAgICAgICAgICAgICAgc3Ryb2tlID0gMC4wMSwNCiAgICAgICAgICAgICAgIGNvbG9yID0gImJsYWNrIikgKyANCiAgICBnZW9tX2FibGluZShjb2xvciA9ICJyZWQiLA0KICAgICAgICAgICAgICAgIGludGVyY2VwdCA9IDAsDQogICAgICAgICAgICAgICAgc2l6ZSA9IDAuNywNCiAgICAgICAgICAgICAgICBzbG9wZSA9IDEsDQogICAgICAgICAgICAgICAgbGluZXR5cGUgPSAyKQ0KICBwDQp9DQoNCiMgc2V0IHRoZSBnZ3Bsb3QyIHRoZW1lDQp0aGVtZV9zZXQodGhlbWVfYncoKSkNCmBgYA0KDQoNCg0KDQoNCiMgVXNlciBlZmZlY3Qgb24gcGFsZXR0ZSBzZWxlY3Rpb24NCiMjIERpc2Vhc2UNCiMjIyBCZWFuIGFuZ3VsYXIgc3BvdA0KYGBge3IgVXNlcjEsIGV2YWwgPSBGQUxTRX0NCnNldl9iZWFuXzEgPC0gDQogIG1lYXN1cmVfZGlzZWFzZShwYXR0ZXJuID0gIkYiLA0KICAgICAgICAgICAgICAgICAgaW1nX2hlYWx0aHkgPSAiaDEiLA0KICAgICAgICAgICAgICAgICAgaW1nX3N5bXB0b21zID0gInMxIiwNCiAgICAgICAgICAgICAgICAgIGltZ19iYWNrZ3JvdW5kID0gImIxIiwNCiAgICAgICAgICAgICAgICAgIGRpcl9vcmlnaW5hbCA9ICJkYXRhLzAxLWJlYW4tYW5ndWxhci1zcG90L29yaWdpbmFscyIsDQogICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQpzZXZfYmVhbl8yIDwtIA0KICBtZWFzdXJlX2Rpc2Vhc2UocGF0dGVybiA9ICJGIiwNCiAgICAgICAgICAgICAgICAgIGltZ19oZWFsdGh5ID0gImgyIiwNCiAgICAgICAgICAgICAgICAgIGltZ19zeW1wdG9tcyA9ICJzMiIsDQogICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiMiIsDQogICAgICAgICAgICAgICAgICBkaXJfb3JpZ2luYWwgPSAiZGF0YS8wMS1iZWFuLWFuZ3VsYXItc3BvdC9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgcGFyYWxsZWwgPSBUUlVFKQ0Kc2V2X2JlYW5fMyA8LSANCiAgbWVhc3VyZV9kaXNlYXNlKHBhdHRlcm4gPSAiRiIsDQogICAgICAgICAgICAgICAgICBpbWdfaGVhbHRoeSA9ICJoMyIsDQogICAgICAgICAgICAgICAgICBpbWdfc3ltcHRvbXMgPSAiczMiLA0KICAgICAgICAgICAgICAgICAgaW1nX2JhY2tncm91bmQgPSAiYjMiLA0KICAgICAgICAgICAgICAgICAgZGlyX29yaWdpbmFsID0gImRhdGEvMDEtYmVhbi1hbmd1bGFyLXNwb3Qvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgIHBhcmFsbGVsID0gVFJVRSkNCnNldl9iZWFuXzQgPC0gDQogIG1lYXN1cmVfZGlzZWFzZShwYXR0ZXJuID0gIkYiLA0KICAgICAgICAgICAgICAgICAgaW1nX2hlYWx0aHkgPSAiaDQiLA0KICAgICAgICAgICAgICAgICAgaW1nX3N5bXB0b21zID0gInM0IiwNCiAgICAgICAgICAgICAgICAgIGltZ19iYWNrZ3JvdW5kID0gImI0IiwNCiAgICAgICAgICAgICAgICAgIGRpcl9vcmlnaW5hbCA9ICJkYXRhLzAxLWJlYW4tYW5ndWxhci1zcG90L29yaWdpbmFscyIsDQogICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQoNCmJpbmRfYmVhbiA8LSANCiAgYmluZF9jb2xzKHNldl9iZWFuXzEgJT4lIHNlbGVjdCgxLDMpICU+JSByZW5hbWUocjEgPSBzeW1wdG9tYXRpYyksDQogICAgICAgICAgICBzZXZfYmVhbl8yICU+JSBzZWxlY3QoMykgJT4lIHJlbmFtZShyMiA9IHN5bXB0b21hdGljKSwNCiAgICAgICAgICAgIHNldl9iZWFuXzMgJT4lIHNlbGVjdCgzKSAlPiUgcmVuYW1lKHIzID0gc3ltcHRvbWF0aWMpLA0KICAgICAgICAgICAgc2V2X2JlYW5fNCAlPiUgc2VsZWN0KDMpICU+JSByZW5hbWUocjQgPSBzeW1wdG9tYXRpYykpICU+JSANCiAgbXV0YXRlKGRpc2Vhc2UgPSAiQmVhbiBhbmd1bGFyIHNwb3QiLCAuYmVmb3JlID0gMSkNCmBgYA0KDQoNCg0KDQojIyMgUmljZSBicm93biBzcG90DQpgYGB7ciBVc2VyMiwgZXZhbD1GQUxTRX0NCnNldl9yaWNlXzEgPC0NCiAgbWVhc3VyZV9kaXNlYXNlKHBhdHRlcm4gPSAiRjI0IiwNCiAgICAgICAgICAgICAgICAgIGltZ19oZWFsdGh5ID0gImgxIiwNCiAgICAgICAgICAgICAgICAgIGltZ19zeW1wdG9tcyA9ICJzMSIsDQogICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiMSIsDQogICAgICAgICAgICAgICAgICBkaXJfb3JpZ2luYWwgPSAiZGF0YS8wMi1yaWNlLWJyb3duc3BvdC9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgZGlyX3Byb2Nlc3NlZCA9ICJ0ZXN0IiwNCiAgICAgICAgICAgICAgICAgIHNhdmVfaW1hZ2UgPSBUUlVFLA0KICAgICAgICAgICAgICAgICAgcGFyYWxsZWwgPSBUUlVFKQ0Kc2V2X3JpY2VfMiA8LQ0KICBtZWFzdXJlX2Rpc2Vhc2UocGF0dGVybiA9ICJGIiwNCiAgICAgICAgICAgICAgICAgIGltZ19oZWFsdGh5ID0gImgyIiwNCiAgICAgICAgICAgICAgICAgIGltZ19zeW1wdG9tcyA9ICJzMiIsDQogICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiMiIsDQogICAgICAgICAgICAgICAgICBkaXJfb3JpZ2luYWwgPSAiZGF0YS8wMi1yaWNlLWJyb3duc3BvdC9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgcGFyYWxsZWwgPSBUUlVFKQ0Kc2V2X3JpY2VfMyA8LQ0KICBtZWFzdXJlX2Rpc2Vhc2UocGF0dGVybiA9ICJGIiwNCiAgICAgICAgICAgICAgICAgIGltZ19oZWFsdGh5ID0gImgzIiwNCiAgICAgICAgICAgICAgICAgIGltZ19zeW1wdG9tcyA9ICJzMyIsDQogICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiMyIsDQogICAgICAgICAgICAgICAgICBkaXJfb3JpZ2luYWwgPSAiZGF0YS8wMi1yaWNlLWJyb3duc3BvdC9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgcGFyYWxsZWwgPSBUUlVFKQ0KDQpzZXZfcmljZV80IDwtDQogIG1lYXN1cmVfZGlzZWFzZShwYXR0ZXJuID0gIkYiLA0KICAgICAgICAgICAgICAgICAgaW1nX2hlYWx0aHkgPSAiaDQiLA0KICAgICAgICAgICAgICAgICAgaW1nX3N5bXB0b21zID0gInM0IiwNCiAgICAgICAgICAgICAgICAgIGltZ19iYWNrZ3JvdW5kID0gImI0IiwNCiAgICAgICAgICAgICAgICAgIGRpcl9vcmlnaW5hbCA9ICJkYXRhLzAyLXJpY2UtYnJvd25zcG90L29yaWdpbmFscyIsDQogICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQoNCmJpbmRfcmljZSA8LQ0KICBiaW5kX2NvbHMoc2V2X3JpY2VfMSAlPiUgc2VsZWN0KDEsMykgJT4lIHJlbmFtZShyMSA9IHN5bXB0b21hdGljKSwNCiAgICAgICAgICAgIHNldl9yaWNlXzIgJT4lIHNlbGVjdCgzKSAlPiUgcmVuYW1lKHIyID0gc3ltcHRvbWF0aWMpLA0KICAgICAgICAgICAgc2V2X3JpY2VfMyAlPiUgc2VsZWN0KDMpICU+JSByZW5hbWUocjMgPSBzeW1wdG9tYXRpYyksDQogICAgICAgICAgICBzZXZfcmljZV80ICU+JSBzZWxlY3QoMykgJT4lIHJlbmFtZShyNCA9IHN5bXB0b21hdGljKSkgJT4lIA0KICBtdXRhdGUoZGlzZWFzZSA9ICJSaWNlIGJyb3duIHNwb3QiLCAuYmVmb3JlID0gMSkNCg0KYGBgDQoNCg0KIyMjIFdoZWF0IHRhbiBzcG90DQpgYGB7ciBVc2VyMywgZXZhbCA9IEZBTFNFfQ0Kc2V2X3doZWF0XzEgPC0gDQogIG1lYXN1cmVfZGlzZWFzZShwYXR0ZXJuID0gIkYiLA0KICAgICAgICAgICAgICAgICAgaW1nX2hlYWx0aHkgPSAiaDEiLA0KICAgICAgICAgICAgICAgICAgaW1nX3N5bXB0b21zID0gInMxIiwNCiAgICAgICAgICAgICAgICAgIGltZ19iYWNrZ3JvdW5kID0gImIxIiwNCiAgICAgICAgICAgICAgICAgIGRpcl9vcmlnaW5hbCA9ICJkYXRhLzAzLXdoZWF0LXRhbnNwb3Qvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgIHBhcmFsbGVsID0gVFJVRSkNCnNldl93aGVhdF8yIDwtIA0KICBtZWFzdXJlX2Rpc2Vhc2UocGF0dGVybiA9ICJGIiwNCiAgICAgICAgICAgICAgICAgIGltZ19oZWFsdGh5ID0gImgyIiwNCiAgICAgICAgICAgICAgICAgIGltZ19zeW1wdG9tcyA9ICJzMiIsDQogICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiMiIsDQogICAgICAgICAgICAgICAgICBkaXJfb3JpZ2luYWwgPSAiZGF0YS8wMy13aGVhdC10YW5zcG90L29yaWdpbmFscyIsDQogICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQpzZXZfd2hlYXRfMyA8LSANCiAgbWVhc3VyZV9kaXNlYXNlKHBhdHRlcm4gPSAiRiIsDQogICAgICAgICAgICAgICAgICBpbWdfaGVhbHRoeSA9ICJoMyIsDQogICAgICAgICAgICAgICAgICBpbWdfc3ltcHRvbXMgPSAiczMiLA0KICAgICAgICAgICAgICAgICAgaW1nX2JhY2tncm91bmQgPSAiYjMiLA0KICAgICAgICAgICAgICAgICAgZGlyX29yaWdpbmFsID0gImRhdGEvMDMtd2hlYXQtdGFuc3BvdC9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgcGFyYWxsZWwgPSBUUlVFKQ0KDQpzZXZfd2hlYXRfNCA8LSANCiAgbWVhc3VyZV9kaXNlYXNlKHBhdHRlcm4gPSAiRiIsDQogICAgICAgICAgICAgICAgICBpbWdfaGVhbHRoeSA9ICJoNCIsDQogICAgICAgICAgICAgICAgICBpbWdfc3ltcHRvbXMgPSAiczQiLA0KICAgICAgICAgICAgICAgICAgaW1nX2JhY2tncm91bmQgPSAiYjQiLA0KICAgICAgICAgICAgICAgICAgZGlyX29yaWdpbmFsID0gImRhdGEvMDMtd2hlYXQtdGFuc3BvdC9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgcGFyYWxsZWwgPSBUUlVFKQ0KDQpiaW5kX3doZWF0IDwtIA0KICBiaW5kX2NvbHMoc2V2X3doZWF0XzEgJT4lIHNlbGVjdCgxLDMpICU+JSByZW5hbWUocjEgPSBzeW1wdG9tYXRpYyksDQogICAgICAgICAgICBzZXZfd2hlYXRfMiAlPiUgc2VsZWN0KDMpICU+JSByZW5hbWUocjIgPSBzeW1wdG9tYXRpYyksDQogICAgICAgICAgICBzZXZfd2hlYXRfMyAlPiUgc2VsZWN0KDMpICU+JSByZW5hbWUocjMgPSBzeW1wdG9tYXRpYyksDQogICAgICAgICAgICBzZXZfd2hlYXRfNCAlPiUgc2VsZWN0KDMpICU+JSByZW5hbWUocjQgPSBzeW1wdG9tYXRpYykpICU+JSANCiAgbXV0YXRlKGRpc2Vhc2UgPSAiV2hlYXQgdGFuIHNwb3QiLCAuYmVmb3JlID0gMSkgDQoNCmBgYA0KDQoNCiMjIyBUb2JhY2NvIHh5bGVsbGENCmBgYHtyIFVzZXI0LCBldmFsID0gRkFMU0V9DQpzZXZfdG9iYWNjb18xIDwtIA0KICBtZWFzdXJlX2Rpc2Vhc2UocGF0dGVybiA9ICJGIiwNCiAgICAgICAgICAgICAgICAgIGltZ19oZWFsdGh5ID0gImgxIiwNCiAgICAgICAgICAgICAgICAgIGltZ19zeW1wdG9tcyA9ICJzMSIsDQogICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiMSIsDQogICAgICAgICAgICAgICAgICBkaXJfb3JpZ2luYWwgPSAiZGF0YS8wNC10b2JhY2NvLXh5bGVsbGEvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgIHBhcmFsbGVsID0gVFJVRSkNCnNldl90b2JhY2NvXzIgPC0gDQogIG1lYXN1cmVfZGlzZWFzZShwYXR0ZXJuID0gIkYiLA0KICAgICAgICAgICAgICAgICAgaW1nX2hlYWx0aHkgPSAiaDIiLA0KICAgICAgICAgICAgICAgICAgaW1nX3N5bXB0b21zID0gInMyIiwNCiAgICAgICAgICAgICAgICAgIGltZ19iYWNrZ3JvdW5kID0gImIyIiwNCiAgICAgICAgICAgICAgICAgIGRpcl9vcmlnaW5hbCA9ICJkYXRhLzA0LXRvYmFjY28teHlsZWxsYS9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgcGFyYWxsZWwgPSBUUlVFKQ0Kc2V2X3RvYmFjY29fMyA8LSANCiAgbWVhc3VyZV9kaXNlYXNlKHBhdHRlcm4gPSAiRiIsDQogICAgICAgICAgICAgICAgICBpbWdfaGVhbHRoeSA9ICJoMyIsDQogICAgICAgICAgICAgICAgICBpbWdfc3ltcHRvbXMgPSAiczMiLA0KICAgICAgICAgICAgICAgICAgaW1nX2JhY2tncm91bmQgPSAiYjMiLA0KICAgICAgICAgICAgICAgICAgZGlyX29yaWdpbmFsID0gImRhdGEvMDQtdG9iYWNjby14eWxlbGxhL29yaWdpbmFscyIsDQogICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQoNCnNldl90b2JhY2NvXzQgPC0gDQogIG1lYXN1cmVfZGlzZWFzZShwYXR0ZXJuID0gIkYiLA0KICAgICAgICAgICAgICAgICAgaW1nX2hlYWx0aHkgPSAiaDQiLA0KICAgICAgICAgICAgICAgICAgaW1nX3N5bXB0b21zID0gInM0IiwNCiAgICAgICAgICAgICAgICAgIGltZ19iYWNrZ3JvdW5kID0gImI0IiwNCiAgICAgICAgICAgICAgICAgIGRpcl9vcmlnaW5hbCA9ICJkYXRhLzA0LXRvYmFjY28teHlsZWxsYS9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgcGFyYWxsZWwgPSBUUlVFKQ0KDQpiaW5kX3RvYmFjY28gPC0gDQogIGJpbmRfY29scyhzZXZfdG9iYWNjb18xICU+JSBzZWxlY3QoMSwzKSAlPiUgcmVuYW1lKHIxID0gc3ltcHRvbWF0aWMpLA0KICAgICAgICAgICAgc2V2X3RvYmFjY29fMiAlPiUgc2VsZWN0KDMpICU+JSByZW5hbWUocjIgPSBzeW1wdG9tYXRpYyksDQogICAgICAgICAgICBzZXZfdG9iYWNjb18zICU+JSBzZWxlY3QoMykgJT4lIHJlbmFtZShyMyA9IHN5bXB0b21hdGljKSwNCiAgICAgICAgICAgIHNldl90b2JhY2NvXzQgJT4lIHNlbGVjdCgzKSAlPiUgcmVuYW1lKHIgPSBzeW1wdG9tYXRpYykpICU+JSANCiAgbXV0YXRlKGRpc2Vhc2UgPSAiVG9iYWNjbyB4eWxlbGxhIiwgLmJlZm9yZSA9IDEpIA0KDQpgYGANCg0KDQoNCg0KIyMjIE9saXZlIHBlYWNvY2sgZXllDQpgYGB7ciBVc2VyNSwgZXZhbCA9IEZBTFNFfQ0Kc2V2X29saXZlXzEgPC0gDQogIG1lYXN1cmVfZGlzZWFzZShwYXR0ZXJuID0gIkYyMTYiLA0KICAgICAgICAgICAgICAgICAgaW1nX2hlYWx0aHkgPSAiaDEiLA0KICAgICAgICAgICAgICAgICAgaW1nX3N5bXB0b21zID0gInMxIiwNCiAgICAgICAgICAgICAgICAgIGltZ19iYWNrZ3JvdW5kID0gImIxIiwNCiAgICAgICAgICAgICAgICAgIGRpcl9vcmlnaW5hbCA9ICJkYXRhLzA1LW9saXZlLXBlYWNvY2stZXllL29yaWdpbmFscyIsDQogICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQpzZXZfb2xpdmVfMiA8LSANCiAgbWVhc3VyZV9kaXNlYXNlKHBhdHRlcm4gPSAiRjIxNiIsDQogICAgICAgICAgICAgICAgICBpbWdfaGVhbHRoeSA9ICJoMiIsDQogICAgICAgICAgICAgICAgICBpbWdfc3ltcHRvbXMgPSAiczIiLA0KICAgICAgICAgICAgICAgICAgaW1nX2JhY2tncm91bmQgPSAiYjIiLA0KICAgICAgICAgICAgICAgICAgZGlyX29yaWdpbmFsID0gImRhdGEvMDUtb2xpdmUtcGVhY29jay1leWUvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgIHBhcmFsbGVsID0gVFJVRSkNCnNldl9vbGl2ZV8zIDwtIA0KICBtZWFzdXJlX2Rpc2Vhc2UocGF0dGVybiA9ICJGMjE2IiwNCiAgICAgICAgICAgICAgICAgIGltZ19oZWFsdGh5ID0gImgzIiwNCiAgICAgICAgICAgICAgICAgIGltZ19zeW1wdG9tcyA9ICJzMyIsDQogICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiMyIsDQogICAgICAgICAgICAgICAgICBkaXJfb3JpZ2luYWwgPSAiZGF0YS8wNS1vbGl2ZS1wZWFjb2NrLWV5ZS9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgcGFyYWxsZWwgPSBUUlVFKQ0KDQpzZXZfb2xpdmVfNCA8LSANCiAgbWVhc3VyZV9kaXNlYXNlKHBhdHRlcm4gPSAiRjIxNiIsDQogICAgICAgICAgICAgICAgICBpbWdfaGVhbHRoeSA9ICJoNCIsDQogICAgICAgICAgICAgICAgICBpbWdfc3ltcHRvbXMgPSAiczQiLA0KICAgICAgICAgICAgICAgICAgaW1nX2JhY2tncm91bmQgPSAiYjQiLA0KICAgICAgICAgICAgICAgICAgZGlyX29yaWdpbmFsID0gImRhdGEvMDUtb2xpdmUtcGVhY29jay1leWUvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgIHBhcmFsbGVsID0gVFJVRSkNCg0KYmluZF9vbGl2ZSA8LSANCiAgYmluZF9jb2xzKHNldl9vbGl2ZV8xICU+JSBzZWxlY3QoMSwzKSAlPiUgcmVuYW1lKHIxID0gc3ltcHRvbWF0aWMpLA0KICAgICAgICAgICAgc2V2X29saXZlXzIgJT4lIHNlbGVjdCgzKSAlPiUgcmVuYW1lKHIyID0gc3ltcHRvbWF0aWMpLA0KICAgICAgICAgICAgc2V2X29saXZlXzMgJT4lIHNlbGVjdCgzKSAlPiUgcmVuYW1lKHIzID0gc3ltcHRvbWF0aWMpLA0KICAgICAgICAgICAgc2V2X29saXZlXzQgJT4lIHNlbGVjdCgzKSAlPiUgcmVuYW1lKHI0ID0gc3ltcHRvbWF0aWMpKSAlPiUgDQogIG11dGF0ZShkaXNlYXNlID0gIk9saXZlIHBlYWNvY2sgZXllIiwgLmJlZm9yZSA9IDEpIA0KDQpgYGANCg0KDQoNCg0KDQojIyMgU295YmVhbiBydXN0DQpgYGB7ciBVc2VyNiwgZXZhbCA9IEZBTFNFfQ0Kc2V2X3NveWJlYW5fMSA8LSANCiAgbWVhc3VyZV9kaXNlYXNlKHBhdHRlcm4gPSAiRiIsDQogICAgICAgICAgICAgICAgICBpbWdfaGVhbHRoeSA9ICJoMSIsDQogICAgICAgICAgICAgICAgICBpbWdfc3ltcHRvbXMgPSAiczEiLA0KICAgICAgICAgICAgICAgICAgaW1nX2JhY2tncm91bmQgPSAiYjEiLA0KICAgICAgICAgICAgICAgICAgZGlyX29yaWdpbmFsID0gImRhdGEvMDYtc295YmVhbl9ydXN0L29yaWdpbmFscyIsDQogICAgICAgICAgICAgICAgICBwYXJhbGxlbCA9IFRSVUUpDQpzZXZfc295YmVhbl8yIDwtIA0KICBtZWFzdXJlX2Rpc2Vhc2UocGF0dGVybiA9ICJGIiwNCiAgICAgICAgICAgICAgICAgIGltZ19oZWFsdGh5ID0gImgyIiwNCiAgICAgICAgICAgICAgICAgIGltZ19zeW1wdG9tcyA9ICJzMiIsDQogICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiMiIsDQogICAgICAgICAgICAgICAgICBkaXJfb3JpZ2luYWwgPSAiZGF0YS8wNi1zb3liZWFuX3J1c3Qvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgIHBhcmFsbGVsID0gVFJVRSkNCnNldl9zb3liZWFuXzMgPC0gDQogIG1lYXN1cmVfZGlzZWFzZShwYXR0ZXJuID0gIkYiLA0KICAgICAgICAgICAgICAgICAgaW1nX2hlYWx0aHkgPSAiaDMiLA0KICAgICAgICAgICAgICAgICAgaW1nX3N5bXB0b21zID0gInMzIiwNCiAgICAgICAgICAgICAgICAgIGltZ19iYWNrZ3JvdW5kID0gImIzIiwNCiAgICAgICAgICAgICAgICAgIGRpcl9vcmlnaW5hbCA9ICJkYXRhLzA2LXNveWJlYW5fcnVzdC9vcmlnaW5hbHMiLA0KICAgICAgICAgICAgICAgICAgcGFyYWxsZWwgPSBUUlVFKQ0KDQpzZXZfc295YmVhbl80IDwtIA0KICBtZWFzdXJlX2Rpc2Vhc2UocGF0dGVybiA9ICJGIiwNCiAgICAgICAgICAgICAgICAgIGltZ19oZWFsdGh5ID0gImg0IiwNCiAgICAgICAgICAgICAgICAgIGltZ19zeW1wdG9tcyA9ICJzNCIsDQogICAgICAgICAgICAgICAgICBpbWdfYmFja2dyb3VuZCA9ICJiNCIsDQogICAgICAgICAgICAgICAgICBkaXJfb3JpZ2luYWwgPSAiZGF0YS8wNi1zb3liZWFuX3J1c3Qvb3JpZ2luYWxzIiwNCiAgICAgICAgICAgICAgICAgIHBhcmFsbGVsID0gVFJVRSkNCg0KYmluZF9zb3liZWFuIDwtIA0KICBiaW5kX2NvbHMoc2V2X3NveWJlYW5fMSAlPiUgc2VsZWN0KDEsMykgJT4lIHJlbmFtZShyMSA9IHN5bXB0b21hdGljKSwNCiAgICAgICAgICAgIHNldl9zb3liZWFuXzIgJT4lIHNlbGVjdCgzKSAlPiUgcmVuYW1lKHIyID0gc3ltcHRvbWF0aWMpLA0KICAgICAgICAgICAgc2V2X3NveWJlYW5fMyAlPiUgc2VsZWN0KDMpICU+JSByZW5hbWUocjMgPSBzeW1wdG9tYXRpYyksDQogICAgICAgICAgICBzZXZfc295YmVhbl80ICU+JSBzZWxlY3QoMykgJT4lIHJlbmFtZShyNCA9IHN5bXB0b21hdGljKSkgJT4lIA0KICBtdXRhdGUoZGlzZWFzZSA9ICJTb3liZWFuIHJ1c3QiLCAuYmVmb3JlID0gMSkgDQoNCmBgYA0KDQoNCg0KIyBDb25jb3JkYW5jZSBjb3JyZWxhdGlvbiBjb2VmZmljaWVudA0KIyMgVmFsaWRhdGlvbiBvZiB0aGUgcGxpbWFuIGZvciBzZXZlcml0eSBwcmVkaWN0aW9uIA0KYGBge3IgY29uY29yZGFuY2V9DQpkZl9jY2MgPC0gaW1wb3J0KCJkYXRhL2JpbmRfc2V2ZXJpdHkueGxzeCIpDQpkZl9sb25nIDwtIA0KICBkZl9jY2MgJT4lIA0KICBwaXZvdF9sb25nZXIoYFVzZXIgMWA6YEpvaW50YCwgDQogICAgICAgICAgICAgICBuYW1lc190byA9ICJVc2VyIiwNCiAgICAgICAgICAgICAgIHZhbHVlc190byA9ICJwbGltYW4iKQ0KDQojIENvbmNvcmRhbmNlIGNvcnJlbGF0aW9uIGNvZWZmaWNpZW50DQpjY2MgPC0gDQogIGRmX2xvbmcgJT4lIA0KICBncm91cF9ieShkaXNlYXNlLCBVc2VyKSAlPiUgDQogIGdldF9jY2MocGxpbWFuLCBBUFNBc3Nlc3MpICU+JSANCiAgbXV0YXRlKHJobyA9IHBhc3RlMCgicmhvW2NdOn4iLCByb3VuZChwYywgMiksDQogICAgICAgICAgICAgICAgICAgICAgIlsoIixyb3VuZChsd3JfY2ksMiksICItIiwNCiAgICAgICAgICAgICAgICAgICAgICByb3VuZCh1cHJfY2ksMiksICIpXSIgKSwNCiAgICAgICAgIGJjID0gcGFzdGUwKCJDW2JdOn4iLCByb3VuZChiYywgMikpLA0KICAgICAgICAgciA9IHBhc3RlMCgicjp+fn4iLCByb3VuZChyLCAyKSkpICU+JSANCiAgcmVuYW1lKG5hbWUgPSBVc2VyKQ0KDQojICBleHBvcnQoY2NjLCAiZGF0YS9jY2MueGxzeCIpDQoNCg0KDQpgYGANCg0KDQpgYGB7ciwgZmlnLndpZHRoPTEwLCBmaWcuaGVpZ2h0PTZ9DQoNCmRmXzExIDwtIA0KICBkZl9jY2MgJT4lIA0KICBzZWxlY3QoZGlzZWFzZSwgQVBTQXNzZXNzOkpvaW50KSAlPiUgDQogIHBpdm90X2xvbmdlcihgVXNlciAxYDpKb2ludCkNCg0KZ2dwbG90KGRmXzExLCBhZXMoQVBTQXNzZXNzLCB2YWx1ZSkpICsgDQogIGdlb21fcG9pbnQoYWxwaGEgPSAwLjcsDQogICAgICAgICAgICAgYWVzKGZpbGwgPSBuYW1lKSwNCiAgICAgICAgICAgICBjb2xvciA9ICJibGFjayIsDQogICAgICAgICAgICAgc2hhcGUgPSAyMSwNCiAgICAgICAgICAgICBzaXplID0gMi41LA0KICAgICAgICAgICAgIHN0cm9rZSA9IDAuMDIpICsgDQogIGdlb21fYWJsaW5lKGludGVyY2VwdCA9IDAsDQogICAgICAgICAgICAgIHNsb3BlID0gMSwNCiAgICAgICAgICAgICAgbGluZXR5cGUgPSAyLA0KICAgICAgICAgICAgICBjb2xvciA9ICJibHVlIikgKyANCiAgZmFjZXRfZ3JpZChuYW1lfmRpc2Vhc2UpICsgDQogIGdlb21fdGV4dChhZXMobGFiZWw9cmhvKSwgDQogICAgICAgICAgICB4ID0gMiwNCiAgICAgICAgICAgIHkgPSA5MywNCiAgICAgICAgICAgIGhqdXN0ID0gMCwNCiAgICAgICAgICAgIHNpemUgPSAzLA0KICAgICAgICAgICAgZGF0YSA9IGNjYywNCiAgICAgICAgICAgIHBhcnNlID0gVFJVRSkgKyANCiAgZ2VvbV90ZXh0KGFlcyhsYWJlbD1iYyksIA0KICAgICAgICAgICAgeCA9IDIsDQogICAgICAgICAgICB5ID0gODAsDQogICAgICAgICAgICBzaXplID0gMywNCiAgICAgICAgICAgIGhqdXN0ID0gMCwNCiAgICAgICAgICAgIGRhdGEgPSBjY2MsDQogICAgICAgICAgICBwYXJzZSA9IFRSVUUpICsgDQogIGdlb21fdGV4dChhZXMobGFiZWw9ciksIA0KICAgICAgICAgICAgeCA9IDIsDQogICAgICAgICAgICB5ID0gNzAsDQogICAgICAgICAgICBzaXplID0gMywNCiAgICAgICAgICAgIGhqdXN0ID0gMCwNCiAgICAgICAgICAgIGRhdGEgPSBjY2MsDQogICAgICAgICAgICBwYXJzZSA9IFRSVUUpICsgDQogIHRoZW1lX2J3KCkgKw0KICBzY2FsZV94X2NvbnRpbnVvdXMobGltaXRzID0gYygwLCAxMDApKSArIA0KICBzY2FsZV95X2NvbnRpbnVvdXMobGltaXRzID0gYygwLCAxMDApKSArIA0KICBzY2FsZV9jb2xvcl9jb2xvcmJsaW5kKCkgKyANCiAgdGhlbWVfYncoYmFzZV9zaXplID0gMTQpICsNCiAgdGhlbWUoYXhpcy50aXRsZSA9IGVsZW1lbnRfdGV4dChjb2xvciA9ICJibGFjayIpLA0KICAgICAgICBheGlzLnRleHQgPSBlbGVtZW50X3RleHQoY29sb3IgPSAiYmxhY2siKSwNCiAgICAgICAgYXhpcy50aWNrcy5sZW5ndGggPSB1bml0KDAuMiwgImNtIiksDQogICAgICAgIHBhbmVsLmdyaWQgPSBlbGVtZW50X2JsYW5rKCksDQogICAgICAgIGxlZ2VuZC5wb3NpdGlvbiA9ICJib3R0b20iLA0KICAgICAgICBzdHJpcC5iYWNrZ3JvdW5kID0gZWxlbWVudF9yZWN0KGZpbGwgPSBOQSksDQogICAgICAgIHBhbmVsLnNwYWNpbmcgPSB1bml0KDAsICJjbSIpLA0KICAgICAgICBsZWdlbmQudGl0bGUgPSBlbGVtZW50X2JsYW5rKCkpICsgDQogIGxhYnMoeCA9ICJBY3R1YWwgc2V2ZXJpdHkgKCUpIiwNCiAgICAgICB5ID0gInBsaW1hbiBzZXZlcml0eSAoJSkiKQ0KZ2dzYXZlKCJmaWdzL2ZpZzNfZXN0aW1hdGVzLnBuZyIsIHdpZHRoID0gMTAsIGhlaWdodCA9IDYsIGRwaSA9IDYwMCkNCmBgYA0KDQoNCg0KIyMgTWF0cml4IG9mIGNvbmNvcmRhbmNlIGNvcnJlbGF0aW9uIGNvZWZmaWNpZW50cw0KYGBge3IgZmlnLndpZHRoPTYsIGZpZy5oZWlnaHQ9Nn0NCmRmX2dncGFpcnMgPC0NCiAgZGZfY2NjICU+JSANCiAgc2VsZWN0KGRpc2Vhc2UsIEltYWdlSjpBUFNBc3Nlc3MsIEpvaW50KSAlPiUgDQogIHJlbmFtZShwbGltYW4gPSBKb2ludCkNCmdncGFpcnMoZGZfZ2dwYWlycywNCiAgICAgICAgbGVnZW5kID0gMSwNCiAgICAgICAgYWVzKGNvbG9yID0gZGlzZWFzZSwgZmlsbCA9IGRpc2Vhc2UpLA0KICAgICAgICBheGlzTGFiZWxzID0gIm5vbmUiLA0KICAgICAgICBjb2x1bW5zID0gYygiSW1hZ2VKIiwgIkxlYWZEb2N0b3IiLCAiQVBTQXNzZXNzIiwgInBsaW1hbiIpLA0KICAgICAgICBsb3dlciA9IGxpc3QoY29udGludW91cyA9IGN1c3RvbV9zbW90aCksDQogICAgICAgIHVwcGVyID0gbGlzdChjb250aW51b3VzID0gY3VzdG9tX2NjYyksDQogICAgICAgIGRpYWcgPSBsaXN0KGNvbnRpbnVvdXMgPSB3cmFwKCJkZW5zaXR5RGlhZyIsDQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFscGhhID0gIDAuNywNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc2l6ZSA9IDAuMiwNCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY29sb3IgPSAiYmxhY2siKSkpICsNCiAgc2NhbGVfY29sb3JfY29sb3JibGluZCgpICsgDQogIHNjYWxlX2ZpbGxfY29sb3JibGluZCgpICsgDQogIHRoZW1lKHBhbmVsLnNwYWNpbmcgPSB1bml0KDAsICJjbSIpLCANCiAgICAgICAgcGFuZWwuZ3JpZCA9IGVsZW1lbnRfYmxhbmsoKSwNCiAgICAgICAgbGVnZW5kLnBvc2l0aW9uID0gImJvdHRvbSIsDQogICAgICAgIHN0cmlwLmJhY2tncm91bmQgPSBlbGVtZW50X3JlY3QoZmlsbCA9IE5BKSwNCiAgICAgICAgc3RyaXAudGV4dCA9IGVsZW1lbnRfdGV4dChzaXplID0gMTMpLA0KICAgICAgICBsZWdlbmQudGl0bGUgPSBlbGVtZW50X2JsYW5rKCkpDQpnZ3NhdmUoImZpZ3MvZmlnNF9zb2Z0d2FyZXMuanBnIiwgd2lkdGggPSA2LCBoZWlnaHQgPSA2LCBkcGkgPSA2MDApDQpgYGANCg0KDQojIEltcGFjdCBvZiBpbWFnZSByZXNvbHV0aW9uIG9uIHByZWRpY3RlZCBzZXZlcml0eQ0KYGBge3IgcmVzb2x1dGlvbiwgZmlnLndpZHRoPTgsIGZpZy5oZWlnaHQ9Nn0NCnNldmVyaXR5IDwtIGltcG9ydCgiZGF0YS9zZXZlcml0eV9zY2VuYXJpby54bHN4IikNCg0KIyBDb25jb3JkYW5jZSBjb3JyZWxhdGlvbiBjb2VmZmljaWVudCBieSByZXNvbHV0aW9uDQpkZl9jY2NfcmVzb2x1dGlvbiA8LSANCiAgc2V2ZXJpdHkgJT4lIA0KICBncm91cF9ieShtcCkgJT4lIA0KICBnZXRfY2NjKEFQU0Fzc2VzcywgcGxpbWFuKSAlPiUgDQogIG11dGF0ZShyaG8gPSBwYXN0ZTAoInJob1tjXTp+Iiwgcm91bmQocGMsIDMpLA0KICAgICAgICAgICAgICAgICAgICAgICJbKCIscm91bmQobHdyX2NpLDMpLCAiLSIsDQogICAgICAgICAgICAgICAgICAgICAgcm91bmQodXByX2NpLDMpLCAiKV0iICksDQogICAgICAgICBiY28gPSBwYXN0ZTAoIkNbYl06fiIsIHJvdW5kKGJjLCAzKSksDQogICAgICAgICBycGVyID0gcGFzdGUwKCJyOn5+fiIsIHJvdW5kKHIsIDMpKSkNCg0KcDEgPC0gDQogIGdncGxvdChzZXZlcml0eSwgYWVzKEFQU0Fzc2VzcywgcGxpbWFuKSkgKyANCiAgZ2VvbV9wb2ludChjb2xvciA9ICJibGFjayIsDQogICAgICAgICAgICAgc2l6ZSA9IDIsDQogICAgICAgICAgICAgYWxwaGEgPSAwLjI1KSArDQogIGdlb21fYWJsaW5lKGludGVyY2VwdCA9IDAsIHNsb3BlID0gMSwgbGluZXR5cGUgPSAyLCBjb2xvciA9ICJyZWQiKSArIA0KICBmYWNldF93cmFwKH5tcCwgbmNvbCA9IDUpICsgDQogIGdlb21fdGV4dChhZXMobGFiZWw9cmhvKSwgDQogICAgICAgICAgICB4ID0gMiwNCiAgICAgICAgICAgIHkgPSA5MywNCiAgICAgICAgICAgIGhqdXN0ID0gMCwNCiAgICAgICAgICAgIHNpemUgPSAzLA0KICAgICAgICAgICAgZGF0YSA9IGRmX2NjY19yZXNvbHV0aW9uLA0KICAgICAgICAgICAgcGFyc2UgPSBUUlVFKSArIA0KICBnZW9tX3RleHQoYWVzKGxhYmVsPWJjbyksIA0KICAgICAgICAgICAgeCA9IDIsDQogICAgICAgICAgICB5ID0gODAsDQogICAgICAgICAgICBzaXplID0gMywNCiAgICAgICAgICAgIGhqdXN0ID0gMCwNCiAgICAgICAgICAgIGRhdGEgPSBkZl9jY2NfcmVzb2x1dGlvbiwNCiAgICAgICAgICAgIHBhcnNlID0gVFJVRSkgKyANCiAgZ2VvbV90ZXh0KGFlcyhsYWJlbD1ycGVyKSwgDQogICAgICAgICAgICB4ID0gMiwNCiAgICAgICAgICAgIHkgPSA3MCwNCiAgICAgICAgICAgIHNpemUgPSAzLA0KICAgICAgICAgICAgaGp1c3QgPSAwLA0KICAgICAgICAgICAgZGF0YSA9IGRmX2NjY19yZXNvbHV0aW9uLA0KICAgICAgICAgICAgcGFyc2UgPSBUUlVFKSArIA0KICBzY2FsZV95X2NvbnRpbnVvdXMoYnJlYWtzID0gc2VxKDAsIDEwMCwgYnkgPSAyNSksDQogICAgICAgICAgICAgICAgICAgICBsaW1pdHMgPSBjKDAsIDEwMCkpICsNCiAgc2NhbGVfeF9jb250aW51b3VzKGJyZWFrcyA9IHNlcSgwLCAxMDAsIGJ5ID0gMjUpLA0KICAgICAgICAgICAgICAgICAgICAgbGltaXRzID0gYygwLCAxMDApKSArDQogIGNvb3JkX2ZpeGVkKCkgKyANCiAgdGhlbWUobGVnZW5kLmJhY2tncm91bmQgPSBlbGVtZW50X2JsYW5rKCksDQogICAgICAgIHBhbmVsLmdyaWQgPSBlbGVtZW50X2JsYW5rKCksDQogICAgICAgIHBhbmVsLnNwYWNpbmcgPSB1bml0KDAsICJjbSIpLA0KICAgICAgICBheGlzLnRpdGxlID0gZWxlbWVudF90ZXh0KGNvbG9yID0gImJsYWNrIiksDQogICAgICAgIGF4aXMudGV4dCA9IGVsZW1lbnRfdGV4dChjb2xvciA9ICJibGFjayIpLA0KICAgICAgICBzdHJpcC5iYWNrZ3JvdW5kID0gZWxlbWVudF9yZWN0KGZpbGwgPSBOQSksDQogICAgICAgIGF4aXMudGlja3MubGVuZ3RoID0gdW5pdCgwLjIsICJjbSIpKSArIA0KICBsYWJzKHggPSAiQWN0dWFsIHNldmVyaXR5ICglKSIsDQogICAgICAgeSA9ICJQcmVkaWN0ZWQgc2V2ZXJpdHkgKCUpIikNCg0KDQpwMiA8LQ0KICBnZ3Bsb3Qoc2V2ZXJpdHksIGFlcyhyZXNpZHVhbCkpICsgDQogIGdlb21fZGVuc2l0eShhZXMoZmlsbCA9IGZhY3RvcihtcCkpLCBhbHBoYSA9IDAuMywgc2l6ZSA9IDAuMSkgKw0KICBnZW9tX3ZsaW5lKHhpbnRlcmNlcHQgPSAwLCBsaW5ldHlwZSA9IDIpICsNCiAgZ2VvbV9ydWcobGVuZ3RoID0gdW5pdCgwLjAyLCAibnBjIiksDQogICAgICAgICAgIHNpemUgPSAwLjA1LA0KICAgICAgICAgICBjb2xvciA9ICJncmF5IikgKw0KICB0aGVtZShsZWdlbmQucG9zaXRpb24gPSAiYm90dG9tIiwNCiAgICAgICAgbGVnZW5kLnRpdGxlID0gZWxlbWVudF9ibGFuaygpLA0KICAgICAgICBwYW5lbC5ncmlkID0gZWxlbWVudF9ibGFuaygpLA0KICAgICAgICBwYW5lbC5zcGFjaW5nID0gdW5pdCgwLCAiY20iKSwNCiAgICAgICAgc3RyaXAuYmFja2dyb3VuZCA9IGVsZW1lbnRfcmVjdChmaWxsID0gTkEpLA0KICAgICAgICBheGlzLnRpdGxlID0gZWxlbWVudF90ZXh0KGNvbG9yID0gImJsYWNrIiksDQogICAgICAgIGF4aXMudGV4dCA9IGVsZW1lbnRfdGV4dChjb2xvciA9ICJibGFjayIpLA0KICAgICAgICBheGlzLnRpY2tzLmxlbmd0aCA9IHVuaXQoMC4yLCAiY20iKSkgKyANCiAgbGFicyh4ID0gIlByZWRpY3Rpb24gcmVzaWR1YWwgKCUpIikgKw0KICBzY2FsZV9maWxsX2NvbG9yYmxpbmQoKQ0KDQoNCmRmX2NjY19yZXNvbHV0aW9uMiA8LSANCiAgZGZfY2NjX3Jlc29sdXRpb24gJT4lIA0KICBzZWxlY3QobXAsIHIsIHBjLCBiYykgJT4lIA0KICBwaXZvdF9sb25nZXIoLW1wKQ0KDQpwMyA8LSANCiAgZ2dwbG90KGRmX2NjY19yZXNvbHV0aW9uMiwgYWVzKG1wLCB2YWx1ZSwgZmlsbCA9IG5hbWUsIGdyb3VwID0gbmFtZSkpICsgDQogIGdlb21fbGluZShhZXMoY29sb3IgPSBuYW1lKSkgKw0KICBnZW9tX3BvaW50KHNoYXBlID0gMjEsIHNpemUgPSAyKSArDQogIHRoZW1lKGxlZ2VuZC5wb3NpdGlvbiA9ICJib3R0b20iLA0KICAgICAgICBsZWdlbmQudGl0bGUgPSBlbGVtZW50X2JsYW5rKCksDQogICAgICAgIHBhbmVsLnNwYWNpbmcgPSB1bml0KDAsICJjbSIpLA0KICAgICAgICBwYW5lbC5ncmlkID0gZWxlbWVudF9ibGFuaygpLA0KICAgICAgICBheGlzLnRpdGxlID0gZWxlbWVudF90ZXh0KGNvbG9yID0gImJsYWNrIiksDQogICAgICAgIGF4aXMudGV4dCA9IGVsZW1lbnRfdGV4dChjb2xvciA9ICJibGFjayIpLA0KICAgICAgICBheGlzLnRpY2tzLmxlbmd0aCA9IHVuaXQoMC4yLCAiY20iKSkgKyANCiAgbGFicyh4ID0gIkltYWdlIHJlc29sdXRpb24gKG1lZ2FwaXhlbCkiLA0KICAgICAgIHkgPSAiT2JzZXJ2ZWQgdmFsdWUiKSArDQogIHNjYWxlX3lfY29udGludW91cyhicmVha3MgPSBzZXEoMC45LCAxLCBieSA9IDAuMDAyKSkgKyANCiAgc2NhbGVfeF9jb250aW51b3VzKGJyZWFrcyA9IGMoMC4wNSwgMC40LCAwLjcsIDEuNywgMykpICsNCiAgc2NhbGVfZmlsbF9jb2xvcmJsaW5kKGxhYmVscyA9IGMofkNbYl0sfnJob1tjXSwgfnIpKSArDQogIHNjYWxlX2NvbG9yX2NvbG9yYmxpbmQobGFiZWxzID0gYyh+Q1tiXSx+cmhvW2NdLCB+cikpDQoNCnAxIC8gKHAzICsgcDIgKyBwbG90X2xheW91dCh3aWR0aHMgPSBjKDEsIDEuMSkpKSArDQogIHBsb3RfYW5ub3RhdGlvbih0YWdfbGV2ZWxzID0gImEiKSArIA0KICBwbG90X2xheW91dChuY29sID0gMSkNCg0KZ2dzYXZlKCJmaWdzL2ZpZzVfcmVzb2x1dGlvbi5qcGciLCBkcGkgPSA2MDApDQpgYGANCg0KDQoNCiMgQ29tcHV0YXRpb24gdGltZQ0KYGBge3IgcnVubmluZ3RpbWUsIGZpZy53aWR0aD02LCBmaWcuaGVpZ2h0PTR9DQpzY2VuYXJpbyA8LSBpbXBvcnQoImRhdGEvcnVudGltZV9zY2VuYXJpby54bHN4IikNCmdncGxvdChzY2VuYXJpbywgYWVzKG1wLCBlbGFwc2VkX2ltZywgZmlsbCA9IHN0cmF0ZWd5LCBncm91cCA9IHN0cmF0ZWd5KSkgKyANCiAgZ2VvbV9saW5lKGFlcyhjb2xvciA9IHN0cmF0ZWd5KSkgKw0KICBnZW9tX3BvaW50KHNoYXBlID0gMjEsIHNpemUgPSAyKSArDQogIHNjYWxlX3lfY29udGludW91cyhicmVha3MgPSBzZXEoMCwgMy41LCBieSA9IDAuNSksDQogICAgICAgICAgICAgICAgICAgICBsaW1pdHMgPSBjKDAsIDMuNSkpICsNCiAgc2NhbGVfeF9yZXZlcnNlKGJyZWFrcyA9IGMoMC4wNSwgMC40LCAwLjcsIDEuNywgMykpICsgDQogIHRoZW1lX2J3KGJhc2Vfc2l6ZSA9IDE0KSArDQogIHRoZW1lKGxlZ2VuZC5wb3NpdGlvbiA9IGMoMC44LCAwLjgpLA0KICAgICAgICBsZWdlbmQua2V5PWVsZW1lbnRfYmxhbmsoKSwNCiAgICAgICAgbGVnZW5kLmJveC5iYWNrZ3JvdW5kID0gZWxlbWVudF9ibGFuaygpLA0KICAgICAgICBsZWdlbmQuYmFja2dyb3VuZCA9IGVsZW1lbnRfYmxhbmsoKSwNCiAgICAgICAgcGFuZWwuZ3JpZCA9IGVsZW1lbnRfYmxhbmsoKSwNCiAgICAgICAgYXhpcy50aXRsZSA9IGVsZW1lbnRfdGV4dChjb2xvciA9ICJibGFjayIpLA0KICAgICAgICBheGlzLnRleHQgPSBlbGVtZW50X3RleHQoY29sb3IgPSAiYmxhY2siKSwNCiAgICAgICAgYXhpcy50aWNrcy5sZW5ndGggPSB1bml0KDAuMiwgImNtIikpICsgDQogIGxhYnMoeCA9ICJJbWFnZSByZXNvbHV0aW9uIiwNCiAgICAgICB5ID0gIkVsYXBzZWQgdGltZSAocykiKSArDQogIHNjYWxlX2ZpbGxfY29sb3JibGluZCgpICsNCiAgc2NhbGVfY29sb3JfY29sb3JibGluZCgpDQoNCmdnc2F2ZSgiZmlncy9maWc2X3J1bm5pbmd0aW1lLnBuZyIsDQogICAgICAgd2lkdGggPSAxMiwNCiAgICAgICBoZWlnaHQgPSA5LA0KICAgICAgIHVuaXRzID0gImNtIiwNCiAgICAgICBkcGkgPSA2MDApDQoNCmBgYA0KDQoNCg0KDQoNCg0KDQoNCg==</div>
-
-
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;figs/fig6_runningtime.png&quot;</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">width =</span> <span class="dv">12</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">height =</span> <span class="dv">9</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">units =</span> <span class="st">&quot;cm&quot;</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">dpi =</span> <span class="dv">600</span>)</span></code></pre></div>
 </div>
 </div>
 
-</div>
+   
+   
+            
+      
 
-<script>
+  <script>
+    $(document).ready(function () {
 
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
+			
+ 		
+		$('#content img:not(.no-lightbox)').addClass("image-lb");
+	$('#content').magnificPopup({
+	    type:'image',
+	    closeOnContentClick: false,
+	    closeBtnInside: false,
+	    delegate: '.image-lb',
+	    gallery: {enabled: true },
+	    image: {
+	        verticalFit: true,
+		titleSrc: 'alt'
+	    }
+ 	});
+ 	    });
+  </script>
 
 
-</script>
 
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open');
-  });
-});
-</script>
-
-<!-- code folding -->
-<script>
-$(document).ready(function () {
-  window.initializeSourceEmbed("code.Rmd");
-});
-</script>
-
-<script>
-$(document).ready(function ()  {
-
-    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
-    $('.unlisted.unnumbered').addClass('toc-ignore')
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-
+    <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+	var script = document.createElement("script");
+	script.type = "text/javascript";
+	script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+	document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+  
 </body>
 </html>
